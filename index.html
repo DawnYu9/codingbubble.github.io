@@ -67,6 +67,53 @@ var _hmt = _hmt || [];
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-05-08T14:09:02.000Z"><a href="/2015/05/08/个性化你的Hexo/">2015-05-08 22:09, 19th周 Friday</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/05/08/个性化你的Hexo/">个性化你的Hexo</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+		  
+			<div id="toc" class="toc-article">
+				<strong class="toc-title">Content</strong>
+				<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#主题"><span class="toc-number">1.</span> <span class="toc-text">主题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#插件plugins"><span class="toc-number">2.</span> <span class="toc-text">插件plugins</span></a></li></ol>
+			</div>
+		
+        <h1 id="主题">主题</h1><p><a href="http://hexo.io/themes/" target="_blank" rel="external">Hexo主题</a><br>下载主题：</p>
+<pre><code>$ git clone <span class="tag">&lt;<span class="title">repository</span>&gt;</span> themes/<span class="tag">&lt;<span class="title">theme-name</span>&gt;</span>
+</code></pre><p>如：<br>    $ git clone <a href="https://github.com/hexojs/hexo-theme-light.git" target="_blank" rel="external">https://github.com/hexojs/hexo-theme-light.git</a> themes/light<br>然后修改hexo目录下的_config.yml，修改主题：<br>    theme: theme-name<br>如：<br>    theme: light</p>
+<h1 id="插件plugins">插件plugins</h1><p><a href="http://hexo.io/plugins/" target="_blank" rel="external">Hexo插件</a><br>添加插件：</p>
+<pre><code>$ npm <span class="operator"><span class="keyword">install</span> &lt;<span class="keyword">plugin</span>-name&gt; <span class="comment">--save</span>
+$ npm <span class="keyword">update</span></span>
+</code></pre><p>然后修改hexo目录下的_config.yml，添加：<br>    plugins:</p>
+<pre><code>- plugin-<span class="property">name</span>
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-05-07T15:30:17.000Z"><a href="/2015/05/07/Github-Hexo搭建个人博客/">2015-05-07 23:30, 19th周 Thursday</a></time>
       
       
@@ -144,11 +191,13 @@ $ git config --global user<span class="class">.email</span> <span class="string"
     <span class="attribute">type</span>: github
     <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:username/username.github.com.git
     <span class="attribute">branch</span>: master
-</code></pre><p>其中username替换为你的GitHub用户名。<br>Git Bash执行以下命令：</p>
+</code></pre><p>其中username替换为你的GitHub用户名。<br>Git Bash执行以下命令即可完成部署，注意部署会覆盖掉你之前在版本库中存放的文件。</p>
 <pre><code><span class="title">hexo</span> clean
 hexo generate
 hexo deploy
-</code></pre><p>此时，在博客的根目录下会生成一个文件夹：.deploy，<br>至此，我们的博客已经完全搭建起来了，在浏览器访问username.github.io就能看到你的成就了！</p>
+</code></pre><p>此时，在博客的根目录下会生成一个文件夹：.deploy。<br>或可加入 —generate 选项，在部署前自动生成文件。</p>
+<pre><code>hexo deploy <span class="comment">--generate</span>
+</code></pre><p>其原理就是hexo在执行hexo generate时会在本地先把博客生成的一套静态站点放到public文件夹中，在执行hexo deploy时将其复制到.deploy文件夹中。<br>至此，我们的博客已经完全搭建起来了，在浏览器访问username.github.io就能看到你的成就了！</p>
 <p>记住：每次修改本地文件后，需要hexo generate才能保存。每次使用命令时，都要在H:\hexo目录下。</p>
 <h1 id="bugs">bugs</h1><ol>
 <li>若右键菜单中没有git bash选项，可以进入开始菜单找到git bash，然后通过cd进入相应目录执行命令。</li>
@@ -161,8 +210,8 @@ hexo deploy
 </ol>
 <h1 id="tips">tips</h1><p>hexo现在支持更加简单的命令格式了，比如：</p>
 <pre><code>hexo <span class="variable">g =</span>= hexo generate
-hexo <span class="variable">d =</span>= hexo deploy
-hexo <span class="variable">s =</span>= hexo server
+hexo <span class="variable">d =</span>= hexo deploy <span class="comment">#部署</span>
+hexo <span class="variable">s =</span>= hexo server <span class="comment">#启动本地服务器，本地预览博客</span>
 hexo <span class="variable">n =</span>= hexo new
 </code></pre><h1 id="参考资料">参考资料</h1><ul>
 <li><a href="http://beiyuu.com/github-pages/" target="_blank" rel="external">使用Github Pages建独立博客</a></li>
@@ -253,7 +302,7 @@ hexo <span class="variable">n =</span>= hexo new
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Hexo/">Hexo</a><small>1</small></li>
+    <li><a href="/categories/Hexo/">Hexo</a><small>2</small></li>
   
   </ul>
 </div>

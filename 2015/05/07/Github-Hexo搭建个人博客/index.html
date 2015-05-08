@@ -143,11 +143,13 @@ $ git config --global user<span class="class">.email</span> <span class="string"
     <span class="attribute">type</span>: github
     <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:username/username.github.com.git
     <span class="attribute">branch</span>: master
-</code></pre><p>其中username替换为你的GitHub用户名。<br>Git Bash执行以下命令：</p>
+</code></pre><p>其中username替换为你的GitHub用户名。<br>Git Bash执行以下命令即可完成部署，注意部署会覆盖掉你之前在版本库中存放的文件。</p>
 <pre><code><span class="title">hexo</span> clean
 hexo generate
 hexo deploy
-</code></pre><p>此时，在博客的根目录下会生成一个文件夹：.deploy，<br>至此，我们的博客已经完全搭建起来了，在浏览器访问username.github.io就能看到你的成就了！</p>
+</code></pre><p>此时，在博客的根目录下会生成一个文件夹：.deploy。<br>或可加入 —generate 选项，在部署前自动生成文件。</p>
+<pre><code>hexo deploy <span class="comment">--generate</span>
+</code></pre><p>其原理就是hexo在执行hexo generate时会在本地先把博客生成的一套静态站点放到public文件夹中，在执行hexo deploy时将其复制到.deploy文件夹中。<br>至此，我们的博客已经完全搭建起来了，在浏览器访问username.github.io就能看到你的成就了！</p>
 <p>记住：每次修改本地文件后，需要hexo generate才能保存。每次使用命令时，都要在H:\hexo目录下。</p>
 <h1 id="bugs">bugs</h1><ol>
 <li>若右键菜单中没有git bash选项，可以进入开始菜单找到git bash，然后通过cd进入相应目录执行命令。</li>
@@ -160,8 +162,8 @@ hexo deploy
 </ol>
 <h1 id="tips">tips</h1><p>hexo现在支持更加简单的命令格式了，比如：</p>
 <pre><code>hexo <span class="variable">g =</span>= hexo generate
-hexo <span class="variable">d =</span>= hexo deploy
-hexo <span class="variable">s =</span>= hexo server
+hexo <span class="variable">d =</span>= hexo deploy <span class="comment">#部署</span>
+hexo <span class="variable">s =</span>= hexo server <span class="comment">#启动本地服务器，本地预览博客</span>
 hexo <span class="variable">n =</span>= hexo new
 </code></pre><h1 id="参考资料">参考资料</h1><ul>
 <li><a href="http://beiyuu.com/github-pages/" target="_blank" rel="external">使用Github Pages建独立博客</a></li>
@@ -191,6 +193,8 @@ hexo <span class="variable">n =</span>= hexo new
 
 
 <nav id="pagination" >
+    
+    <a href="/2015/05/08/个性化你的Hexo/" class="alignleft prev" >上一页</a>
     
     
     <a href="/2015/05/05/hello-world/" class="alignright next" >下一页</a>
@@ -232,7 +236,7 @@ var duoshuoQuery = {short_name:"madreambubble"};
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Hexo/">Hexo</a><small>1</small></li>
+    <li><a href="/categories/Hexo/">Hexo</a><small>2</small></li>
   
   </ul>
 </div>
