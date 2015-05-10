@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Coding world, changing world ^_^]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://madreambubble.github.io/"/>
-  <updated>2015-05-10T13:04:48.227Z</updated>
+  <updated>2015-05-10T15:01:34.455Z</updated>
   <id>http://madreambubble.github.io/</id>
   
   <author>
@@ -15,24 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[open]]></title>
-    <link href="http://madreambubble.github.io/2015/05/10/open/"/>
-    <id>http://madreambubble.github.io/2015/05/10/open/</id>
-    <published>2015-05-10T13:04:48.000Z</published>
-    <updated>2015-05-10T13:04:48.227Z</updated>
-    <content type="html"></content>
-    <summary type="html">
-    
-    </summary>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[个性化你的Hexo]]></title>
     <link href="http://madreambubble.github.io/2015/05/08/%E4%B8%AA%E6%80%A7%E5%8C%96%E4%BD%A0%E7%9A%84Hexo/"/>
     <id>http://madreambubble.github.io/2015/05/08/个性化你的Hexo/</id>
     <published>2015-05-08T14:09:02.000Z</published>
-    <updated>2015-05-10T14:42:15.198Z</updated>
+    <updated>2015-05-10T15:01:34.455Z</updated>
     <content type="html"><![CDATA[<p>注意：<br>1.修改配置文件时注意<code>YAML语法</code>，参数<code>冒号:</code>后一定要留<code>空格</code><br>2.若出现中文乱码请修改文件编码格式为<code>UTF-8</code></p>
 <h1 id="hexo目录介绍">hexo目录介绍</h1><p>默认目录结构：</p>
 <pre><code>.
@@ -96,7 +83,7 @@ feed:
   gitcafe: &lt;repository url&gt;,[branch] #<span class="id">#gitcafe</span> 仓库地址和分支
 </code></pre><h1 id="README文件">README文件</h1><p>在<code>\hexo\source</code>新建<code>README</code>文件（注意不要带后缀），用文本编辑器打开编辑内容。</p>
 <h1 id="404页面">404页面</h1><p>在<code>hexo\source</code>下新建<code>404</code>文件（不要带后缀），插入代码即可。<br><a href="http://www.qq.com/404/" target="_blank" rel="external">腾讯公益</a></p>
-<h1 id="整站配置">整站配置</h1><h2 id="编辑文件：\hexo\_config-yml">编辑文件：<code>\hexo\_config.yml</code></h2><pre><code><span class="preprocessor"># Hexo Configuration</span>
+<h1 id="整站配置">整站配置</h1><h2 id="编辑\hexo\_config-yml文件">编辑<code>\hexo\_config.yml</code>文件</h2><pre><code><span class="preprocessor"># Hexo Configuration</span>
 <span class="preprocessor">## Docs: http://zespia.tw/hexo/docs/configure.html</span>
 <span class="preprocessor">## Source: https://github.com/tommy351/hexo/</span>
 
@@ -182,7 +169,7 @@ feed:
   repository: git@github.com:username/username.github.io.git
   branch: master
 </code></pre><p>执行命令<code>hexo g</code>，<code>hexo s</code>，打开<code>localhost:4000</code>查看效果。</p>
-<h2 id="生成文章时默认生成categories">生成文章时默认生成categories</h2><p>在<code>hexo\scaffolds\post.md</code>中，添加一行<code>categories:</code>。同理可应用在<code>page.md</code>和<code>photo.md</code>。</p>
+<h2 id="新建文章时默认生成categories项">新建文章时默认生成categories项</h2><p>在<code>hexo\scaffolds\post.md</code>中，添加一行<code>categories:</code>。同理可应用在<code>page.md</code>和<code>photo.md</code>。</p>
 <h2 id="win7中新建文章后自动打开文件">win7中新建文章后自动打开文件</h2><p>参考了几个博主的方法，但貌似都是苹果机的，本人对脚本语言完全不懂，琢磨尝试了几次，竟然成功了~<br><a href="https://github.com/hexojs/hexo/issues/1007" target="_blank" rel="external">hexo作者给出的代码</a>：</p>
 <pre><code><span class="keyword">var</span> spawn = <span class="built_in">require</span>(<span class="string">'child_process'</span>).spawn;
 
@@ -213,8 +200,10 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
   exec(<span class="string">'start '</span> + data.path);
 });
 </code></pre><p>我是Hexo 3版本，测试成功~但2.x版本尚未测试，猜想可能代码差不多是这样吧，安装2.x版本的朋友可以试试。</p>
+</li>
+</ul>
 <h1 id="主题theme">主题theme</h1><p><a href="http://hexo.io/themes/" target="_blank" rel="external">Hexo主题</a></p>
-<h2 id="下载主题：">下载主题：</h2><pre><code>$ git clone <span class="tag">&lt;<span class="title">repository</span>&gt;</span> themes/<span class="tag">&lt;<span class="title">theme-name</span>&gt;</span>
+<h2 id="下载主题">下载主题</h2><pre><code>$ git clone <span class="tag">&lt;<span class="title">repository</span>&gt;</span> themes/<span class="tag">&lt;<span class="title">theme-name</span>&gt;</span>
 </code></pre><p>如：</p>
 <pre><code><span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/hexojs</span><span class="regexp">/hexo-theme-light.git themes/light</span>
 </code></pre><h2 id="启用主题">启用主题</h2><p>修改hexo目录下的<code>_config.yml</code>，启用主题：</p>
@@ -283,8 +272,6 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 &lt;/form&gt;
 &lt;/div&gt;
 </code></pre><p>将如上代码加入即可，您需要修改css以便这个搜索框比较美观。<br>再如，你要修改页脚版权信息，直接编辑<code>hexo\themes\themename\layout\_partial\footer.ejs</code>。同理，你需要修改css，直接去修改对应位置的styl文件。</p>
-</li>
-</ul>
 <h3 id="社会化评论系统——多说">社会化评论系统——多说</h3><p>hexo默认使用国外比较流行的disqus，国内多使用“多说”。步骤非常简单：</p>
 <ol>
 <li>在<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>进行注册，获得通用代码。</li>
@@ -295,6 +282,8 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
     <span class="tag">&lt;/<span class="title">section</span>&gt;</span>
 </span>&lt;%<span class="ruby"> } </span>%&gt;<span class="xml"></span>
 </code></pre><p>其中<code>&lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;请将此处替换成文章在你的站点中的ID&quot; data-title=&quot;请替换成文章的标题&quot; data-url=&quot;请替换成文章的网址&quot;&gt;&lt;/div&gt;</code>替换为<code>&lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;&lt;%- config.root %&gt;&lt;%- item.path%&gt;&quot; data-title=&quot;&lt;%- item.title %&gt;&quot; data-url=&quot;&lt;%- item.permalink %&gt;&quot;&gt;&lt;/div&gt;</code></p>
+</li>
+</ol>
 <h3 id="页面导航">页面导航</h3><p>在<code>themes\themename\layout\_partial\comment.ejs</code>文件中，加入一段代码，如下：</p>
 <pre><code><span class="xml"></span>&lt;%<span class="ruby"> <span class="keyword">if</span> ( page.comments){ </span>%&gt;<span class="xml">
 
@@ -312,9 +301,7 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 </code></pre><p>light主题默认显示为“上一页”“下一页”，若想更改显示的文字，在<code>hexo\themes\light\languages</code>中你选择的语言包内修改：</p>
 <pre><code><span class="attribute">prev</span>: <span class="string">上一篇</span>
 <span class="attribute">next</span>: <span class="string">下一篇</span>
-</code></pre></li>
-</ol>
-<h3 id="百度分享">百度分享</h3><p>到<a href="http://share.baidu.com/" target="_blank" rel="external">百度分享</a>获得代码，在<code>themes/themename/layout/_partial/article.ejs</code>中，将<code>&lt;%-partial(&#39;post/share&#39;)%&gt;</code>删掉，替换为百度分享的代码。</p>
+</code></pre><h3 id="百度分享">百度分享</h3><p>到<a href="http://share.baidu.com/" target="_blank" rel="external">百度分享</a>获得代码，在<code>themes/themename/layout/_partial/article.ejs</code>中，将<code>&lt;%-partial(&#39;post/share&#39;)%&gt;</code>删掉，替换为百度分享的代码。</p>
 <h3 id="添加网站图标">添加网站图标</h3><p>在<code>themes/themename/layout/_partial/head.ejs</code>里将<code>&lt;link href=&quot;&lt;%- config.root %&gt;favicon.png&quot; rel=&quot;icon&quot;&gt;</code>替换为<code>&lt;link href=&quot;&lt;%- config.root %&gt;favicon.ico&quot; rel=&quot;icon&quot; type=&quot;image/x-ico&quot;&gt;</code>。将<code>favicon.ico</code>图标文件放在<code>hexo\source</code>目录下。<br>制作图标的网站：<a href="http://www.faviconer.com" target="_blank" rel="external">faviconer</a>。</p>
 <h3 id="添加分类、标签云widget">添加分类、标签云widget</h3><p>在<code>themes/themename/_config.yml</code>中，添加如下：</p>
 <pre><code>widgets:
@@ -363,9 +350,9 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 <li><p>在<code>themes\light\_config.yml</code>中，添加如下：</p>
 <pre><code><span class="attribute">menu</span>:
   <span class="attribute">About</span>: /about
-</code></pre><p>上述步骤，也可以手工生成，在<code>hexo\source\</code>下手工新建<code>About</code>和<code>index.md</code>也是完全等价的。</p>
-</li>
+</code></pre></li>
 </ol>
+<p>上述步骤，也可以手工生成，在<code>hexo\source\</code>下手工新建<code>About</code>和<code>index.md</code>也是完全等价的。</p>
 <h3 id="添加fork_me_on_github">添加<code>fork me on github</code></h3><p><a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="external">github官方教程</a>，把代码插入到任意一个全局的模板文件中就行，比如layout.ejs的末尾。</p>
 <h3 id="添加RSS">添加RSS</h3><p>hexo提供了RSS的生成插件，需要手动安装和设置。步骤如下：</p>
 <ol>
@@ -407,9 +394,9 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 <li>选择左侧的<code>SWIFTYPE INSTALL CODE</code>，复制生成的代码，覆盖<code>themes/themename/layout/_widget/search.ejs</code>文件即可。</li>
 </ol>
 <h3 id="添加返回顶部按钮">添加返回顶部按钮</h3><ol>
-<li><p>添加html代码<br>在<code>/themes/Yilia/layout/_partial</code>文件夹新建文件<code>totop.ejs</code>，并向其中加入如下代码：</p>
+<li><p>添加html代码<br>在<code>/themes/themename/layout/_partial</code>文件夹新建文件<code>totop.ejs</code>，并向其中加入如下代码：</p>
  <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;"><br> <a title="返回顶部"><img src="/img/scrollup.png"></a><br> </div></li>
-<li><p>添加js代码<br>在<code>/themes/Yilia/source/js</code>文件夹新建文件<code>totop.js</code>，将如下代码复制其中：</p>
+<li><p>添加js代码<br>在<code>/themes/themename/source/js</code>文件夹新建文件<code>totop.js</code>，将如下代码复制其中：</p>
 <pre><code><span class="list">(<span class="keyword">function</span><span class="list">($)</span> <span class="collection">{
     // When to show the scroll link
     // higher number = scroll link appears further down the page
@@ -439,11 +426,11 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 }</span>)</span><span class="list">(<span class="keyword">jQuery</span>)</span><span class="comment">;</span>
 </code></pre><p>可以对upperLimit和scrollSpeed参数进行修改，控制显示位置和回滚速度。</p>
 </li>
-<li><p>添加文件引用<br>在文件<code>/themes/Yilia/layout/_partial/after_footer.ejs</code>末尾添加以下两行代码：</p>
+<li><p>添加文件引用<br>在文件<code>/themes/themename/layout/_partial/after_footer.ejs</code>末尾添加以下两行代码：</p>
 <pre><code><span class="xml"></span>&lt;%-<span class="ruby"> partial(<span class="string">'totop'</span>) </span>%&gt;<span class="xml">
 <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"</span></span></span>&lt;%-<span class="ruby"> config.root </span>%&gt;<span class="xml"><span class="tag"><span class="value">js/totop.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span>
 </code></pre></li>
-<li>添加按钮图片<br>将图片<img src="http://ww3.sinaimg.cn/large/0067jhJ4gw1erz8cbug7wj301e01e3y9.jpg" alt="">复制到<code>\themes\Yilia\source\img</code>目录下，文件名为<code>scrollup.png</code>，页面足够长时，就看到按钮出现了。</li>
+<li>添加按钮图片<br>将图片<img src="http://ww3.sinaimg.cn/large/0067jhJ4gw1erz8cbug7wj301e01e3y9.jpg" alt="">复制到<code>\themes\themename\source\img</code>目录下，文件名为<code>scrollup.png</code>，页面足够长时，就看到按钮出现了。</li>
 </ol>
 <h3 id="添加文章目录">添加文章目录</h3><ol>
 <li><p>修改主题的ejs文件<br>我们首先要编辑文章显示页面的模板，也就是<code>themes/themename/layout/_partial/article.ejs</code>文件。为了将目录生成在正文之前，我们首先在这个文件中找到<code>&lt;%- post.content %&gt;</code>类似代码，并在这一行之前加入如下代码：</p>
@@ -523,39 +510,49 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
     <link href="http://madreambubble.github.io/2015/05/07/Github-Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://madreambubble.github.io/2015/05/07/Github-Hexo搭建个人博客/</id>
     <published>2015-05-07T15:30:17.000Z</published>
-    <updated>2015-05-10T13:16:35.140Z</updated>
+    <updated>2015-05-10T15:29:59.855Z</updated>
     <content type="html"><![CDATA[<p>刚入驻GitHub的菜鸟一枚，第一篇博文就用来做搭建博客的笔记吧~</p>
 <p>本文针对<code>windows</code>平台和<code>Hexo 3.x</code></p>
-<h1 id="环境准备，搭建本地博客">环境准备，搭建本地博客</h1><h2 id="1-_安装Node-js">1. 安装Node.js</h2><p><a href="https://nodejs.org/download/" target="_blank" rel="external">Node.js官网下载</a></p>
-<h2 id="2-_安装Git">2. 安装Git</h2><p><a href="http://git-scm.com/downloads" target="_blank" rel="external">Git官网下载</a></p>
-<h3 id="2-1_cmd下使用Git命令">2.1 cmd下使用Git命令</h3><p>配置系统环境变量Path，添加如下2个路径，路径之间用英文分号”;”隔开</p>
-<ul>
-<li>git安装路径中bin的位置，如：D:\Program Files\Git\bin</li>
-<li>git安装路径中git-core的位置，如：D:\Program Files\Git\libexec\git-core</li>
+<h1 id="环境准备，搭建本地博客">环境准备，搭建本地博客</h1><h2 id="安装Node-js">安装Node.js</h2><p><a href="https://nodejs.org/download/" target="_blank" rel="external">Node.js官网下载</a></p>
+<h2 id="安装Git">安装Git</h2><p><a href="http://git-scm.com/downloads" target="_blank" rel="external">Git官网下载</a></p>
+<ol>
+<li>cmd下使用Git命令<br> 配置系统环境变量Path，添加如下2个路径，路径之间用英文分号”;”隔开<ul>
+<li>git安装路径中bin的位置，如：<code>D:\Program Files\Git\bin</code></li>
+<li>git安装路径中git-core的位置，如：<code>D:\Program Files\Git\libexec\git-core</code></li>
 </ul>
-<h3 id="2-2_Git_Bash下使用Git命令(本文使用此方法)">2.2 Git Bash下使用Git命令(本文使用此方法)</h3><ul>
+</li>
+<li>Git Bash下使用Git命令(本文使用此方法)<ul>
 <li>双击桌面上的”Git Bash”</li>
 <li>在桌面或文件夹任意空白处点击鼠标右键，选择”Git Bash”</li>
 </ul>
-<h2 id="3-_安装Hexo，搭建本地博客">3. 安装Hexo，搭建本地博客</h2><p>打开Git Bash，执行如下命令</p>
+</li>
+</ol>
+<h2 id="安装Hexo，搭建本地博客">安装Hexo，搭建本地博客</h2><p>打开Git Bash，执行如下命令</p>
 <pre><code>npm <span class="keyword">install</span> -g hexo
-</code></pre><h3 id="创建hexo文件夹">创建hexo文件夹</h3><p>安装完成后，根据自己的喜好建立hexo目录（如H:\hexo），在此目录空白处右键打开Git Bash执行以下命令，Hexo即会自动在此目录建立网站所需要的所有文件</p>
+</code></pre><ol>
+<li><p>创建hexo文件夹<br>安装完成后，根据自己的喜好建立hexo目录（如H:\hexo），在此目录空白处右键打开Git Bash执行以下命令，Hexo即会自动在此目录建立网站所需要的所有文件。</p>
 <pre><code><span class="title">hexo</span> init
-</code></pre><h3 id="安装依赖包">安装依赖包</h3><pre><code>npm <span class="keyword">install</span>
-</code></pre><h3 id="本地查看">本地查看</h3><p>现在我们已经搭建起本地的hexo博客了，在hexo目录执行以下命令</p>
+</code></pre></li>
+<li>安装依赖包<pre><code>npm <span class="keyword">install</span>
+</code></pre></li>
+<li><p>本地查看<br>现在我们已经搭建起本地的hexo博客了，在hexo目录执行以下命令</p>
 <pre><code>hexo generate
 hexo <span class="keyword">server</span>
 </code></pre><p>然后到浏览器输入<code>localhost:4000</code>查看博客。</p>
+</li>
+</ol>
 <h1 id="配置SSH_keys">配置SSH keys</h1><p><a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">官方教程</a></p>
-<h2 id="1-_检查SSH_keys的设置">1. 检查SSH keys的设置</h2><pre><code>$ <span class="built_in">cd</span> ~/.ssh
-</code></pre><p>如果显示<code>No such file or directory</code>说明你是第一次使用git，跳到第3步，否则继续。</p>
-<h2 id="2-_备份和移除原来的SSH_Key设置">2. 备份和移除原来的SSH Key设置</h2><p>因为已经存在key文件，所以需要备份旧的数据并删除：</p>
+<ol>
+<li>检查SSH keys的设置<pre><code>$ <span class="built_in">cd</span> ~/.ssh
+</code></pre>如果显示<code>No such file or directory</code>说明你是第一次使用git，跳到第3步，否则继续。</li>
+<li><p>备份和移除原来的SSH Key设置<br>因为已经存在key文件，所以需要备份旧的数据并删除：</p>
 <pre><code><span class="variable">$ </span>ls
 config  id_rsa  id_rsa.pub  known_hosts
 <span class="variable">$ </span>mkdir key_backup
 <span class="variable">$ </span>cp id_rsa* key_backup
 <span class="variable">$ </span>rm id_rsa*
-</code></pre><h2 id="3-_生成新的SSH_Key">3. 生成新的SSH Key</h2><p>执行如下命令，邮箱地址为自己的邮箱地址，需要输入文件名的时候，回车即可。</p>
+</code></pre></li>
+<li><p>生成新的SSH Key<br>执行如下命令，邮箱地址为自己的邮箱地址，需要输入文件名的时候，回车即可。</p>
 <pre><code>$ ssh-keygen -t rsa -C <span class="string">"邮件地址@youremail.com"</span>
 Generating <span class="keyword">public</span>/<span class="keyword">private</span> rsa <span class="keyword">key</span> pair.
 Enter file <span class="keyword">in</span> which <span class="keyword">to</span> save the <span class="keyword">key</span> (/Users/your_user_directory/.ssh/id_rsa):&lt;回车&gt;
@@ -563,8 +560,9 @@ Enter file <span class="keyword">in</span> which <span class="keyword">to</span>
 <pre><code>Enter passphrase (empty <span class="keyword">for</span> no passphrase):<span class="variable">&lt;输入加密串&gt;</span>
 Enter same passphrase again:<span class="variable">&lt;再次输入加密串&gt;</span>
 </code></pre><p>最后看到这样的界面，SSH Key就设置成功了。<br><img src="http://ww4.sinaimg.cn/large/6b52694dgw1erw5pja0wpj20f70843zu.jpg" alt=""></p>
-<h2 id="4-_添加SSH_Key到GitHub">4. 添加SSH Key到GitHub</h2><p>在本机设置SSH Key之后，需要添加到GitHub上。<br>用文本编辑工具打开id_rsa.pub文件，如果看不到这个文件，你需要设置显示隐藏文件(若找不到，可用文件搜索功能搜索)。<br>在GitHub的主页右上角上点击设置按钮，选择<code>SSH Keys</code>项，把<code>id_rsa.pub</code>文件的内容复制进去，点击<code>Add Key</code>按钮即可。</p>
-<h2 id="5-_测试">5. 测试</h2><p>执行如下命令，看看设置是否成功，<code>git@github.com</code>的部分不要修改：</p>
+</li>
+<li>添加SSH Key到GitHub<br>在本机设置SSH Key之后，需要添加到GitHub上。<br>用文本编辑工具打开<code>id_rsa.pub</code>文件，如果看不到这个文件，你需要设置显示隐藏文件(若找不到，可用文件搜索功能搜索)。<br>在GitHub的主页右上角上点击设置按钮，选择<code>SSH Keys</code>项，把<code>id_rsa.pub</code>文件的内容复制进去，点击<code>Add Key</code>按钮即可。</li>
+<li><p>测试<br>执行如下命令，看看设置是否成功，<code>git@github.com</code>的部分不要修改：</p>
 <pre><code><span class="variable">$ </span>ssh -<span class="constant">T </span>git<span class="variable">@github</span>.com
 </code></pre><p>如果出现如下提示</p>
 <pre><code>The authenticity <span class="keyword">of</span> host <span class="comment">'github.com (207.97.227.239)' can't be established.</span>
@@ -573,14 +571,18 @@ Are you sure you want <span class="keyword">to</span> <span class="keyword">cont
 </code></pre><p>输入yes，然后会看到</p>
 <pre><code>Hi cnfeat! You've successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span> provide shell access.
 </code></pre><p>现在你已经可以通过SSH链接到GitHub了。</p>
-<h2 id="6-_设置用户信息">6. 设置用户信息</h2><p>Git会根据用户名和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，执行如下命令设置个人信息，把username和邮箱替换成你的GitHub的用户名和邮箱。</p>
+</li>
+<li><p>设置用户信息<br>Git会根据用户名和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，执行如下命令设置个人信息，把<code>username</code>和<code>邮箱</code>替换成你的GitHub的用户名和邮箱。</p>
 <pre><code>$ git config --global user<span class="class">.name</span> <span class="string">"username"</span>
 $ git config --global user<span class="class">.email</span> <span class="string">"your_email@youremail.com"</span>
 </code></pre><p>SSH Key配置成功，本机已成功连接到GitHub。</p>
+</li>
+</ol>
 <h1 id="部署到GitHub">部署到GitHub</h1><p>与GitHub建立好链接之后，就可以方便的使用它提供的Pages服务，GitHub Pages分两种，一种是你的GitHub用户名建立的username.github.io这样的用户&amp;组织页（站），另一种是依附项目的pages。<br>想建立个人博客是用的第一种，形如username.github.io这样的可访问的站，每个用户名下面只能建立一个。</p>
-<h2 id="1-_创建repository">1. 创建repository</h2><p>在自己GitHub主页右下角，创建一个新的repository，名为<code>username.github.io</code>，其中username替换为你的GitHub用户名<br><img src="http://ww4.sinaimg.cn/large/6b52694dgw1erw4iiu31hj208z03lmxh.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/6b52694dgw1erw4iu112xj20a901wt8u.jpg" alt=""></p>
-<h2 id="2-_生成pages">2. 生成pages</h2><p>创建好repository后，点击repository右侧的<code>Settings</code>，下拉，点击<code>Automatic page generator</code><br><img src="http://ww4.sinaimg.cn/large/6b52694dgw1erw4l8hhy0j20jn04z75b.jpg" alt=""><br>点击<img src="http://ww4.sinaimg.cn/large/96e8f43agw1erx03f4170j204100y3yc.jpg" alt=""><br>选择合适的主题，点击<img src="http://ww1.sinaimg.cn/large/6b52694dgw1erw4o1fm0aj202z00vt8i.jpg" alt=""><br>好了，在浏览器打开你的”username.github.io”，页面已生成。</p>
-<h2 id="3-_配置hexo\_config-yml文件">3. 配置<code>hexo\_config.yml</code>文件</h2><p>打开<code>hexo\_config.yml</code>文件，底部编辑</p>
+<ol>
+<li>创建repository<br>在自己GitHub主页右下角，创建一个新的repository，名为<code>username.github.io</code>，其中username替换为你的GitHub用户名<br><img src="http://ww4.sinaimg.cn/large/6b52694dgw1erw4iiu31hj208z03lmxh.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/6b52694dgw1erw4iu112xj20a901wt8u.jpg" alt=""></li>
+<li>生成pages<br>创建好repository后，点击repository右侧的<code>Settings</code>，下拉，点击<code>Automatic page generator</code><br><img src="http://ww4.sinaimg.cn/large/6b52694dgw1erw4l8hhy0j20jn04z75b.jpg" alt=""><br>点击<img src="http://ww4.sinaimg.cn/large/96e8f43agw1erx03f4170j204100y3yc.jpg" alt=""><br>选择合适的主题，点击<img src="http://ww1.sinaimg.cn/large/6b52694dgw1erw4o1fm0aj202z00vt8i.jpg" alt=""><br>好了，在浏览器打开你的”username.github.io”，页面已生成。</li>
+<li><p>配置<code>hexo\_config.yml</code>文件<br>打开<code>hexo\_config.yml</code>文件，底部编辑</p>
 <pre><code><span class="attribute">deploy</span>:
     <span class="attribute">type</span>: github
     <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:username/username.github.com.git
@@ -589,24 +591,33 @@ $ git config --global user<span class="class">.email</span> <span class="string"
 <pre><code><span class="title">hexo</span> clean
 hexo generate
 hexo deploy
-</code></pre><p>此时，在博客的根目录下会生成一个文件夹：<code>.deploy</code>。<br>或可加入 —generate 选项，在部署前自动生成文件。</p>
+</code></pre><p>此时，在博客的根目录下会生成一个文件夹：<code>.deploy</code>。<br>或可加入<code>—generate</code>选项，在部署前自动生成文件。</p>
 <pre><code>hexo deploy <span class="comment">--generate</span>
 </code></pre><p>简写：</p>
 <pre><code>hexo <span class="keyword">d</span> --<span class="keyword">g</span>
 </code></pre><p>其原理就是hexo在执行hexo generate时会在本地先把博客生成的一套静态站点放到public文件夹中，在执行hexo deploy时将其复制到.deploy文件夹中。<br>至此，我们的博客已经完全搭建起来了，在浏览器访问username.github.io就能看到你的成就了！</p>
+</li>
+</ol>
+<blockquote>
 <p>记住：每次修改本地文件后，需要hexo generate才能保存。每次使用命令时，都要在H:\hexo目录下。</p>
+</blockquote>
 <h1 id="Tips">Tips</h1><ol>
-<li>若右键菜单中没有git bash选项，可以进入开始菜单找到git bash，然后通过cd进入相应目录执行命令。</li>
+<li>若右键菜单中没有<code>git bash</code>选项，可以进入开始菜单找到git bash，然后通过cd进入相应目录执行命令。</li>
 <li>在github部署完成之后，马上访问可能出现<code>404错误</code>，这是正常的，（最多）等待十分钟左右就可以访问了。如果还不行，那很可能是你没有验证Github发给你的邮件。</li>
 <li>如果在hexo d之后出现<code>fatal: &#39;username.github.io&#39; does not appear to be a git repository</code>，一是检查 repo 的名字是否合乎规范、是否含有大写字母、config.yml 中的 deploy 配置是否正确，二是把 git bash 关掉，重新打开再执行命令。</li>
-<li>有的同学可能不是 IT 界的，或者对shell 命令不太了解。在要求输入密码时，你输入之后密码是不显示的，这是为了安全，并非是你没输上。</li>
+<li>在要求输入密码时，你输入之后密码是不显示的，这是为了安全，并非是你没输上。</li>
 <li>出现乱码的，推荐使用 sublime text或者Notepad++编辑文件，记住将文件编码转为<code>UTF-8</code>。</li>
 <li>安装 hexo 时卡在那儿不动，很可能是网络不给力，能全局 break wall 就好了。</li>
-<li>遇到什么其他的问题，不妨删除.deploy 和db.json 再重新生成试一试。</li>
+<li>遇到什么其他的问题，不妨删除<code>.deploy</code>和<code>db.json</code>再重新生成试一试。</li>
 <li>有的时候当你修改页面或更改配置后发现并没有立即生效，可以执行<code>hexo clean</code>然后再启动<code>hexo server</code>。</li>
-<li>hexo deploy时，有时会出现这个提示信息<code>warning: LF will be replaced by CRLF</code>，虽然看起来挺乱糟糟的，但不影响使用，可以忽略不计。若想不提示，可以使用如下方法：<br> 切换到博客的根目录，执行如下命令：<code>git config --global core.autocrlf false</code><br> 删除掉该目录下的<code>.git</code>文件夹（可能是隐藏的），命令：<code>rm -rf .git</code><br> 重新<code>git init</code><br> <code>hexo deploy</code>即可~</li>
-<li>hexo deploy没反应，主要问题出在config.yml的deploy配置上。注意缩进，同时注意冒号后面要有一个空格。</li>
-<li>hexo update -g升级错误，hexo命令失效，可执行npm install -g hexo重新安装一遍hexo，效果跟升级一样。</li>
+<li><code>hexo deploy</code>时，有时会出现这个提示信息<code>warning: LF will be replaced by CRLF</code>，虽然看起来挺乱糟糟的，但不影响使用，可以忽略不计。若想不提示，可以使用如下方法：<ul>
+<li>切换到博客的根目录，执行如下命令：<code>git config --global core.autocrlf false</code></li>
+<li>删除掉该目录下的<code>.git</code>文件夹（可能是隐藏的），命令：<code>rm -rf .git</code></li>
+<li>重新<code>git init</code> <code>hexo deploy</code>即可~</li>
+</ul>
+</li>
+<li><code>hexo deploy</code>没反应，主要问题出在config.yml的deploy配置上。注意缩进，同时注意冒号后面要有一个空格。</li>
+<li><code>hexo update -g</code>升级错误，hexo命令失效，可执行<code>npm install -g hexo</code>重新安装一遍hexo，效果跟升级一样。</li>
 <li>搜索框进行搜索：没有结果。点击搜索后进入的google页面，搜索框里面若显示<code>site:yoursite.com</code>，这说明有个地方没有设置，打开hexo目录下的config文件，填写URL。</li>
 <li>代码块中不显示行号，使用四个空格的方式标志代码块的确没行号，需要行号的要使用反引号的方式。</li>
 </ol>
