@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Coding world, changing world ^_^]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://madreambubble.github.io/"/>
-  <updated>2015-05-10T08:22:11.400Z</updated>
+  <updated>2015-05-10T13:04:48.227Z</updated>
   <id>http://madreambubble.github.io/</id>
   
   <author>
@@ -15,12 +15,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[open]]></title>
+    <link href="http://madreambubble.github.io/2015/05/10/open/"/>
+    <id>http://madreambubble.github.io/2015/05/10/open/</id>
+    <published>2015-05-10T13:04:48.000Z</published>
+    <updated>2015-05-10T13:04:48.227Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[个性化你的Hexo]]></title>
     <link href="http://madreambubble.github.io/2015/05/08/%E4%B8%AA%E6%80%A7%E5%8C%96%E4%BD%A0%E7%9A%84Hexo/"/>
     <id>http://madreambubble.github.io/2015/05/08/个性化你的Hexo/</id>
     <published>2015-05-08T14:09:02.000Z</published>
-    <updated>2015-05-10T08:22:11.400Z</updated>
-    <content type="html"><![CDATA[<p>注意：<br>1.修改配置文件时注意<code>YAML语法</code>，参数<code>冒号:</code>后一定要留<code>空格</code><br>2.中文乱码请修改文件编码格式为<code>UTF-8</code></p>
+    <updated>2015-05-10T14:42:15.198Z</updated>
+    <content type="html"><![CDATA[<p>注意：<br>1.修改配置文件时注意<code>YAML语法</code>，参数<code>冒号:</code>后一定要留<code>空格</code><br>2.若出现中文乱码请修改文件编码格式为<code>UTF-8</code></p>
 <h1 id="hexo目录介绍">hexo目录介绍</h1><p>默认目录结构：</p>
 <pre><code>.
 ├── .deploy <span class="preprocessor">#执行hexo deploy命令部署到GitHub上的内容目录</span>
@@ -39,9 +52,9 @@ $ npm <span class="keyword">update</span></span>
 </code></pre><h2 id="启用插件">启用插件</h2><p>修改hexo目录下的<code>_config.yml</code>，添加：</p>
 <pre><code>plugins:
 - plugin-<span class="property">name</span>
-</code></pre><h2 id="升级插件：">升级插件：</h2><pre><code><span class="built_in">npm</span> update
-</code></pre><h2 id="卸载插件：">卸载插件：</h2><pre><code>npm <span class="operator"><span class="keyword">uninstall</span> &lt;<span class="keyword">plugin</span>-name&gt;</span>
-</code></pre><h2 id="常用插件安裝与配置">常用插件安裝与配置</h2><p>首页文章数量，存档，分类，本地服务器代理，发布器，更新，rss等插件</p>
+</code></pre><h2 id="升级插件">升级插件</h2><pre><code><span class="built_in">npm</span> update
+</code></pre><h2 id="卸载插件">卸载插件</h2><pre><code>npm <span class="operator"><span class="keyword">uninstall</span> &lt;<span class="keyword">plugin</span>-name&gt;</span>
+</code></pre><h2 id="常用插件安装与配置">常用插件安装与配置</h2><p>首页文章数量，存档，分类，本地服务器代理，发布器，更新，rss等插件</p>
 <pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span>
 npm <span class="keyword">install</span> hexo-generator-archive <span class="comment">--save</span>
 npm <span class="keyword">install</span> hexo-generator-category <span class="comment">--save</span>
@@ -57,7 +70,7 @@ npm <span class="keyword">install</span> hexo-generator-feed <span class="commen
 npm <span class="keyword">install</span> hexo-generator-sitemap <span class="comment">--save</span></span>
 </code></pre><p>装完之后去全局配置文件 <code>\hexo\_config.yml</code> 修改参数</p>
 <pre><code>index_generator:
-  per_page: <span class="number">10</span> ##首頁默认<span class="number">10</span>篇文章标题 如果值为<span class="number">0</span>不分页
+  per_page: <span class="number">10</span> ##首页默认<span class="number">10</span>篇文章标题 如果值为<span class="number">0</span>不分页
 
 archive_generator:
   per_page: <span class="number">10</span> ##归档页面默认<span class="number">10</span>篇文章标题
@@ -81,96 +94,125 @@ feed:
   repository: 
   github: &lt;repository url&gt;,[branch] #<span class="id">#github</span> 仓库地址和分支
   gitcafe: &lt;repository url&gt;,[branch] #<span class="id">#gitcafe</span> 仓库地址和分支
-</code></pre><h1 id="README文件">README文件</h1><p>在<code>\hexo\source</code>新建文件<code>README</code>即可（注意不要带后缀），用文本编辑器打开编辑内容。</p>
-<h1 id="404页面">404页面</h1><p>在<code>hexo\source</code>下新建<code>404</code>文件（无后缀），插入代码即可。<br><a href="http://www.qq.com/404/" target="_blank" rel="external">腾讯公益</a></p>
-<h1 id="整站配置">整站配置</h1><p>编辑文件：<code>\hexo\_config.yml</code></p>
-<pre><code># Hexo Configuration
-## <span class="string">Docs:</span> <span class="string">http:</span><span class="comment">//zespia.tw/hexo/docs/configure.html</span>
-## <span class="string">Source:</span> <span class="string">https:</span><span class="comment">//github.com/tommy351/hexo/</span>
+</code></pre><h1 id="README文件">README文件</h1><p>在<code>\hexo\source</code>新建<code>README</code>文件（注意不要带后缀），用文本编辑器打开编辑内容。</p>
+<h1 id="404页面">404页面</h1><p>在<code>hexo\source</code>下新建<code>404</code>文件（不要带后缀），插入代码即可。<br><a href="http://www.qq.com/404/" target="_blank" rel="external">腾讯公益</a></p>
+<h1 id="整站配置">整站配置</h1><h2 id="编辑文件：\hexo\_config-yml">编辑文件：<code>\hexo\_config.yml</code></h2><pre><code><span class="preprocessor"># Hexo Configuration</span>
+<span class="preprocessor">## Docs: http://zespia.tw/hexo/docs/configure.html</span>
+<span class="preprocessor">## Source: https://github.com/tommy351/hexo/</span>
 
-# Site #整站的基本信息
-<span class="string">title:</span> bubble sky #网站标题，站点左上角
-<span class="string">subtitle:</span> Coding world, changing world ^_^ #副标题，站点左上角
-<span class="string">description:</span> Coding world, changing world ^_^ #给搜索引擎看的，对站点的描述，可以自定义，在生成html中的head-&gt;meta中可看到
-<span class="string">author:</span> bubble #网站作者，在站点左下角可以看到
-<span class="string">email:</span> #你的联系邮箱
-<span class="string">language:</span> zh-CN #中文
+<span class="preprocessor"># Site #整站的基本信息</span>
+<span class="label">title:</span> bubble sky <span class="preprocessor">#网站标题，站点左上角</span>
+<span class="label">subtitle:</span> Coding world, changing world ^_^ <span class="preprocessor">#副标题，站点左上角</span>
+<span class="label">description:</span> Coding world, changing world ^_^ <span class="preprocessor">#给搜索引擎看的，对站点的描述，可以自定义，在生成html中的head-&gt;meta中可看到</span>
+<span class="label">author:</span> bubble <span class="preprocessor">#网站作者，在站点左下角可以看到</span>
+<span class="label">email:</span> <span class="preprocessor">#你的联系邮箱</span>
+<span class="label">language:</span> <span class="built_in">zh</span>-CN <span class="preprocessor">#中文</span>
 
-# URL #这项暂不配置，绑定域名后，欲创建sitemap.xml需要配置该项
-## If your site is put <span class="keyword">in</span> a subdirectory, set url <span class="keyword">as</span> <span class="string">'http://yoursite.com/child'</span> and root <span class="keyword">as</span> <span class="string">'/child/'</span>
-<span class="string">url:</span> <span class="string">http:</span><span class="comment">//madreambubble.github.io  #你的域名</span>
-<span class="string">root:</span> /
-<span class="string">permalink:</span> :year<span class="regexp">/:month/</span>:day<span class="regexp">/:title/</span>
-<span class="string">tag_dir:</span> tags
-<span class="string">archive_dir:</span> archives
-<span class="string">category_dir:</span> categories
+<span class="preprocessor"># URL #这项暂不配置，绑定域名后，欲创建sitemap.xml需要配置该项</span>
+<span class="preprocessor">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span>
+<span class="label">url:</span> http://madreambubble.github.io  <span class="preprocessor">#你的域名</span>
+<span class="label">root:</span> /
+<span class="label">permalink:</span> :year/:month/:day/:title/
+<span class="label">tag_dir:</span> tags
+<span class="label">archive_dir:</span> archives
+<span class="label">category_dir:</span> categories
 
-# Writing 文章布局、写作格式的定义，不修改
-<span class="string">new_post_name:</span> :title.md # File name of <span class="keyword">new</span> posts
-<span class="string">default_layout:</span> post
-<span class="string">auto_spacing:</span> <span class="literal">false</span> # Add spaces between asian characters and western characters
-<span class="string">titlecase:</span> <span class="literal">false</span> # Transform title into titlecase
-<span class="string">max_open_file:</span> <span class="number">100</span>
-<span class="string">filename_case:</span> <span class="number">0</span>
-<span class="string">highlight:</span>
-<span class="label">  enable:</span> <span class="literal">true</span>
-<span class="label">  backtick_code_block:</span> <span class="literal">true</span>
-<span class="label">  line_number:</span> <span class="literal">true</span>
-<span class="label">  tab_replace:</span>
+<span class="preprocessor"># Writing 文章布局、写作格式的定义，不修改</span>
+<span class="label">new_post_name:</span> :title.md <span class="preprocessor"># File name of new posts</span>
+<span class="label">default_layout:</span> post
+<span class="label">auto_spacing:</span> false <span class="preprocessor"># Add spaces between asian characters and western characters</span>
+<span class="label">titlecase:</span> false <span class="preprocessor"># Transform title into titlecase</span>
+<span class="label">max_open_file:</span> <span class="number">100</span>
+<span class="label">filename_case:</span> <span class="number">0</span>
+<span class="label">highlight:</span> <span class="preprocessor">#代码高亮</span>
+  enable: true <span class="preprocessor">#是否启用</span>
+  backtick_code_block: true
+  line_number: true <span class="preprocessor">#是否显示行号</span>
+  tab_replace:
 
-# Category &amp; Tag
-<span class="string">default_category:</span> uncategorized
-<span class="string">category_map:</span>
-<span class="string">tag_map:</span>
+<span class="preprocessor"># Category &amp; Tag</span>
+<span class="label">default_category:</span> uncategorized
+<span class="label">category_map:</span>
+<span class="label">tag_map:</span>
 
-# Archives 默认值为<span class="number">2</span>，这里都修改为<span class="number">1</span>，相应页面就只会列出标题，而非全文
-## <span class="number">2</span>: Enable pagination
-## <span class="number">1</span>: Disable pagination
-## <span class="number">0</span>: Fully Disable
-<span class="string">archive:</span> <span class="number">1</span>
-<span class="string">category:</span> <span class="number">1</span>
-<span class="string">tag:</span> <span class="number">1</span>
+<span class="preprocessor"># Archives 默认值为2，这里都修改为1，相应页面就只会列出标题，而非全文</span>
+<span class="preprocessor">## 2: Enable pagination</span>
+<span class="preprocessor">## 1: Disable pagination</span>
+<span class="preprocessor">## 0: Fully Disable</span>
+<span class="label">archive:</span> <span class="number">1</span>
+<span class="label">category:</span> <span class="number">1</span>
+<span class="label">tag:</span> <span class="number">1</span>
 
-# Server 不修改
-## Hexo uses Connect <span class="keyword">as</span> a server
-## You can customize the logger format <span class="keyword">as</span> defined <span class="keyword">in</span>
-## <span class="string">http:</span><span class="comment">//www.senchalabs.org/connect/logger.html</span>
-<span class="string">port:</span> <span class="number">4000</span>
-<span class="string">logger:</span> <span class="literal">false</span>
-<span class="string">logger_format:</span>
+<span class="preprocessor"># Server 不修改</span>
+<span class="preprocessor">## Hexo uses Connect as a server</span>
+<span class="preprocessor">## You can customize the logger format as defined in</span>
+<span class="preprocessor">## http://www.senchalabs.org/connect/logger.html</span>
+<span class="label">port:</span> <span class="number">4000</span>
+<span class="label">logger:</span> false
+<span class="label">logger_format:</span>
 
-# Date / Time format 日期格式
-## Hexo uses Moment.js to parse and display date
-## You can customize the date format <span class="keyword">as</span> defined <span class="keyword">in</span>
-## <span class="string">http:</span><span class="comment">//momentjs.com/docs/#/displaying/format/</span>
-<span class="string">date_format:</span> MMM D YYYY #文章发表时间的显示格式，可在上面链接里按照格式修改
-<span class="string">time_format:</span> <span class="string">H:</span><span class="string">mm:</span>ss
+<span class="preprocessor"># Date / Time format 日期格式</span>
+<span class="preprocessor">## Hexo uses Moment.js to parse and display date</span>
+<span class="preprocessor">## You can customize the date format as defined in</span>
+<span class="preprocessor">## http://momentjs.com/docs/#/displaying/format/</span>
+<span class="label">date_format:</span> MMM D YYYY <span class="preprocessor">#文章发表时间的显示格式，可在上面链接里按照格式修改</span>
+<span class="label">time_format:</span> H:mm:ss
 
-# Pagination #每页显示文章数，可以自定义
-## Set per_page to <span class="number">0</span> to disable pagination
-<span class="string">per_page:</span> <span class="number">10</span> #每页显示<span class="number">10</span>篇文章
-<span class="string">pagination_dir:</span> page
+<span class="preprocessor"># Pagination #每页显示文章数，可以自定义</span>
+<span class="preprocessor">## Set per_page to 0 to disable pagination</span>
+<span class="label">per_page:</span> <span class="number">10</span> <span class="preprocessor">#每页显示10篇文章</span>
+<span class="label">pagination_dir:</span> page
 
-# Disqus 社会化评论disqus，我使用多说，在主题中配置
-<span class="string">disqus_shortname:</span>
+<span class="preprocessor"># Disqus 社会化评论disqus，我使用多说，在主题中配置</span>
+<span class="label">disqus_shortname:</span>
 
-# Extensions 这里配置站点所用主题和插件，暂默认，后面会介绍怎么修改
-## <span class="string">Plugins:</span> <span class="string">https:</span><span class="comment">//github.com/tommy351/hexo/wiki/Plugins</span>
-## <span class="string">Themes:</span> <span class="string">https:</span><span class="comment">//github.com/tommy351/hexo/wiki/Themes</span>
-<span class="string">theme:</span> light
-<span class="string">exclude_generator:</span>
-<span class="string">plugins:</span>
+<span class="preprocessor"># Extensions 这里配置站点所用主题和插件，暂默认，后面会介绍怎么修改</span>
+<span class="preprocessor">## Plugins: https://github.com/tommy351/hexo/wiki/Plugins</span>
+<span class="preprocessor">## Themes: https://github.com/tommy351/hexo/wiki/Themes</span>
+<span class="label">theme:</span> light
+<span class="label">exclude_generator:</span>
+<span class="label">plugins:</span>
 - hexo-generator-feed
 - hexo-generator-sitemap
 
-# Deployment 站点部署到github要配置
-## <span class="string">Docs:</span> <span class="string">http:</span><span class="comment">//zespia.tw/hexo/docs/deploy.html</span>
-<span class="string">deploy:</span>
-<span class="label">  type:</span> git
-<span class="label">  repository:</span> git<span class="annotation">@github</span>.<span class="string">com:</span>username/username.github.io.git
-<span class="label">  branch:</span> master
+<span class="preprocessor"># Deployment 站点部署到github要配置</span>
+<span class="preprocessor">## Docs: http://zespia.tw/hexo/docs/deploy.html</span>
+<span class="label">deploy:</span>
+  type: git
+  repository: git@github.com:username/username.github.io.git
+  branch: master
 </code></pre><p>执行命令<code>hexo g</code>，<code>hexo s</code>，打开<code>localhost:4000</code>查看效果。</p>
-<h2 id="生成post时默认生成categories配置项">生成post时默认生成categories配置项</h2><p>在<code>hexo\scaffolds\post.md</code>中，添加一行<code>categories:</code>。同理可应用在<code>page.md</code>和<code>photo.md</code>。</p>
+<h2 id="生成文章时默认生成categories">生成文章时默认生成categories</h2><p>在<code>hexo\scaffolds\post.md</code>中，添加一行<code>categories:</code>。同理可应用在<code>page.md</code>和<code>photo.md</code>。</p>
+<h2 id="win7中新建文章后自动打开文件">win7中新建文章后自动打开文件</h2><p>参考了几个博主的方法，但貌似都是苹果机的，本人对脚本语言完全不懂，琢磨尝试了几次，竟然成功了~<br><a href="https://github.com/hexojs/hexo/issues/1007" target="_blank" rel="external">hexo作者给出的代码</a>：</p>
+<pre><code><span class="keyword">var</span> spawn = <span class="built_in">require</span>(<span class="string">'child_process'</span>).spawn;
+
+<span class="comment">// Hexo 2.x</span>
+hexo.on(<span class="string">'new'</span>, <span class="function"><span class="keyword">function</span><span class="params">(path)</span></span>{
+  spawn(<span class="string">'vi'</span>, [path]);
+});
+
+<span class="comment">// Hexo 3</span>
+hexo.on(<span class="string">'new'</span>, <span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
+  spawn(<span class="string">'vi'</span>, [data.path]);
+});
+</code></pre><p>稍加修改即可，如下：</p>
+<ul>
+<li>在<code>hexo\scripts</code>目录新建文件<code>open_new.js</code>，在其中捕获new事件，若scripts文件夹不存在可手动创建。</li>
+<li><p>添加代码：</p>
+<pre><code>//hexo new <span class="string">"post"</span>后自动用默认编辑器打开文件
+var exec = <span class="built_in">require</span>(<span class="string">'child_process'</span>).exec;
+
+/* Hexo <span class="number">2.</span>x
+hexo.on(<span class="string">'new'</span>, <span class="function"><span class="keyword">function</span><span class="params">(path)</span></span>{
+  exec(<span class="string">'start'</span> + path);
+});
+*/
+
+// Hexo <span class="number">3</span>
+hexo.on(<span class="string">'new'</span>, <span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{
+  exec(<span class="string">'start '</span> + data.path);
+});
+</code></pre><p>我是Hexo 3版本，测试成功~但2.x版本尚未测试，猜想可能代码差不多是这样吧，安装2.x版本的朋友可以试试。</p>
 <h1 id="主题theme">主题theme</h1><p><a href="http://hexo.io/themes/" target="_blank" rel="external">Hexo主题</a></p>
 <h2 id="下载主题：">下载主题：</h2><pre><code>$ git clone <span class="tag">&lt;<span class="title">repository</span>&gt;</span> themes/<span class="tag">&lt;<span class="title">theme-name</span>&gt;</span>
 </code></pre><p>如：</p>
@@ -185,7 +227,6 @@ feed:
   存档: /archives
   关于: /about
   <span class="attribute">ToDo</span>: /todolist
-
 
 <span class="attribute">widgets</span>: #站点右边栏，暂时默认，后面介绍修改和添加
 - search
@@ -241,23 +282,37 @@ feed:
  &lt;input <span class="variable">type=</span><span class="string">"hidden"</span> <span class="variable">name=</span><span class="string">"q"</span> <span class="variable">value=</span><span class="string">"site:&lt;%- config.url.replace(/^https?:\/\//, '') %&gt;"</span>&gt;
 &lt;/form&gt;
 &lt;/div&gt;
-</code></pre><p>将如上代码加入即可，您需要修改css以便这个搜索框比较美观。</p>
-<p>再如，你要修改页脚版权信息，直接编辑<code>hexo\themes\themename\layout\_partial\footer.ejs</code>。同理，你需要修改css，直接去修改对应位置的styl文件。</p>
+</code></pre><p>将如上代码加入即可，您需要修改css以便这个搜索框比较美观。<br>再如，你要修改页脚版权信息，直接编辑<code>hexo\themes\themename\layout\_partial\footer.ejs</code>。同理，你需要修改css，直接去修改对应位置的styl文件。</p>
+</li>
+</ul>
 <h3 id="社会化评论系统——多说">社会化评论系统——多说</h3><p>hexo默认使用国外比较流行的disqus，国内多使用“多说”。步骤非常简单：</p>
 <ol>
 <li>在<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>进行注册，获得通用代码。</li>
 <li><p>将通用代码粘贴到<code>themes\themename\layout\_partial\comment.ejs</code>里面，如下：</p>
-<p> &lt;% if ( page.comments){ %&gt;</p>
-<pre><code><span class="tag">&lt;section id="comment"&gt;</span>
-    <span class="comment">#通用代码</span>
-<span class="tag">&lt;/section&gt;</span>
-</code></pre><p> &lt;% } %&gt;<br>其中<code>&lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;请将此处替换成文章在你的站点中的ID&quot; data-title=&quot;请替换成文章的标题&quot; data-url=&quot;请替换成文章的网址&quot;&gt;&lt;/div&gt;</code>替换为<code>&lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;&lt;%- config.root %&gt;&lt;%- item.path%&gt;&quot; data-title=&quot;&lt;%- item.title %&gt;&quot; data-url=&quot;&lt;%- item.permalink %&gt;&quot;&gt;&lt;/div&gt;</code></p>
+<pre><code><span class="xml"></span>&lt;%<span class="ruby"> <span class="keyword">if</span> ( page.comments){ </span>%&gt;<span class="xml">
+    <span class="tag">&lt;<span class="title">section</span> <span class="attribute">id</span>=<span class="value">"comment"</span>&gt;</span>
+        #通用代码
+    <span class="tag">&lt;/<span class="title">section</span>&gt;</span>
+</span>&lt;%<span class="ruby"> } </span>%&gt;<span class="xml"></span>
+</code></pre><p>其中<code>&lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;请将此处替换成文章在你的站点中的ID&quot; data-title=&quot;请替换成文章的标题&quot; data-url=&quot;请替换成文章的网址&quot;&gt;&lt;/div&gt;</code>替换为<code>&lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;&lt;%- config.root %&gt;&lt;%- item.path%&gt;&quot; data-title=&quot;&lt;%- item.title %&gt;&quot; data-url=&quot;&lt;%- item.permalink %&gt;&quot;&gt;&lt;/div&gt;</code></p>
 <h3 id="页面导航">页面导航</h3><p>在<code>themes\themename\layout\_partial\comment.ejs</code>文件中，加入一段代码，如下：</p>
-<p> &lt;% if ( page.comments){ %&gt;</p>
-  <nav id="pagination"><br>     &lt;% if (page.prev) { %&gt;<br>     <a href="<%- config.root %><%- page.prev.path %>" class="alignleft prev">&lt;%= <strong>(‘prev’) %&gt;</strong></a><br>     &lt;% } %&gt;<br>     &lt;% if (page.next) { %&gt;<br>     <a href="<%- config.root %><%- page.next.path %>" class="alignright next">&lt;%= (‘next’) %&gt;</a><br>     &lt;% } %&gt;<br>     <div class="clearfix"></div><br> </nav>
+<pre><code><span class="xml"></span>&lt;%<span class="ruby"> <span class="keyword">if</span> ( page.comments){ </span>%&gt;<span class="xml">
 
-<p> <section id="comment"><br>light主题默认显示为“上一页”“下一页”，若想更改显示的文字，在<code>hexo\themes\light\languages</code>中你选择的语言包内修改：<br> prev: 上一篇<br> next: 下一篇</section></p>
-</li>
+ <span class="tag">&lt;<span class="title">nav</span> <span class="attribute">id</span>=<span class="value">"pagination"</span> &gt;</span>
+    </span>&lt;%<span class="ruby"> <span class="keyword">if</span> (page.prev) { </span>%&gt;<span class="xml">
+    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"</span></span></span>&lt;%-<span class="ruby"> config.root </span>%&gt;<span class="xml"><span class="tag"><span class="value"></span></span></span>&lt;%-<span class="ruby"> page.prev.path </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">class</span>=<span class="value">"alignleft prev"</span> &gt;</span></span>&lt;%=<span class="ruby"> _<span class="number">_</span>(<span class="string">'prev'</span>) </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+    </span>&lt;%<span class="ruby"> } </span>%&gt;<span class="xml">
+    </span>&lt;%<span class="ruby"> <span class="keyword">if</span> (page.<span class="keyword">next</span>) { </span>%&gt;<span class="xml">
+    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"</span></span></span>&lt;%-<span class="ruby"> config.root </span>%&gt;<span class="xml"><span class="tag"><span class="value"></span></span></span>&lt;%-<span class="ruby"> page.<span class="keyword">next</span>.path </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">class</span>=<span class="value">"alignright next"</span> &gt;</span></span>&lt;%=<span class="ruby"> _<span class="number">_</span>(<span class="string">'next'</span>) </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+    </span>&lt;%<span class="ruby"> } </span>%&gt;<span class="xml">
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"clearfix"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">nav</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">section</span> <span class="attribute">id</span>=<span class="value">"comment"</span>&gt;</span></span>
+</code></pre><p>light主题默认显示为“上一页”“下一页”，若想更改显示的文字，在<code>hexo\themes\light\languages</code>中你选择的语言包内修改：</p>
+<pre><code><span class="attribute">prev</span>: <span class="string">上一篇</span>
+<span class="attribute">next</span>: <span class="string">下一篇</span>
+</code></pre></li>
 </ol>
 <h3 id="百度分享">百度分享</h3><p>到<a href="http://share.baidu.com/" target="_blank" rel="external">百度分享</a>获得代码，在<code>themes/themename/layout/_partial/article.ejs</code>中，将<code>&lt;%-partial(&#39;post/share&#39;)%&gt;</code>删掉，替换为百度分享的代码。</p>
 <h3 id="添加网站图标">添加网站图标</h3><p>在<code>themes/themename/layout/_partial/head.ejs</code>里将<code>&lt;link href=&quot;&lt;%- config.root %&gt;favicon.png&quot; rel=&quot;icon&quot;&gt;</code>替换为<code>&lt;link href=&quot;&lt;%- config.root %&gt;favicon.ico&quot; rel=&quot;icon&quot; type=&quot;image/x-ico&quot;&gt;</code>。将<code>favicon.ico</code>图标文件放在<code>hexo\source</code>目录下。<br>制作图标的网站：<a href="http://www.faviconer.com" target="_blank" rel="external">faviconer</a>。</p>
@@ -277,7 +332,7 @@ feed:
 </code></pre><p>一个链接一行。<br>然后在<code>themes/themename/_config.yml</code>中，添加如下：</p>
 <pre><code>widgets:
 <span class="bullet">- </span>blogroll
-</code></pre><h1 id="统计">统计</h1><p><a href="http://tongji.baidu.com/web/welcome/login" target="_blank" rel="external">百度统计</a>，<a href="http://www.google.com/analytics/" target="_blank" rel="external">谷歌统计</a><br>以百度统计、modernist主题为例，介绍如何添加。<br>编辑文件<code>hexo\themes\modernist\_config.yml</code>，增加配置选项：</p>
+</code></pre><h3 id="添加统计">添加统计</h3><p><a href="http://tongji.baidu.com/web/welcome/login" target="_blank" rel="external">百度统计</a>，<a href="http://www.google.com/analytics/" target="_blank" rel="external">谷歌统计</a><br>以百度统计、modernist主题为例，介绍如何添加。<br>编辑文件<code>hexo\themes\modernist\_config.yml</code>，增加配置选项：</p>
 <pre><code><span class="string">baidu_tongji:</span> <span class="literal">true</span>
 </code></pre><p>新建文件<code>hexo\themes\modernist\layout\_partial\baidu_tongji.ejs</code>，内容如下：</p>
 <pre><code><span class="xml"></span>&lt;%<span class="ruby"> <span class="keyword">if</span> (theme.baidu_tongji){ </span>%&gt;<span class="xml">
@@ -297,54 +352,64 @@ feed:
 <li>生成自己的<a href="http://app.weibo.com/tool/weiboshow" target="_blank" rel="external">微博组件</a>。</li>
 <li>新建<code>hexo\themes\themename\layout\_widget\weibo.ejs</code>文件。</li>
 <li><p>配置<code>hexo\themes\themename\_config.yml</code>：</p>
-<p>  widgets:</p>
-<ul>
-<li>weibo</li>
-</ul>
-</li>
+<pre><code>widgets:
+<span class="bullet">- </span>weibo
+</code></pre></li>
 </ul>
 <h3 id="导航栏添加“About”">导航栏添加“About”</h3><p>执行命令：</p>
 <pre><code>hexo <span class="keyword">new</span> page <span class="string">"About"</span>
 </code></pre><ol>
 <li>到<code>source\About\index.md</code>编辑内容。</li>
 <li><p>在<code>themes\light\_config.yml</code>中，添加如下：</p>
-<p> menu:<br>   About: /about<br>上述步骤，也可以手工生成，在<code>hexo\source\</code>下手工新建<code>About</code>和<code>index.md</code>也是完全等价的。</p>
-<h3 id="添加fork_me_on_github">添加<code>fork me on github</code></h3><p><a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="external">github官方教程</a>，把代码插入到任意一个全局的模板文件中就行，比如layout.ejs的末尾。</p>
+<pre><code><span class="attribute">menu</span>:
+  <span class="attribute">About</span>: /about
+</code></pre><p>上述步骤，也可以手工生成，在<code>hexo\source\</code>下手工新建<code>About</code>和<code>index.md</code>也是完全等价的。</p>
 </li>
 </ol>
+<h3 id="添加fork_me_on_github">添加<code>fork me on github</code></h3><p><a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="external">github官方教程</a>，把代码插入到任意一个全局的模板文件中就行，比如layout.ejs的末尾。</p>
 <h3 id="添加RSS">添加RSS</h3><p>hexo提供了RSS的生成插件，需要手动安装和设置。步骤如下：</p>
 <ol>
 <li>安装RSS插件到本地：<code>npm install hexo-generator-feed</code></li>
 <li><p>开启RSS功能：编辑<code>hexo/_config.yml</code>，添加如下代码：</p>
-<p> plugins:</p>
-<ul>
-<li>hexo-generator-feed</li>
-</ul>
-</li>
+<pre><code>plugins:
+<span class="bullet">- </span>hexo-generator-feed
+</code></pre></li>
 <li>在站点添加链接：<br>在<code>themes\light\_config.yml</code>中，编辑 <code>rss: /atom.xml</code><br>在<code>themes\light\layout\_partial\header.ejs</code>中，<code>&lt;ul&gt;</code> <code>&lt;/ul&gt;</code>之间，添加一行代码<code>&lt;li&gt; &lt;a href=&quot;/atom.xml&quot;&gt;RSS&lt;/a&gt; &lt;/li&gt;</code><br>启动服务器，用浏览器打开<code>http://localhost:4000/atom.xml</code>，就可以看到RSS已经生效了。</li>
 </ol>
 <h3 id="添加sitemap">添加sitemap</h3><ol>
 <li>安装sitemap到本地：<code>npm install hexo-generator-sitemap</code></li>
 <li><p>开启sitemap功能：编辑<code>hexo/_config.yml</code>，添加如下代码：</p>
-<p> plugins:</p>
-<ul>
-<li>hexo-generator-sitemap<br>不过，sitemap的初衷是给搜索引擎看的，为了提高搜索引擎对自己站点的收录效果，我们最好手动到google和百度等搜索引擎提交sitemap.xml。<br>启动服务器，用浏览器打开<code>http://localhost:4000/sitemap.xml</code>，就可以看到sitemap已经生效了。</li>
-</ul>
-</li>
+<pre><code>plugins:
+<span class="bullet">- </span>hexo-generator-sitemap
+</code></pre></li>
 </ol>
-<h3 id="添加搜索">添加搜索</h3><h4 id="百度搜索">百度搜索</h4><p>Hexo默认使用Google搜索，可设置为百度搜索。<br>打开<code>themes/themename/layout/_widget/search.ejs</code>文件，里面内容替换为：<br>    <div class="search"><br>      <form action="//baidu.com/baidu" method="get" accept-charset="utf-8"><br>        <input type="search" name="word" results="0" placeholder="<%= __('search') %>"><br>        <input type="hidden" name="si" value="<%- config.url.replace(/^https?:\/\//, '') %>"><br>        <input name="tn" type="hidden" value="bds"><br>        <input name="cl" type="hidden" value="3"><br>        <input name="ct" type="hidden" value="2097152"><br>        <input name="s" type="hidden" value="on"><br>      </form><br>    </div></p>
-<h4 id="Swiftype搜索">Swiftype搜索</h4><ol>
+<p>不过，sitemap的初衷是给搜索引擎看的，为了提高搜索引擎对自己站点的收录效果，我们最好手动到google和百度等搜索引擎提交sitemap.xml。<br>启动服务器，用浏览器打开<code>http://localhost:4000/sitemap.xml</code>，就可以看到sitemap已经生效了。</p>
+<h3 id="添加站内搜索">添加站内搜索</h3><ul>
+<li><p>百度搜索<br>Hexo默认使用Google搜索，可设置为百度搜索。<br>打开<code>themes/themename/layout/_widget/search.ejs</code>文件，里面内容替换为：</p>
+<pre><code><span class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"search"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">form</span> <span class="attribute">action</span>=<span class="value">"//baidu.com/baidu"</span> <span class="attribute">method</span>=<span class="value">"get"</span> <span class="attribute">accept-charset</span>=<span class="value">"utf-8"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"search"</span> <span class="attribute">name</span>=<span class="value">"word"</span> <span class="attribute">results</span>=<span class="value">"0"</span> <span class="attribute">placeholder</span>=<span class="value">"</span></span></span>&lt;%=<span class="ruby"> _<span class="number">_</span>(<span class="string">'search'</span>) </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"hidden"</span> <span class="attribute">name</span>=<span class="value">"si"</span> <span class="attribute">value</span>=<span class="value">"</span></span></span>&lt;%-<span class="ruby"> config.url.replace(<span class="regexp">/^https?:\/\//</span>, <span class="string">''</span>) </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">name</span>=<span class="value">tn</span> <span class="attribute">type</span>=<span class="value">hidden</span> <span class="attribute">value</span>=<span class="value">"bds"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">name</span>=<span class="value">cl</span> <span class="attribute">type</span>=<span class="value">hidden</span> <span class="attribute">value</span>=<span class="value">"3"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">name</span>=<span class="value">ct</span> <span class="attribute">type</span>=<span class="value">hidden</span> <span class="attribute">value</span>=<span class="value">"2097152"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">name</span>=<span class="value">s</span> <span class="attribute">type</span>=<span class="value">hidden</span> <span class="attribute">value</span>=<span class="value">"on"</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">form</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span>
+</code></pre></li>
+<li>Swiftype搜索</li>
+</ul>
+<ol>
 <li>去<a href="https://swiftype.com/" target="_blank" rel="external">Swiftype</a>注册</li>
 <li><code>CREATE SEARCH ENGINE</code>创建一个站内搜索</li>
-<li>填上相应的信息后,Swiftype就开始抓取了</li>
+<li>填上相应的信息后，Swiftype就开始抓取了</li>
 <li>点<code>INSTALL</code>安装，根据自己的喜好设置。</li>
 <li>选择左侧的<code>SWIFTYPE INSTALL CODE</code>，复制生成的代码，覆盖<code>themes/themename/layout/_widget/search.ejs</code>文件即可。</li>
 </ol>
-<h3 id="添加返回顶部按钮">添加返回顶部按钮</h3><h4 id="添加html代码。">添加html代码。</h4><p>在<code>/themes/Yilia/layout/_partial</code>文件夹新建文件<code>totop.ejs</code>，并向其中加入如下代码：</p>
-<pre><code>&lt;<span class="tag">div</span> id=<span class="string">"totop"</span> style=<span class="string">"position:fixed;bottom:150px;right:50px;cursor: pointer;"</span>&gt;
-&lt;<span class="tag">a</span> title=<span class="string">"返回顶部"</span>&gt;&lt;<span class="tag">img</span> src=<span class="string">"/img/scrollup.png"</span>/&gt;&lt;/a&gt;
-&lt;/div&gt;
-</code></pre><h4 id="添加js代码。">添加js代码。</h4><p>  在<code>/themes/Yilia/source/js</code>文件夹新建文件<code>totop.js</code>，将如下代码复制其中：</p>
+<h3 id="添加返回顶部按钮">添加返回顶部按钮</h3><ol>
+<li><p>添加html代码<br>在<code>/themes/Yilia/layout/_partial</code>文件夹新建文件<code>totop.ejs</code>，并向其中加入如下代码：</p>
+ <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;"><br> <a title="返回顶部"><img src="/img/scrollup.png"></a><br> </div></li>
+<li><p>添加js代码<br>在<code>/themes/Yilia/source/js</code>文件夹新建文件<code>totop.js</code>，将如下代码复制其中：</p>
 <pre><code><span class="list">(<span class="keyword">function</span><span class="list">($)</span> <span class="collection">{
     // When to show the scroll link
     // higher number = scroll link appears further down the page
@@ -373,18 +438,64 @@ feed:
     }</span>)</span><span class="comment">;</span>
 }</span>)</span><span class="list">(<span class="keyword">jQuery</span>)</span><span class="comment">;</span>
 </code></pre><p>可以对upperLimit和scrollSpeed参数进行修改，控制显示位置和回滚速度。</p>
-<h4 id="添加文件引用。">添加文件引用。</h4><p> 在文件<code>/themes/Yilia/layout/_partial/after_footer.ejs</code>末尾添加以下两行代码：<br>    &lt;%- partial(‘totop’) %&gt;<br>    <script src="<%- config.root %>js/totop.js"></script></p>
-<h4 id="添加按钮图片">添加按钮图片</h4><p>  将图片<img src="http://ww3.sinaimg.cn/large/0067jhJ4gw1erz8cbug7wj301e01e3y9.jpg" alt="">复制到<code>\themes\Yilia\source\img</code>目录下，文件名为<code>scrollup.png</code>，页面足够长时，就看到按钮出现了。</p>
+</li>
+<li><p>添加文件引用<br>在文件<code>/themes/Yilia/layout/_partial/after_footer.ejs</code>末尾添加以下两行代码：</p>
+<pre><code><span class="xml"></span>&lt;%-<span class="ruby"> partial(<span class="string">'totop'</span>) </span>%&gt;<span class="xml">
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"</span></span></span>&lt;%-<span class="ruby"> config.root </span>%&gt;<span class="xml"><span class="tag"><span class="value">js/totop.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span>
+</code></pre></li>
+<li>添加按钮图片<br>将图片<img src="http://ww3.sinaimg.cn/large/0067jhJ4gw1erz8cbug7wj301e01e3y9.jpg" alt="">复制到<code>\themes\Yilia\source\img</code>目录下，文件名为<code>scrollup.png</code>，页面足够长时，就看到按钮出现了。</li>
+</ol>
+<h3 id="添加文章目录">添加文章目录</h3><ol>
+<li><p>修改主题的ejs文件<br>我们首先要编辑文章显示页面的模板，也就是<code>themes/themename/layout/_partial/article.ejs</code>文件。为了将目录生成在正文之前，我们首先在这个文件中找到<code>&lt;%- post.content %&gt;</code>类似代码，并在这一行之前加入如下代码：</p>
+<pre><code><span class="xml"><span class="comment">&lt;!-- Table of Contents --&gt;</span>
+</span>&lt;%<span class="ruby"> <span class="keyword">if</span> (!index &amp;&amp; post.toc){ </span>%&gt;<span class="xml">
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"toc"</span> <span class="attribute">class</span>=<span class="value">"toc-article"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">"toc-title"</span>&gt;</span>文章目录<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+    </span>&lt;%-<span class="ruby"> toc(post.content) </span>%&gt;<span class="xml">
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</span>&lt;%<span class="ruby"> } </span>%&gt;<span class="xml"></span>
+</code></pre><p>if语句中有两个条件，!index是为了不在首页的文章摘要中生成目录，post.toc确保了只在显式地标记了toc: true的文章中生成目录。若这两个条件满足，则创建一个目录的<code>&lt;div&gt;</code>。</p>
+</li>
+<li><p>为目录编写CSS文件<br>要指定目录的样式，修改文件<code>themes/themename/source/css/_partial/article.styl</code>。在文件的最后，添加如下代码：</p>
+<pre><code><span class="comment">/*toc*/</span>
+<span class="class">.toc-article</span>
+  <span class="attribute">background</span> <span class="hexcolor">#eee</span>
+  <span class="attribute">border</span> <span class="number">1px</span> solid <span class="hexcolor">#bbb</span>
+  <span class="attribute">border-radius</span> <span class="number">10px</span>
+  <span class="attribute">margin</span> <span class="number">1.5em</span> <span class="number">0</span> <span class="number">0.3em</span> <span class="number">1.5em</span>
+  <span class="attribute">padding</span> <span class="number">1.2em</span> <span class="number">1em</span> <span class="number">0</span> <span class="number">1em</span>
+  <span class="attribute">max-width</span> <span class="number">28%</span>
+<span class="class">.toc-title</span>
+  <span class="attribute">font-size</span> <span class="number">120%</span>
+<span class="id">#toc</span>
+  <span class="attribute">line-height</span> <span class="number">1em</span>
+  <span class="attribute">font-size</span> <span class="number">0.9em</span>
+  <span class="attribute">float</span> <span class="attribute">right</span>
+  <span class="class">.toc</span>
+    <span class="attribute">padding</span> <span class="number">0</span>
+    <span class="attribute">margin</span> <span class="number">1em</span>
+    <span class="attribute">line-height</span> <span class="number">1.8em</span>
+    <span class="tag">li</span>
+      <span class="attribute">list-style-type</span> <span class="attribute">none</span>
+  <span class="class">.toc-child</span> 
+    <span class="attribute">margin-left</span> <span class="number">1em</span>
+</code></pre></li>
+</ol>
+<ul>
+<li>第一段的<code>toc-article</code>指定了目录整个<code>&lt;div&gt;</code>的背景色、边框色、倒角半径、各种间距以及最大的宽度。注意这里最好指定目录的最大宽度，我将其设为了28%，也就是文章正文那个框的宽度的28%，也可以设为一个固定的长度，比如在笔记本电脑上16em就是个不错的宽度，但为了能适配各种不同尺寸的屏幕，最好还是设置为百分比。如果不指定最大宽度，遇到比较长的标题时，生成的目录会非常难看。这个最大宽度的设置是我在网上其他添加目录的方法中没有见到的。</li>
+<li>第二段的<code>toc-title</code>指的就是<code>文章目录</code>那四个字，这四个字要比其他字大一些，将其字号设为其他字的120%。</li>
+<li>第三段的<code>#toc.toc</code>指定了目录列表的一些细节，将font-size设为0.9em会让目录的字比文章的字稍小一些。最后的<code>.toc-child</code>指定了二级目录的缩进量。</li>
+</ul>
+<p>再次生成页面，应该已经可以显示比较美观的目录了。<br>此后，只需在你想要显示目录的文章.md开头加上<code>toc: true</code>即可。</p>
 <h1 id="速度优化">速度优化</h1><p>由于 Google 被大陆屏蔽，Github 从大陆访问也比较慢，且不太稳定。所以一方面可以把 Blog 迁移到国内，比如Gitcafe提供的免费Page服务，又快又好用，可以参考<a href="http://zipperary.com/2013/11/23/hexo-to-gitcafe/" target="_blank" rel="external">托管博客到gitcafe</a>。</p>
 <ol>
-<li>把 google 提供的 jquery 和 fonts api 全换掉。由于不同的主题其位置不同，最好是搜索一下。<br>Unix/Linux 用户在 shell 中切换到自己的主题目录下面；Windows 用户用 Git Bash 切换到主题目录下面。然后用<code>grep &#39;jquery&#39; -r ./</code>搜索使用 jquery 的位置，如果是用的 google 的，则替换成国内的，我用的是百度，<code>//libs.baidu.com/jquery/2.0.3/jquery.min.js</code>，<code>//libs.baidu.com/jquery/1.8.0/jquery.min.js</code>。</li>
+<li>把 google 提供的<code>jquery</code>和<code>fonts api</code>全换掉。由于不同的主题其位置不同，最好是搜索一下。<br>Unix/Linux 用户在 shell 中切换到自己的主题目录下面；Windows 用户用 Git Bash 切换到主题目录下面。然后用<code>grep &#39;jquery&#39; -r ./</code>搜索使用 jquery 的位置，如果是用的 google 的，则替换成国内的相应版本，我用的是百度，<code>//libs.baidu.com/jquery/2.0.3/jquery.min.js</code>，<code>//libs.baidu.com/jquery/1.8.0/jquery.min.js</code>。</li>
 <li>替换google fonts，同样的方法，<code>grep &#39;fonts&#39; -r ./</code>，找到后替换为<code>//fonts.useso.com/css?family=Lato:400,400italic</code>即可。</li>
 </ol>
 <h1 id="参考资料">参考资料</h1><ul>
 <li><a href="http://zipperary.com/2013/05/29/hexo-guide-3/" target="_blank" rel="external">hexo系列教程：（三）hexo博客的配置、使用</a></li>
 <li><a href="http://zipperary.com/2013/05/30/hexo-guide-4/" target="_blank" rel="external">hexo系列教程：（四）hexo博客的优化技巧</a></li>
 <li><a href="http://zipperary.com/2013/06/02/hexo-guide-5/" target="_blank" rel="external">hexo系列教程：（五）hexo博客的优化技巧续</a></li>
-<li>[]</li>
 <li><a href="http://www.winterland.me/2013/11/hexo-scroll2top/" target="_blank" rel="external">为hexo添加scroll to top功能</a></li>
 <li><a href="http://cnfeat.com/2014/05/10/2014-05-11-how-to-build-a-blog/" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
 <li><a href="http://yangjian.me/workspace/building-blog-with-hexo/" target="_blank" rel="external">使用hexo搭建博客</a></li>
@@ -393,11 +504,14 @@ feed:
 <li><a href="http://ijiaober.github.io/2014/08/07/hexo/hexo-09/" target="_blank" rel="external">Hexo使用攻略：（九）为Hexo添加百度搜索</a></li>
 <li><a href="http://erona.me/2015/02/11/%E4%B8%BALight%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0Swiftype%E6%90%9C%E7%B4%A2/" target="_blank" rel="external">为Light主题添加Swiftype搜索</a></li>
 <li><a href="http://www.yehbeats.com/2015/04/06/hexo-topmenu/" target="_blank" rel="external">Hexo，添加返回顶部按钮</a></li>
+<li><a href="http://kuangqi.me/tricks/enable-table-of-contents-on-hexo/" target="_blank" rel="external">为Hexo博客添加目录</a></li>
+<li><a href="http://kuangqi.me/tricks/open-macdown-when-add-a-new-post/" target="_blank" rel="external">在为Hexo博客添加文章时自动打开编辑器</a></li>
+<li><a href="https://github.com/hexojs/hexo/issues/1007" target="_blank" rel="external">Open markdown file after running hexo new?</a></li>
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>注意：<br>1.修改配置文件时注意<code>YAML语法</code>，参数<code>冒号:</code>后一定要留<code>空格</code><br>2.中文乱码请修改文件编码格式为<code>UTF-8</code></p>
-<h1 id="hexo目录介绍">]]>
+    <![CDATA[<p>注意：<br>1.修改配置文件时注意<code>YAML语法</code>，参数<code>冒号:</code>后一定要留<code>空格</code><br>2.若出现中文乱码请修改文件编码格式为<code>UTF-8</code></p>
+<h1 id="hexo目录介]]>
     </summary>
     
       <category term="Hexo" scheme="http://madreambubble.github.io/categories/Hexo/"/>
@@ -409,7 +523,7 @@ feed:
     <link href="http://madreambubble.github.io/2015/05/07/Github-Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://madreambubble.github.io/2015/05/07/Github-Hexo搭建个人博客/</id>
     <published>2015-05-07T15:30:17.000Z</published>
-    <updated>2015-05-09T15:32:01.105Z</updated>
+    <updated>2015-05-10T13:16:35.140Z</updated>
     <content type="html"><![CDATA[<p>刚入驻GitHub的菜鸟一枚，第一篇博文就用来做搭建博客的笔记吧~</p>
 <p>本文针对<code>windows</code>平台和<code>Hexo 3.x</code></p>
 <h1 id="环境准备，搭建本地博客">环境准备，搭建本地博客</h1><h2 id="1-_安装Node-js">1. 安装Node.js</h2><p><a href="https://nodejs.org/download/" target="_blank" rel="external">Node.js官网下载</a></p>
@@ -466,7 +580,7 @@ $ git config --global user<span class="class">.email</span> <span class="string"
 <h1 id="部署到GitHub">部署到GitHub</h1><p>与GitHub建立好链接之后，就可以方便的使用它提供的Pages服务，GitHub Pages分两种，一种是你的GitHub用户名建立的username.github.io这样的用户&amp;组织页（站），另一种是依附项目的pages。<br>想建立个人博客是用的第一种，形如username.github.io这样的可访问的站，每个用户名下面只能建立一个。</p>
 <h2 id="1-_创建repository">1. 创建repository</h2><p>在自己GitHub主页右下角，创建一个新的repository，名为<code>username.github.io</code>，其中username替换为你的GitHub用户名<br><img src="http://ww4.sinaimg.cn/large/6b52694dgw1erw4iiu31hj208z03lmxh.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/6b52694dgw1erw4iu112xj20a901wt8u.jpg" alt=""></p>
 <h2 id="2-_生成pages">2. 生成pages</h2><p>创建好repository后，点击repository右侧的<code>Settings</code>，下拉，点击<code>Automatic page generator</code><br><img src="http://ww4.sinaimg.cn/large/6b52694dgw1erw4l8hhy0j20jn04z75b.jpg" alt=""><br>点击<img src="http://ww4.sinaimg.cn/large/96e8f43agw1erx03f4170j204100y3yc.jpg" alt=""><br>选择合适的主题，点击<img src="http://ww1.sinaimg.cn/large/6b52694dgw1erw4o1fm0aj202z00vt8i.jpg" alt=""><br>好了，在浏览器打开你的”username.github.io”，页面已生成。</p>
-<h2 id="3-_配置hexo\_config-yml文件">3. 配置<code>hexo\_config.yml</code>文件</h2><p>打开hexo\_config.yml文件，底部编辑</p>
+<h2 id="3-_配置hexo\_config-yml文件">3. 配置<code>hexo\_config.yml</code>文件</h2><p>打开<code>hexo\_config.yml</code>文件，底部编辑</p>
 <pre><code><span class="attribute">deploy</span>:
     <span class="attribute">type</span>: github
     <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:username/username.github.com.git
@@ -475,7 +589,7 @@ $ git config --global user<span class="class">.email</span> <span class="string"
 <pre><code><span class="title">hexo</span> clean
 hexo generate
 hexo deploy
-</code></pre><p>此时，在博客的根目录下会生成一个文件夹：.deploy。<br>或可加入 —generate 选项，在部署前自动生成文件。</p>
+</code></pre><p>此时，在博客的根目录下会生成一个文件夹：<code>.deploy</code>。<br>或可加入 —generate 选项，在部署前自动生成文件。</p>
 <pre><code>hexo deploy <span class="comment">--generate</span>
 </code></pre><p>简写：</p>
 <pre><code>hexo <span class="keyword">d</span> --<span class="keyword">g</span>
@@ -496,14 +610,14 @@ hexo deploy
 <li>搜索框进行搜索：没有结果。点击搜索后进入的google页面，搜索框里面若显示<code>site:yoursite.com</code>，这说明有个地方没有设置，打开hexo目录下的config文件，填写URL。</li>
 <li>代码块中不显示行号，使用四个空格的方式标志代码块的确没行号，需要行号的要使用反引号的方式。</li>
 </ol>
-<h1 id="开启你的hexo旅程">开启你的hexo旅程</h1><h2 id="命令">命令</h2><h3 id="常用命令：">常用命令：</h3><pre><code>hexo <span class="keyword">new</span> <span class="string">"postName"</span> <span class="preprocessor">#新建文章</span>
+<h1 id="开启你的hexo旅程">开启你的hexo旅程</h1><h2 id="命令">命令</h2><h3 id="常用命令">常用命令</h3><pre><code>hexo <span class="keyword">new</span> <span class="string">"postName"</span> <span class="preprocessor">#新建文章</span>
 hexo <span class="keyword">new</span> page <span class="string">"pageName"</span> <span class="preprocessor">#新建页面</span>
 hexo generate <span class="preprocessor">#生成静态页面至public目录</span>
 hexo <span class="keyword">server</span> <span class="preprocessor">#开启本地预览访问端口（默认端口4000，'ctrl + c'关闭server）</span>
 hexo deploy <span class="preprocessor">#将.deploy目录部署到GitHub</span>
-</code></pre><h3 id="常用复合命令：">常用复合命令：</h3><pre><code>hexo deploy -<span class="keyword">g</span>
+</code></pre><h3 id="常用复合命令">常用复合命令</h3><pre><code>hexo deploy -<span class="keyword">g</span>
 hexo server -<span class="keyword">g</span>
-</code></pre><h3 id="简写：">简写：</h3><pre><code>hexo <span class="variable">n =</span>= hexo new
+</code></pre><h3 id="简写">简写</h3><pre><code>hexo <span class="variable">n =</span>= hexo new
 hexo <span class="variable">g =</span>= hexo generate
 hexo <span class="variable">s =</span>= hexo server
 hexo <span class="variable">d =</span>= hexo deploy
@@ -525,7 +639,7 @@ hexo <span class="variable">d =</span>= hexo deploy
 <span class="comment">&lt;!--more--&gt;</span>
 #余下全文
 </code></pre><p>more以上的部分会已摘要的形式显示，more以下内容查看全文时才显示。也可以在md文件中定义description。</p>
-<h2 id="文章中插入图片">文章中插入图片</h2><p>使用markdown写文章，插入图片的格式为<img src="链接地址" alt="图片名称">。<br>这里的链接地址，对于hexo，有两种方式：</p>
+<h2 id="文章中插入图片">文章中插入图片</h2><p>使用markdown写文章，插入图片的格式为<code>![图片名称](链接地址)</code>。<br>这里的链接地址，对于hexo，有两种方式：</p>
 <ul>
 <li>使用本地路径：在<code>hexo/source</code>目录下新建一个<code>img</code>文件夹，将图片放入该文件夹下，插入图片时链接即为<code>\img\图片名称</code>。</li>
 <li>使用图床，获取外链地址。比如<a href="http://weibotuchuang.sinaapp.com/" target="_blank" rel="external">微博图床</a>，将图片拖入区域中，会生成图片的URL，这就是链接地址。</li>
