@@ -510,7 +510,7 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
     <link href="http://madreambubble.github.io/2015/05/07/Github-Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://madreambubble.github.io/2015/05/07/Github-Hexo搭建个人博客/</id>
     <published>2015-05-07T15:30:17.000Z</published>
-    <updated>2015-05-10T15:29:59.855Z</updated>
+    <updated>2015-05-10T16:06:06.087Z</updated>
     <content type="html"><![CDATA[<p>刚入驻GitHub的菜鸟一枚，第一篇博文就用来做搭建博客的笔记吧~</p>
 <p>本文针对<code>windows</code>平台和<code>Hexo 3.x</code></p>
 <h1 id="环境准备，搭建本地博客">环境准备，搭建本地博客</h1><h2 id="安装Node-js">安装Node.js</h2><p><a href="https://nodejs.org/download/" target="_blank" rel="external">Node.js官网下载</a></p>
