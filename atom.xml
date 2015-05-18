@@ -3,23 +3,23 @@
   <title><![CDATA[bubble sky]]></title>
   <subtitle><![CDATA[Coding world, changing world ^_^]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://madreambubble.github.io/"/>
-  <updated>2015-05-10T15:01:34.455Z</updated>
-  <id>http://madreambubble.github.io/</id>
+  <link href="http://codingbubble.github.io/"/>
+  <updated>2015-05-18T06:46:29.487Z</updated>
+  <id>http://codingbubble.github.io/</id>
   
   <author>
     <name><![CDATA[bubble]]></name>
-    <email><![CDATA[madreambubble@gmail.com]]></email>
+    <email><![CDATA[codingbubble@foxmail.com]]></email>
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
     <title><![CDATA[个性化你的Hexo]]></title>
-    <link href="http://madreambubble.github.io/2015/05/08/%E4%B8%AA%E6%80%A7%E5%8C%96%E4%BD%A0%E7%9A%84Hexo/"/>
-    <id>http://madreambubble.github.io/2015/05/08/个性化你的Hexo/</id>
+    <link href="http://codingbubble.github.io/2015/05/08/%E4%B8%AA%E6%80%A7%E5%8C%96%E4%BD%A0%E7%9A%84Hexo/"/>
+    <id>http://codingbubble.github.io/2015/05/08/个性化你的Hexo/</id>
     <published>2015-05-08T14:09:02.000Z</published>
-    <updated>2015-05-10T15:01:34.455Z</updated>
+    <updated>2015-05-18T06:46:29.487Z</updated>
     <content type="html"><![CDATA[<p>注意：<br>1.修改配置文件时注意<code>YAML语法</code>，参数<code>冒号:</code>后一定要留<code>空格</code><br>2.若出现中文乱码请修改文件编码格式为<code>UTF-8</code></p>
 <h1 id="hexo目录介绍">hexo目录介绍</h1><p>默认目录结构：</p>
 <pre><code>.
@@ -283,6 +283,9 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 </span>&lt;%<span class="ruby"> } </span>%&gt;<span class="xml"></span>
 </code></pre><p>其中<code>&lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;请将此处替换成文章在你的站点中的ID&quot; data-title=&quot;请替换成文章的标题&quot; data-url=&quot;请替换成文章的网址&quot;&gt;&lt;/div&gt;</code>替换为<code>&lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;&lt;%- config.root %&gt;&lt;%- item.path%&gt;&quot; data-title=&quot;&lt;%- item.title %&gt;&quot; data-url=&quot;&lt;%- item.permalink %&gt;&quot;&gt;&lt;/div&gt;</code></p>
 </li>
+<li><p>在<code>hexo\_config.yml</code>中添加多说的配置：</p>
+<p> duoshuo_shortname: 你站点的short_name(通用代码中可查看)</p>
+</li>
 </ol>
 <h3 id="页面导航">页面导航</h3><p>在<code>themes\themename\layout\_partial\comment.ejs</code>文件中，加入一段代码，如下：</p>
 <pre><code><span class="xml"></span>&lt;%<span class="ruby"> <span class="keyword">if</span> ( page.comments){ </span>%&gt;<span class="xml">
@@ -501,14 +504,14 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 <h1 id="hexo目录介]]>
     </summary>
     
-      <category term="Hexo" scheme="http://madreambubble.github.io/categories/Hexo/"/>
+      <category term="Hexo" scheme="http://codingbubble.github.io/categories/Hexo/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[GitHub+Hexo搭建个人博客]]></title>
-    <link href="http://madreambubble.github.io/2015/05/07/Github-Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://madreambubble.github.io/2015/05/07/Github-Hexo搭建个人博客/</id>
+    <link href="http://codingbubble.github.io/2015/05/07/Github-Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://codingbubble.github.io/2015/05/07/Github-Hexo搭建个人博客/</id>
     <published>2015-05-07T15:30:17.000Z</published>
     <updated>2015-05-18T06:21:42.392Z</updated>
     <content type="html"><![CDATA[<p>刚入驻GitHub的菜鸟一枚，第一篇博文就用来做搭建博客的笔记吧~</p>
@@ -668,14 +671,14 @@ hexo <span class="variable">d =</span>= hexo deploy
 <h1 id="环境准备，搭建本地博客">环境准备，搭建本地博客</h1><h2 id]]>
     </summary>
     
-      <category term="Hexo" scheme="http://madreambubble.github.io/categories/Hexo/"/>
+      <category term="Hexo" scheme="http://codingbubble.github.io/categories/Hexo/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <link href="http://madreambubble.github.io/2015/05/05/hello-world/"/>
-    <id>http://madreambubble.github.io/2015/05/05/hello-world/</id>
+    <link href="http://codingbubble.github.io/2015/05/05/hello-world/"/>
+    <id>http://codingbubble.github.io/2015/05/05/hello-world/</id>
     <published>2015-05-05T14:38:18.000Z</published>
     <updated>2015-05-06T15:14:30.029Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>

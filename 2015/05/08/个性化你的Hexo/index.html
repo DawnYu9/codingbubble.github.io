@@ -369,6 +369,9 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 </span>&lt;%<span class="ruby"> } </span>%&gt;<span class="xml"></span>
 </code></pre><p>其中<code>&lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;请将此处替换成文章在你的站点中的ID&quot; data-title=&quot;请替换成文章的标题&quot; data-url=&quot;请替换成文章的网址&quot;&gt;&lt;/div&gt;</code>替换为<code>&lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;&lt;%- config.root %&gt;&lt;%- item.path%&gt;&quot; data-title=&quot;&lt;%- item.title %&gt;&quot; data-url=&quot;&lt;%- item.permalink %&gt;&quot;&gt;&lt;/div&gt;</code></p>
 </li>
+<li><p>在<code>hexo\_config.yml</code>中添加多说的配置：</p>
+<p> duoshuo_shortname: 你站点的short_name(通用代码中可查看)</p>
+</li>
 </ol>
 <h3 id="页面导航">页面导航</h3><p>在<code>themes\themename\layout\_partial\comment.ejs</code>文件中，加入一段代码，如下：</p>
 <pre><code><span class="xml"></span>&lt;%<span class="ruby"> <span class="keyword">if</span> ( page.comments){ </span>%&gt;<span class="xml">
@@ -612,23 +615,22 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 </nav>
 
 <section id="comment">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/2015/05/08/个性化你的Hexo/" data-title="个性化你的Hexo" data-url="http://madreambubble.github.io/2015/05/08/个性化你的Hexo/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"madreambubble"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
+	<!-- 多说评论框 start -->
+		<div class="ds-thread" data-thread-key="/2015/05/08/个性化你的Hexo/" data-title="个性化你的Hexo" data-url="http://codingbubble.github.io/2015/05/08/个性化你的Hexo/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"hexo2github"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	<!-- 多说公共JS代码 end -->
 </section>
 
 </div></div>
