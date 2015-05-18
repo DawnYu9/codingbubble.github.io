@@ -510,7 +510,7 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
     <link href="http://madreambubble.github.io/2015/05/07/Github-Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://madreambubble.github.io/2015/05/07/Github-Hexo搭建个人博客/</id>
     <published>2015-05-07T15:30:17.000Z</published>
-    <updated>2015-05-10T16:06:06.087Z</updated>
+    <updated>2015-05-18T06:21:42.392Z</updated>
     <content type="html"><![CDATA[<p>刚入驻GitHub的菜鸟一枚，第一篇博文就用来做搭建博客的笔记吧~</p>
 <p>本文针对<code>windows</code>平台和<code>Hexo 3.x</code></p>
 <h1 id="环境准备，搭建本地博客">环境准备，搭建本地博客</h1><h2 id="安装Node-js">安装Node.js</h2><p><a href="https://nodejs.org/download/" target="_blank" rel="external">Node.js官网下载</a></p>
@@ -552,7 +552,7 @@ config  id_rsa  id_rsa.pub  known_hosts
 <span class="variable">$ </span>cp id_rsa* key_backup
 <span class="variable">$ </span>rm id_rsa*
 </code></pre></li>
-<li><p>生成新的SSH Key<br>执行如下命令，邮箱地址为自己的邮箱地址，需要输入文件名的时候，回车即可。</p>
+<li><p>生成新的SSH Key<br>执行如下命令，邮箱地址为自己的邮箱地址（经常使用的，不一定是github的），需要输入文件名的时候，回车即可。</p>
 <pre><code>$ ssh-keygen -t rsa -C <span class="string">"邮件地址@youremail.com"</span>
 Generating <span class="keyword">public</span>/<span class="keyword">private</span> rsa <span class="keyword">key</span> pair.
 Enter file <span class="keyword">in</span> which <span class="keyword">to</span> save the <span class="keyword">key</span> (/Users/your_user_directory/.ssh/id_rsa):&lt;回车&gt;
@@ -561,7 +561,7 @@ Enter file <span class="keyword">in</span> which <span class="keyword">to</span>
 Enter same passphrase again:<span class="variable">&lt;再次输入加密串&gt;</span>
 </code></pre><p>最后看到这样的界面，SSH Key就设置成功了。<br><img src="http://ww4.sinaimg.cn/large/6b52694dgw1erw5pja0wpj20f70843zu.jpg" alt=""></p>
 </li>
-<li>添加SSH Key到GitHub<br>在本机设置SSH Key之后，需要添加到GitHub上。<br>用文本编辑工具打开<code>id_rsa.pub</code>文件，如果看不到这个文件，你需要设置显示隐藏文件(若找不到，可用文件搜索功能搜索)。<br>在GitHub的主页右上角上点击设置按钮，选择<code>SSH Keys</code>项，把<code>id_rsa.pub</code>文件的内容复制进去，点击<code>Add Key</code>按钮即可。</li>
+<li>添加SSH Key到GitHub<br>在本机设置SSH Key之后，需要添加到GitHub上。<br>用文本编辑工具打开<code>id_rsa.pub</code>文件（路径在第3步里<code>Enter file in which to save the key</code>可以查看），如果看不到这个文件，你需要设置显示隐藏文件(若找不到，可用文件搜索功能搜索)。<br>在GitHub的主页右上角上点击设置按钮，选择<code>SSH Keys</code>项，把<code>id_rsa.pub</code>文件的内容复制进去，点击<code>Add Key</code>按钮即可。</li>
 <li><p>测试<br>执行如下命令，看看设置是否成功，<code>git@github.com</code>的部分不要修改：</p>
 <pre><code><span class="variable">$ </span>ssh -<span class="constant">T </span>git<span class="variable">@github</span>.com
 </code></pre><p>如果出现如下提示</p>
@@ -572,7 +572,7 @@ Are you sure you want <span class="keyword">to</span> <span class="keyword">cont
 <pre><code>Hi cnfeat! You've successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span> provide shell access.
 </code></pre><p>现在你已经可以通过SSH链接到GitHub了。</p>
 </li>
-<li><p>设置用户信息<br>Git会根据用户名和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，执行如下命令设置个人信息，把<code>username</code>和<code>邮箱</code>替换成你的GitHub的用户名和邮箱。</p>
+<li><p>设置用户信息<br>Git会根据用户名和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，执行如下命令设置个人信息，把<code>username</code>和<code>邮箱</code>替换成你的用户名和邮箱。</p>
 <pre><code>$ git config --global user<span class="class">.name</span> <span class="string">"username"</span>
 $ git config --global user<span class="class">.email</span> <span class="string">"your_email@youremail.com"</span>
 </code></pre><p>SSH Key配置成功，本机已成功连接到GitHub。</p>
@@ -584,7 +584,7 @@ $ git config --global user<span class="class">.email</span> <span class="string"
 <li>生成pages<br>创建好repository后，点击repository右侧的<code>Settings</code>，下拉，点击<code>Automatic page generator</code><br><img src="http://ww4.sinaimg.cn/large/6b52694dgw1erw4l8hhy0j20jn04z75b.jpg" alt=""><br>点击<img src="http://ww4.sinaimg.cn/large/96e8f43agw1erx03f4170j204100y3yc.jpg" alt=""><br>选择合适的主题，点击<img src="http://ww1.sinaimg.cn/large/6b52694dgw1erw4o1fm0aj202z00vt8i.jpg" alt=""><br>好了，在浏览器打开你的”username.github.io”，页面已生成。</li>
 <li><p>配置<code>hexo\_config.yml</code>文件<br>打开<code>hexo\_config.yml</code>文件，底部编辑</p>
 <pre><code><span class="attribute">deploy</span>:
-    <span class="attribute">type</span>: github
+    <span class="attribute">type</span>: git
     <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:username/username.github.com.git
     <span class="attribute">branch</span>: master
 </code></pre><p>其中username替换为你的GitHub用户名。<br>Git Bash执行以下命令即可完成部署，注意部署会覆盖掉你之前在版本库中存放的文件。</p>
