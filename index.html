@@ -430,11 +430,11 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 <span class="attribute">next</span>: <span class="string">下一篇</span>
 </code></pre><h3 id="百度分享">百度分享</h3><p>到<a href="http://share.baidu.com/" target="_blank" rel="external">百度分享</a>获得代码，在<code>themes/themename/layout/_partial/article.ejs</code>中，将<code>&lt;%-partial(&#39;post/share&#39;)%&gt;</code>删掉，替换为百度分享的代码。</p>
 <h3 id="添加网站图标">添加网站图标</h3><p>在<code>themes/themename/layout/_partial/head.ejs</code>里将<code>&lt;link href=&quot;&lt;%- config.root %&gt;favicon.png&quot; rel=&quot;icon&quot;&gt;</code>替换为<code>&lt;link href=&quot;&lt;%- config.root %&gt;favicon.ico&quot; rel=&quot;icon&quot; type=&quot;image/x-ico&quot;&gt;</code>。将<code>favicon.ico</code>图标文件放在<code>hexo\source</code>目录下。<br>制作图标的网站：<a href="http://www.faviconer.com" target="_blank" rel="external">faviconer</a>。</p>
-<h3 id="添加分类、标签云widget">添加分类、标签云widget</h3><p>在<code>themes/themename/_config.yml</code>中，添加如下：</p>
+<h3 id="添加分类、标签云">添加分类、标签云</h3><p>在<code>themes/themename/_config.yml</code>中，添加如下：</p>
 <pre><code>widgets:
 -<span class="ruby"> category
 </span>-<span class="ruby"> tagcloud</span>
-</code></pre><h3 id="添加友情链接widget">添加友情链接widget</h3><p>在<code>themes/themename/layout/_widget</code>中新建名为<code>blogroll.ejs</code>的文件，编辑内容如下：</p>
+</code></pre><h3 id="添加友情链接">添加友情链接</h3><p>在<code>themes/themename/layout/_widget</code>中新建名为<code>blogroll.ejs</code>的文件，编辑内容如下：</p>
 <pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"widget tag"</span>&gt;</span>
     <span class="tag">&lt;<span class="title">h3</span> <span class="attribute">class</span>=<span class="value">"title"</span>&gt;</span>友情链接<span class="tag">&lt;/<span class="title">h3</span>&gt;</span>
     <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"entry"</span>&gt;</span> #以下为添加友情链接时要修改的地方
@@ -601,11 +601,21 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 <li>第三段的<code>#toc.toc</code>指定了目录列表的一些细节，将font-size设为0.9em会让目录的字比文章的字稍小一些。最后的<code>.toc-child</code>指定了二级目录的缩进量。</li>
 </ul>
 <p>再次生成页面，应该已经可以显示比较美观的目录了。<br>此后，只需在你想要显示目录的文章.md开头加上<code>toc: true</code>即可。</p>
+<h3 id="添加支付宝捐助按钮">添加支付宝捐助按钮</h3><p>代码：</p>
+<pre><code>&lt;form <span class="variable">action=</span><span class="string">"https://shenghuo.alipay.com/send/payment/fill.htm"</span> <span class="variable">method=</span><span class="string">"POST"</span> <span class="variable">target=</span><span class="string">"_blank"</span> <span class="variable">accept-charset=</span><span class="string">"GBK"</span>&gt;
+    &lt;input <span class="variable">name=</span><span class="string">"optEmail"</span> <span class="variable">type=</span><span class="string">"hidden"</span> <span class="variable">value=</span><span class="string">"***@email.com"</span> /&gt;    //你的邮箱帐号
+    &lt;input <span class="variable">name=</span><span class="string">"payAmount"</span> <span class="variable">type=</span><span class="string">"hidden"</span> <span class="variable">value=</span><span class="string">"1"</span> /&gt;     //默认捐助金额
+    &lt;input <span class="variable">id=</span><span class="string">"title"</span> <span class="variable">name=</span><span class="string">"title"</span> <span class="variable">type=</span><span class="string">"hidden"</span> <span class="variable">value=</span><span class="string">"捐赠bubble's blog"</span> /&gt;    //付款说明
+    &lt;input <span class="variable">name=</span><span class="string">"memo"</span> <span class="variable">type=</span><span class="string">"hidden"</span> <span class="variable">value=</span><span class="string">"来源：个性化你的Hexo"</span> /&gt;    //备注
+    &lt;input <span class="variable">name=</span><span class="string">"pay"</span> <span class="variable">type=</span><span class="string">"image"</span> <span class="variable">value=</span><span class="string">"转账"</span> <span class="variable">src=</span><span class="string">"https://img.alipay.com/sys/personalprod/style/mc/btn-index.png"</span> /&gt;    //设置按钮图标
+&lt;/form&gt;
+</code></pre><h3 id="添加FlagCounter">添加FlagCounter</h3><p><a href="http://www.flagcounter.com/" target="_blank" rel="external">FlagCounter</a>是来自美国的一个免费流量统计工具，和传统的免费统计工具不同，Flagcounter可记录网站访问者所在的国家，用国旗表示，可统计到访国家的数量，并带有简单的统计分析功能。代码仅仅是一段简短的Html图片超链接代码，非JavaScript代码，适合于支持HTML代码的网站或博客。</p>
 <h1 id="速度优化">速度优化</h1><p>由于 Google 被大陆屏蔽，Github 从大陆访问也比较慢，且不太稳定。所以一方面可以把 Blog 迁移到国内，比如Gitcafe提供的免费Page服务，又快又好用，可以参考<a href="http://zipperary.com/2013/11/23/hexo-to-gitcafe/" target="_blank" rel="external">托管博客到gitcafe</a>。</p>
 <ol>
 <li>把 google 提供的<code>jquery</code>和<code>fonts api</code>全换掉。由于不同的主题其位置不同，最好是搜索一下。<br>Unix/Linux 用户在 shell 中切换到自己的主题目录下面；Windows 用户用 Git Bash 切换到主题目录下面。然后用<code>grep &#39;jquery&#39; -r ./</code>搜索使用 jquery 的位置，如果是用的 google 的，则替换成国内的相应版本，我用的是百度，<code>//libs.baidu.com/jquery/2.0.3/jquery.min.js</code>，<code>//libs.baidu.com/jquery/1.8.0/jquery.min.js</code>。</li>
 <li>替换google fonts，同样的方法，<code>grep &#39;fonts&#39; -r ./</code>，找到后替换为<code>//fonts.useso.com/css?family=Lato:400,400italic</code>即可。</li>
 </ol>
+<h1 id="更新记录">更新记录</h1><p>2015.05.23<br>添加支付宝捐助按钮</p>
 <h1 id="参考资料">参考资料</h1><ul>
 <li><a href="http://zipperary.com/2013/05/29/hexo-guide-3/" target="_blank" rel="external">hexo系列教程：（三）hexo博客的配置、使用</a></li>
 <li><a href="http://zipperary.com/2013/05/30/hexo-guide-4/" target="_blank" rel="external">hexo系列教程：（四）hexo博客的优化技巧</a></li>
@@ -621,6 +631,7 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 <li><a href="http://kuangqi.me/tricks/enable-table-of-contents-on-hexo/" target="_blank" rel="external">为Hexo博客添加目录</a></li>
 <li><a href="http://kuangqi.me/tricks/open-macdown-when-add-a-new-post/" target="_blank" rel="external">在为Hexo博客添加文章时自动打开编辑器</a></li>
 <li><a href="https://github.com/hexojs/hexo/issues/1007" target="_blank" rel="external">Open markdown file after running hexo new?</a></li>
+<li><a href="http://xintao.us/?post=179" target="_blank" rel="external">为网站页面添加“支付宝捐助按钮”代码</a></li>
 </ul>
 
       
@@ -950,6 +961,7 @@ hexo <span class="variable">d =</span>= hexo deploy
 <a title="返回顶部"><img src="/img/scrollup.png"/></a>
 </div>
 <script src="/js/totop.js"></script>
+
   <a href="https://github.com/codingbubble"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
 </body>
 </html>
