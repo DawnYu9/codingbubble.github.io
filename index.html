@@ -92,7 +92,7 @@
       
       
   
-    <h1 class="title"><a href="/2015/05/21/Html-notes-1/">Html学习笔记 1</a></h1>
+    <h1 class="title"><a href="/2015/05/21/Html-notes-1/">Html学习笔记</a></h1>
   
 
     </header>
@@ -134,7 +134,7 @@
       
       
   
-    <h1 class="title"><a href="/2015/05/08/个性化你的Hexo/">个性化你的Hexo</a></h1>
+    <h1 class="title"><a href="/2015/05/08/个性化你的Hexo/">个性化你的Hexo-笔记</a></h1>
   
 
     </header>
@@ -610,12 +610,18 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
     &lt;input <span class="variable">name=</span><span class="string">"pay"</span> <span class="variable">type=</span><span class="string">"image"</span> <span class="variable">value=</span><span class="string">"转账"</span> <span class="variable">src=</span><span class="string">"https://img.alipay.com/sys/personalprod/style/mc/btn-index.png"</span> /&gt;    //设置按钮图标
 &lt;/form&gt;
 </code></pre><h3 id="添加FlagCounter">添加FlagCounter</h3><p><a href="http://www.flagcounter.com/" target="_blank" rel="external">FlagCounter</a>是来自美国的一个免费流量统计工具，和传统的免费统计工具不同，Flagcounter可记录网站访问者所在的国家，用国旗表示，可统计到访国家的数量，并带有简单的统计分析功能。代码仅仅是一段简短的Html图片超链接代码，非JavaScript代码，适合于支持HTML代码的网站或博客。</p>
+<h3 id="图床">图床</h3><p>我看大部分都用的<a href="http://www.qiniu.com/" target="_blank" rel="external">七牛</a>，我也用七牛吧<br>注册以后，新建空间，选择<strong>公开空间</strong>，上传图片后即可获得外链。</p>
 <h1 id="速度优化">速度优化</h1><p>由于 Google 被大陆屏蔽，Github 从大陆访问也比较慢，且不太稳定。所以一方面可以把 Blog 迁移到国内，比如Gitcafe提供的免费Page服务，又快又好用，可以参考<a href="http://zipperary.com/2013/11/23/hexo-to-gitcafe/" target="_blank" rel="external">托管博客到gitcafe</a>。</p>
 <ol>
 <li>把 google 提供的<code>jquery</code>和<code>fonts api</code>全换掉。由于不同的主题其位置不同，最好是搜索一下。<br>Unix/Linux 用户在 shell 中切换到自己的主题目录下面；Windows 用户用 Git Bash 切换到主题目录下面。然后用<code>grep &#39;jquery&#39; -r ./</code>搜索使用 jquery 的位置，如果是用的 google 的，则替换成国内的相应版本，我用的是百度，<code>//libs.baidu.com/jquery/2.0.3/jquery.min.js</code>，<code>//libs.baidu.com/jquery/1.8.0/jquery.min.js</code>。</li>
 <li>替换google fonts，同样的方法，<code>grep &#39;fonts&#39; -r ./</code>，找到后替换为<code>//fonts.useso.com/css?family=Lato:400,400italic</code>即可。</li>
 </ol>
-<h1 id="更新记录">更新记录</h1><p>2015.05.23<br>添加支付宝捐助按钮</p>
+<h1 id="更新记录">更新记录</h1><p>2015.05.23</p>
+<ul>
+<li>添加支付宝捐助按钮</li>
+<li>添加FlagCounter<br>2015.05.24</li>
+<li>图床</li>
+</ul>
 <h1 id="参考资料">参考资料</h1><ul>
 <li><a href="http://zipperary.com/2013/05/29/hexo-guide-3/" target="_blank" rel="external">hexo系列教程：（三）hexo博客的配置、使用</a></li>
 <li><a href="http://zipperary.com/2013/05/30/hexo-guide-4/" target="_blank" rel="external">hexo系列教程：（四）hexo博客的优化技巧</a></li>
@@ -660,7 +666,7 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
       
       
   
-    <h1 class="title"><a href="/2015/05/07/Github-Hexo搭建个人博客/">GitHub+Hexo搭建个人博客</a></h1>
+    <h1 class="title"><a href="/2015/05/07/Github-Hexo搭建个人博客/">GitHub+Hexo搭建个人博客-笔记</a></h1>
   
 
     </header>
