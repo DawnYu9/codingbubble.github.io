@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Coding world, changing world ^_^]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://codingbubble.github.io/"/>
-  <updated>2015-07-04T11:46:15.868Z</updated>
+  <updated>2015-07-04T12:50:27.319Z</updated>
   <id>http://codingbubble.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://codingbubble.github.io/2015/07/04/java-del-num-zero/"/>
     <id>http://codingbubble.github.io/2015/07/04/java-del-num-zero/</id>
     <published>2015-07-04T11:25:35.000Z</published>
-    <updated>2015-07-04T11:46:15.868Z</updated>
+    <updated>2015-07-04T12:50:27.319Z</updated>
     <content type="html"><![CDATA[<h1 id="一、将double/String转成整数">一、将double/String转成整数</h1><p>1.</p>
 <pre><code><span class="keyword">if</span>( double num % <span class="number">1</span>.<span class="number">0</span> == <span class="number">0</span>){
     long l = (long)<span class="type">Double</span>.parseDouble(num);
@@ -45,7 +45,7 @@
     
       <category term="数据处理" scheme="http://codingbubble.github.io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
     
-      <category term="java" scheme="http://codingbubble.github.io/categories/java/"/>
+      <category term="Java" scheme="http://codingbubble.github.io/categories/Java/"/>
     
   </entry>
   
