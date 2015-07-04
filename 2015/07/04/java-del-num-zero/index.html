@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>前端 | bubble sky</title>
+  <title>java 去掉小数里多余的0和小数点 | bubble sky</title>
   <meta name="author" content="bubble">
   
   <meta name="description" content="Coding world, changing world ^_^">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="java 去掉小数里多余的0和小数点"/>
   <meta property="og:site_name" content="bubble sky"/>
 
   
@@ -81,25 +81,95 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">前端</h2>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-04T11:25:35.000Z"><a href="/2015/07/04/java-del-num-zero/">2015-07-04 19:25, 27th周 Saturday</a></time>
+      
+      
+  
+    <h1 class="title">java 去掉小数里多余的0和小数点</h1>
+  
 
+    </header>
+    <div class="entry">
+      
 
-  <div class="archive">
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-05-21T07:18:13.000Z"><a href="/2015/05/21/Html-notes-1/">2015-05-21 15:18, 21st周 Thursday</a></time>
-            
-              <h1 class="title"><a href="/2015/05/21/Html-notes-1/">Html学习笔记</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
+		      <!-- Table of Contents -->
+          
+          
+        <h1 id="一、将double/String转成整数">一、将double/String转成整数</h1><p>1.</p>
+<pre><code><span class="keyword">if</span>( double num % <span class="number">1</span>.<span class="number">0</span> == <span class="number">0</span>){
+    long l = (long)<span class="type">Double</span>.parseDouble(num);
+    <span class="type">String</span> <span class="literal">result</span> = <span class="type">Long</span>.toString(l);
+}
+</code></pre><p>2.</p>
+<pre><code><span class="keyword">if</span>( double num % <span class="number">1</span>.<span class="number">0</span> == <span class="number">0</span>){
+    <span class="type">DecimalFormat</span> df = new <span class="type">DecimalFormat</span>();
+    <span class="type">String</span> <span class="literal">result</span> = df.format(num);
+}
+</code></pre><h1 id="二、去掉小数多余的0">二、去掉小数多余的0</h1><pre><code><span class="built_in">String</span> <span class="built_in">num</span>;
+<span class="keyword">if</span>(<span class="built_in">num</span>.indexOf(<span class="string">"."</span>) &gt; <span class="number">0</span>){  
+    <span class="built_in">num</span>= <span class="built_in">num</span>.replaceAll(<span class="string">"0+?$"</span>, <span class="string">""</span>);<span class="comment">//去掉多余的0  </span>
+    <span class="built_in">num</span>= <span class="built_in">num</span>.replaceAll(<span class="string">"[.]$"</span>, <span class="string">""</span>);<span class="comment">//如最后一位是.则去掉  </span>
+}
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/java/">java</a>
   </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/java/">java</a>, <a href="/tags/数据处理/">数据处理</a>
+  </div>
+
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"0","bdPos":"right","bdTop":"0"},"image":{"viewList":["tsina","qzone","sqq","renren","weixin","tieba"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","sqq","renren","weixin","tieba"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+  
+</article>
+
+
+
+<nav id="pagination" >
+    
+    
+    <a href="/2015/05/31/Java4Android-notes/" class="alignright next" >下一篇</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+<section id="comment">
+	<!-- 多说评论框 start -->
+		<div class="ds-thread" data-thread-key="/2015/07/04/java-del-num-zero/" data-title="java 去掉小数里多余的0和小数点" data-url="http://codingbubble.github.io/2015/07/04/java-del-num-zero/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"hexo2github"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	<!-- 多说公共JS代码 end -->
+</section>
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <script type="text/javascript">

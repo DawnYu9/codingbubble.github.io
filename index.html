@@ -88,6 +88,337 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-07-04T11:25:35.000Z"><a href="/2015/07/04/java-del-num-zero/">2015-07-04 19:25, 27th周 Saturday</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/07/04/java-del-num-zero/">java 去掉小数里多余的0和小数点</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+
+		      <!-- Table of Contents -->
+          
+          
+        <h1 id="一、将double/String转成整数">一、将double/String转成整数</h1><p>1.</p>
+<pre><code><span class="keyword">if</span>( double num % <span class="number">1</span>.<span class="number">0</span> == <span class="number">0</span>){
+    long l = (long)<span class="type">Double</span>.parseDouble(num);
+    <span class="type">String</span> <span class="literal">result</span> = <span class="type">Long</span>.toString(l);
+}
+</code></pre><p>2.</p>
+<pre><code><span class="keyword">if</span>( double num % <span class="number">1</span>.<span class="number">0</span> == <span class="number">0</span>){
+    <span class="type">DecimalFormat</span> df = new <span class="type">DecimalFormat</span>();
+    <span class="type">String</span> <span class="literal">result</span> = df.format(num);
+}
+</code></pre><h1 id="二、去掉小数多余的0">二、去掉小数多余的0</h1><pre><code><span class="built_in">String</span> <span class="built_in">num</span>;
+<span class="keyword">if</span>(<span class="built_in">num</span>.indexOf(<span class="string">"."</span>) &gt; <span class="number">0</span>){  
+    <span class="built_in">num</span>= <span class="built_in">num</span>.replaceAll(<span class="string">"0+?$"</span>, <span class="string">""</span>);<span class="comment">//去掉多余的0  </span>
+    <span class="built_in">num</span>= <span class="built_in">num</span>.replaceAll(<span class="string">"[.]$"</span>, <span class="string">""</span>);<span class="comment">//如最后一位是.则去掉  </span>
+}
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-05-31T15:13:42.713Z"><a href="/2015/05/31/Java4Android-notes/">2015-05-31 23:13, 22nd周 Sunday</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/05/31/Java4Android-notes/">Java4Android notes</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+
+		      <!-- Table of Contents -->
+          
+          
+        <p>Java4Android学习笔记</p>
+<h1 id="01_Java考古学">01 Java考古学</h1><ol>
+<li>伟大的1970年（前后）<br>（1）1963年，剑桥大学将ALGOL 60语言发展成为CPL（Combined Programming Language）语言。<br>（2）1967年，剑桥大学的Matin Richards对CPL语言进行了简化，产生了BCPL语言。<br>（3）1970年，美国贝尔实验室的Ken Thompson将BCPL进行了修改，起名为“B语言”。意为将CPL语言煮干，提炼出其精华。他用B语言写出了第一个UNIX操作系统。<br>（4）1973年，B语言也给人“煮”了一下，美国贝尔实验室的D.M.RITCHIE在B语言的基础上最终设计出了一种新的语言，取BCPL第二个字母为名，即C语言。</li>
+<li>Sun公司 </li>
+</ol>
+<ul>
+<li>Stanford University Network缩写</li>
+<li>“没有竞争就没有创新，而没有创新就没有一切”</li>
+<li>最早意识到网络</li>
+</ul>
+<ol>
+<li>上世纪最伟大的程序员——Bill Joy<br>（1）在MIT的BBS上被众多程序员认为是上世纪最伟大的程序员<br>（2）被《财富》杂志誉为网络时代的爱迪生<br>（3）和同伴一起完成了csh，vi，TCP/IP，NFS，JNI，BSD UNIX，Solaris等<br>（4）在1982-2003担任SUN公司首席科学家长达21年。</li>
+<li>Java的诞生<br>（1）90年代初，Java前身出现——Oak<br>（2）1992年，Sun成立了一家名为First Person公司，使用Oak语言为时代华纳公司开发一个和有线电视点播相关的项目<br>（3）1994年，Oak被命名为Java。<br>5.Java的发展<br>（1）1995年，Sun正式对外界公开Java，并发布JDK1.0<br>（2）1996年，Sun成立了JavaSoft组织，各大公司纷纷向Sun申请Java许可，包括网景、惠普、IBM、Oracle，甚至微软<br>（3）1998年，Sun公司正式将Java更名为Java2：ME、SE、EE。</li>
+</ol>
+<h1 id="02_Java创世纪">02 Java创世纪</h1><ol>
+<li>什么是编程<br>（1）学会编程可以让你和计算机随意的沟通<br>（2）编程是一种创造性的工作<br>（3）学会编程会让上帝与你同在</li>
+<li><p>JDK的安装和配置<br>（1）什么是JDK？<br>Java Development Kit开发工具包<br>（2）安装后配置环境变量：path，classpath<br>计算机-属性-高级系统设置-环境变量-系统变量<br><code>HAVA_HOME</code>：“<code>E:\Software\Java\jdk</code>”<br><code>PATH</code>：末尾加上“<code>;E:\Software\Java\jdk1.8.0_31\bin</code>”<br>或“<code>;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</code>”<br><code>CLASSPATH</code>：新建后，输入变量值<code>&quot;.&quot;</code>代表当前目录<br>或“<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</code>”<br><code>环境变量</code>：在操作系统中一个具有特定名字的对象，它包含了一个或者多个应用程序所将使用到的信息。例如Windows和DOS操作系统中的path环境变量，当要求系统运行一个程序而没有告诉它程序所在的完整路径时，系统除了在当前目录下面寻找此程序外，还应到path中指定的路径去找。用户通过设置环境变量，来更好的运行进程。<br>测试：<code>win+R</code>，调出cmd窗口<br>输入：<code>java -version</code>，<code>javac</code></p>
+</li>
+<li><p>创世纪（Hello World）<br>新手工具：<code>Notepad++</code><br>保存<code>“Ctrl+s”</code></p>
+<blockquote>
+<p>Hello.java</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Hello</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		System.<span class="keyword">out</span>.println(<span class="string">"Hello World!"</span>); </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<p>编译源代码<code>javac Hello.java</code>，生成一个类文件<code>Hello.class</code>，即编译成功<br>运行类文件<code>java Hello</code><br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B01.png" alt=""></p>
+<blockquote>
+<p>注意：区分大小写！</p>
+</blockquote>
+<p>4.什么是编译？<br>（1）源代码——人类可以理解的代码<br>（2）计算机无法理解源代码<br>（3）编译——将源代码转换成计算机可以理解的代码</p>
+<h1 id="03_Java基本概念">03 Java基本概念</h1><ol>
+<li>什么是环境变量？<br>操作系统中用来指定操作系统运行时必需的一些最基本的参数。<br>通常为一系列的<code>键值对</code>（变量名-变量值）——计算机中存储数据的最基本形式之一。<br>（1）<code>Path</code>——操作系统外部命令搜索路径。<br>凡是想在命令行里执行的命令，其exe文件所在目录必须在path的变量值里（依次搜索path里的目录）<br>（2）<code>Classpath</code>——类文件搜索路径。</li>
+<li><code>JDK</code>里有什么？<br>“<code>bin</code>”：使用java需要的所有的命令<br>“<code>include</code>”：C语言程序<br>“<code>lib</code>”：包文件</li>
+<li>什么是<code>JRE</code>？<br><code>Java Runtime Environment</code>，Java运行时环境。<br>包括：<br>（1）JVM——Java Virtual Machine，Java虚拟机。提升Java的跨平台性。<br>（2）Java平台核心类文件<br>（3）其他支持文件。<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B02.png" alt=""><h1 id="04_Java的变量">04 Java的变量</h1></li>
+<li>什么是变量？<br>（1）计算机是一种极度精确的机器<br>（2）要将信息存储在计算机中，必须指明信息存储的位置和所需的内存空间<br>（3）在Java编程语言当中，使用声明语句完成上述任务<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B03.png" alt=""></li>
+<li>变量的声明<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B04.png" alt=""></li>
+<li>变量的赋值<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B05.png" alt=""></li>
+<li>变量的命名规范：<br>变量命名语法规范——合法<br>（1）以字母、下划线、美元符<code>$</code>开头<br>（2）后面跟字母、下划线、美元符<code>$</code>、数字<br>（3）Java变量名没有长度限制<br>（4）对大小写敏感<br>驼峰命名法（骆驼命名法）——合理<br>（1）变量名应用有意义的英文单词<br>（2）变量名若只有1个单词，则所有字母小写<br>（3）………………多个单词，从第2个单词开始首字母大写<br>合法命名：Password，last_word，$abc，_ref<br>正确命名：password，lastName</li>
+</ol>
+<h1 id="05_Java的基本数据类型">05 Java的基本数据类型</h1><ol>
+<li>布尔型变量boolean</li>
+</ol>
+<ul>
+<li>适用于逻辑运算，一般用于程序流程控制</li>
+<li>在Java中的boolean类型只有2种取值可能：true，false</li>
+</ul>
+<ol>
+<li>字符型char</li>
+</ol>
+<ul>
+<li>单引号，1个字符：char c = ‘a’;</li>
+<li><p>使用Unicode字符集<br>为每种语言的每个字符设定了统一且唯一的二进制码<br>（1）满足了跨语言文本转换和处理的需求<br>（2）在互联网中扮演着非常重要的角色<br>（3）使用数字0-0x10FFFF表示字符<br>（4）最多允许有1114112个字符。</p>
+<ul>
+<li><p>Unicode字符集中一个英文字符与一个中文字符所占空间大小一样，故字符型变量可      以存储汉字，如</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c = ‘中’;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>合法。<br>（ASCII字符集American Standard Code for Information Interchange<br>标准ASCII码使用7位2进制数来表示字符，可表示所有的数字、大小写字母及一些常见符号<br>）<br>乱码出现的原因：存、取字符的字符集不同。（NPP++用ANSI即可）</p>
+<pre><code><span class="comment"><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestChar</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		<span class="keyword">char</span> c = <span class="string">'中'</span>;</span><br><span class="line">		System.<span class="keyword">out</span>.println(c);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+</code></pre><ol>
+<li>数值型变量<br>类型    占用空间    表数范围<br>byte        1B            -128~127<br>short    2B            -215~215-1<br>int        4B            -231~231-1<br>long        8B            -263~263-1</li>
+</ol>
+<ul>
+<li>Java整型常量有3种表示形式：十进制、八进制0、十六进制0x</li>
+<li>整型常量默认为int</li>
+<li>声明long型常量可以后加’l’或’L’，如 long l = 3L;</li>
+</ul>
+<ol>
+<li>浮点型<br>类型    占用空间    表数范围<br>float        4B            -3.403E38~3.403E38<br>double    8B            -1.798E308~1.798E308</li>
+</ol>
+<h1 id="06练习课（1）">06练习课（1）</h1><p>1.创建一个java源文件，命名为Exerc11.java。在主函数中创建一个boolean类型的变量，并尝试为这个变量赋值（true，false，0），并将这个变量的值打印出来。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Exerc11&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String args[])&#123;</span><br><span class="line">		<span class="keyword">boolean</span> bt = <span class="keyword">true</span>;</span><br><span class="line">		System.out.<span class="keyword">println</span>(bt);</span><br><span class="line">		<span class="keyword">boolean</span> bf = <span class="keyword">false</span>;</span><br><span class="line">		System.out.<span class="keyword">println</span>(bf);</span><br><span class="line">		<span class="keyword">boolean</span> b0 = <span class="number">0</span>;</span><br><span class="line">		System.out.<span class="keyword">println</span>(b0);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.创建一个Java源文件，命名为Exerc12.java。主函数中创建一个char类型变量，尝试为其赋值（中、英文字符），并打印。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Exerc12</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		<span class="keyword">char</span> cc = <span class="string">'字'</span>;</span><br><span class="line">		System.<span class="keyword">out</span>.println(cc);</span><br><span class="line">		<span class="keyword">char</span> ce = <span class="string">'e'</span>;</span><br><span class="line">		System.<span class="keyword">out</span>.println(ce);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.创建一个Java源文件，命名为Exerc13.java。主函数中为每一种数值型创建一个变量，并赋值，然后进行各种加减乘除运算。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Exerc13</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		<span class="keyword">byte</span> b = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">short</span> s = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">long</span> l = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">float</span> f = <span class="number">0.1</span>F;</span><br><span class="line">		<span class="keyword">double</span> d = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//	i = l;</span></span><br><span class="line">	<span class="comment">//	int j = 0.5*10;</span></span><br><span class="line">		<span class="keyword">byte</span> k = (<span class="keyword">byte</span>)(b + <span class="number">200</span>);</span><br><span class="line">		System.<span class="keyword">out</span>.println(k);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>笔记：<br>1.字面量（整数都是int，小数都是double）<br>2.强制类型转换 加括号<br>3.数值型类型表数范围关系：<br>byte&lt;short&lt;int&lt;long&lt;double<br>一次运算所得结果的类型取决于操作数中范围最大的类型。</p>
+<h1 id="07运算符与表达式">07运算符与表达式</h1><ol>
+<li>运算符的分类<br>（1）算术运算符：+，—，*，/，%，++，——<blockquote>
+<p>int a = 3/2;        //1<br>double b = 3/2;        //1.0<br>double c = 3/2.0;    //1.5</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">division</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String args [])</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a = <span class="number">3</span>/<span class="number">2</span>;		<span class="comment">//1</span></span><br><span class="line">		System.<span class="keyword">out</span>.println(a);</span><br><span class="line">		<span class="keyword">double</span> b = <span class="number">3</span>/<span class="number">2</span>;		<span class="comment">//1.0</span></span><br><span class="line">		System.<span class="keyword">out</span>.println(b);</span><br><span class="line">		<span class="keyword">double</span> c = <span class="number">3</span>/<span class="number">2.0</span>;	<span class="comment">//1.5</span></span><br><span class="line">		System.<span class="keyword">out</span>.println(c);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<p>（2）关系运算符：&gt;，&lt;，&gt;=，&lt;=，==，!=<br>运算结果为boolean型。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestRelationalOperators</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">5</span>;</span><br><span class="line">		<span class="keyword">int</span> j = <span class="number">5</span>;</span><br><span class="line">		boolean b = i == j;</span><br><span class="line">		System.<span class="keyword">out</span>.println(b);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行输出b，结果为false<br>（3）布尔逻辑运算符：结果为true，false。</p>
+<blockquote>
+<p>!    逻辑非<br> &amp;    逻辑与（a&amp;b，a、b均判断）<br> |    逻辑或<br> ^    逻辑异或<br>&amp;&amp;    短路与（a&amp;&amp;b，若a假，则无需判断b）<br> ||    短路或（a||b，若a真，则无需判断b）</p>
+</blockquote>
+<p>（4）位运算符：&amp;，|，^，~，&gt;&gt;，&lt;&lt;，&gt;&gt;&gt;<br>（5）赋值运算符：=<br> 扩展赋值运算符：+=，—=，*=，/=<br>（6）字符串联接运算符：+</p>
+<ol>
+<li>各种运算符的使用方法</li>
+<li>什么是表达式？<br>表达式的值：对表达式中操作数进行运算<br>表达式的值的数据类型：即为表达式的类型<h1 id="08分支语句">08分支语句</h1>程序运行流程的分类：顺序、分支、循环 结构。</li>
+<li>if…else…<br>①</li>
+</ol>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>（布尔类型表达式）&#123;</span><br><span class="line">语句一；</span><br><span class="line">语句二；</span><br><span class="line">……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  ②</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>（布尔类型表达式）&#123;</span><br><span class="line">语句一；</span><br><span class="line">语句二；</span><br><span class="line">……</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">语句</span><br><span class="line">……</span><br><span class="line">&#125;		<span class="comment">//else可无。</span></span><br></pre></td></tr></table></figure>
+<p>  ③</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>（布尔类型表达式）&#123;</span><br><span class="line">语句一；</span><br><span class="line">语句二；</span><br><span class="line">……</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">……</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">（此<span class="keyword">else</span>可无）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestIf</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">if</span>(i == <span class="number">10</span>)&#123;</span><br><span class="line">			System.<span class="keyword">out</span>.println(<span class="string">"i的值等于10"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(i &gt; <span class="number">5</span> &amp;&amp; i &lt; <span class="number">12</span>)&#123;</span><br><span class="line">			System.<span class="keyword">out</span>.println(<span class="string">"i的值大于5，小于12"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式：<span class="keyword">byte</span>，<span class="keyword">short</span>，<span class="keyword">int</span>，<span class="keyword">char</span>)&#123;</span><br><span class="line"><span class="keyword">case</span> 常量<span class="number">1</span>：</span><br><span class="line">语句<span class="number">1</span>；</span><br><span class="line"><span class="keyword">break</span>；</span><br><span class="line"><span class="keyword">case</span> 常量<span class="number">2</span>：</span><br><span class="line">语句<span class="number">2</span>；</span><br><span class="line"><span class="keyword">break</span>；</span><br><span class="line">……</span><br><span class="line"><span class="keyword">case</span> 常量n：</span><br><span class="line">语句n；</span><br><span class="line"><span class="keyword">break</span>；</span><br><span class="line">[<span class="keyword">default</span>：</span><br><span class="line">默认语句；</span><br><span class="line"><span class="keyword">break</span>；]		<span class="comment">//default可选</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：若没有break，则匹配的case后续case都会直接输出。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestSwitch</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		<span class="keyword">char</span> c = <span class="string">'a'</span>;</span><br><span class="line">		<span class="keyword">switch</span>(c)&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">'b'</span>:</span><br><span class="line">				System.<span class="keyword">out</span>.println(<span class="string">'b'</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">'c'</span>:</span><br><span class="line">				System.<span class="keyword">out</span>.println(<span class="string">'c'</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">'a'</span>:</span><br><span class="line">				System.<span class="keyword">out</span>.println(<span class="string">'a'</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				System.<span class="keyword">out</span>.println(<span class="string">'d'</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="09练习课（2）">09练习课（2）</h1><p>目标：熟悉if…else…结构的使用方法。</p>
+<ol>
+<li>将学生的分数按照标准分为优、良、中、差4个级别。<br>（1）创建一个名为Exerc21的类<br>（2）在Exerc21类中加入主函数<br>（3）在主函数中定义一个整型变量，用于表示学生的分数<br>（4）使用if…else…结构对分数进行分级。<br>分析：还有2种情况，大于100，小于0</li>
+</ol>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">class</span> Exerc21&#123;</span><br><span class="line">	public static void main(String <span class="keyword">args</span>[])&#123;</span><br><span class="line">		double <span class="keyword">score</span> = 5.5;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">score</span> &lt; 0 || <span class="keyword">score</span> &gt; 100)&#123;</span><br><span class="line">			System.<span class="keyword">out</span>.println(<span class="string">"错误"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">score</span> &gt; 0 &amp;&amp; <span class="keyword">score</span> &lt; 60)&#123;</span><br><span class="line">			System.<span class="keyword">out</span>.println(<span class="string">"不及格"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">score</span> &gt;= 60 &amp;&amp; <span class="keyword">score</span> &lt; 90)&#123;</span><br><span class="line">			System.<span class="keyword">out</span>.println(<span class="string">"及格"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			System.<span class="keyword">out</span>.println(<span class="string">"优秀"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>猜拳游戏<br>（1）创建一个名为Exerc22的类<br>（2）在Exerc22类中加入主函数<br>（3）在主函数中定义2个char类型变量，分别代表2个玩家的出拳<br>（4）使用if…else…结构对结果进行判断。</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Exerc22</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		<span class="keyword">char</span> a = <span class="string">'D'</span>;</span><br><span class="line">		<span class="keyword">char</span> b = <span class="string">'B'</span>;</span><br><span class="line">		<span class="keyword">if</span> ( a &lt; <span class="number">65</span> || a &gt; <span class="number">67</span> || b &lt; <span class="number">65</span> || b &gt; <span class="number">67</span>)&#123;  <span class="comment">//直接用ASCII判断（老师是一个个比较）</span></span><br><span class="line">			System.<span class="keyword">out</span>.println(<span class="string">"错误"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">( a &gt; b )</span></span>&#123;</span><br><span class="line">			System.<span class="keyword">out</span>.println(<span class="string">"a胜"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">( a &lt; b )</span></span>&#123;</span><br><span class="line">			System.<span class="keyword">out</span>.println(<span class="string">"b胜"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			System.<span class="keyword">out</span>.println(<span class="string">"平"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="10循环语句">10循环语句</h1><ol>
+<li>for循环<br>和c一样：</li>
+</ol>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(int <span class="built_in">i</span> = <span class="number">0</span> ; <span class="built_in">i</span> &lt; <span class="number">10</span> ; <span class="built_in">i</span>++)<span class="cell">&#123;</span><br><span class="line">……</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">testFor</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		System.<span class="keyword">out</span>.println(<span class="string">"准备进入循环语句"</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; <span class="number">10</span> ; i++)&#123;</span><br><span class="line">			System.<span class="keyword">out</span>.println(i);</span><br><span class="line">		&#125;</span><br><span class="line">		System.<span class="keyword">out</span>.println(<span class="string">"循环语句结束"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>while循环<br>和c一样，while括号里为布尔型：</li>
+</ol>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span><span class="comment">( i &lt; 10)</span>&#123;</span><br><span class="line">……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">testWhile</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(i &lt; <span class="number">10</span>)&#123;</span><br><span class="line">			System.<span class="keyword">out</span>.println(i);</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="11练习课（3）">11练习课（3）</h1><p>目标：熟悉Java中的for循环使用方法。</p>
+<ol>
+<li>打印出100-200之间的所有素数——只能被1和自己整除。<br>步骤：<br>（1）定义一个类，名为TestPrimeNumber<br>（2）在类中定义主函数<br>（3）用for循环打印出所有在100-200间的数字<br>（4）在for循环中，每当循环执行一次，就判断循环变量的值是否为素数。若是，则打印当前值：<br>①判断n是否为素数，首先用2除n，若除不尽，再用3除n，以此类推，若从2     到n-1都无法整除n，则n为素数——2个for循环——设计一个标志boolean b =true;     当整除时令b=false;<br>②不能被2-√2间的每一个数整除，则为素数</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直接判断</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestPrimeNumber</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">100</span> ; i &lt;= <span class="number">200</span> ; i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> j;</span><br><span class="line">			<span class="keyword">for</span>(j = <span class="number">2</span> ; j &lt;= Math.sqrt(i) ; j++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(i % j == <span class="number">0</span>)&#123;</span><br><span class="line">					<span class="keyword">break</span>;	</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i % j != <span class="number">0</span>)</span><br><span class="line">				System.<span class="keyword">out</span>.println(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用boolean</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestPrimeNumber</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">100</span> ; i &lt;= <span class="number">200</span> ; i++)&#123;</span><br><span class="line">			boolean b = <span class="keyword">true</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">2</span> ; j &lt;= Math.sqrt(i) ; j++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(i % j == <span class="number">0</span>)&#123;</span><br><span class="line">					b = <span class="keyword">false</span>;</span><br><span class="line">					<span class="keyword">break</span>;	</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(b)</span><br><span class="line">				System.<span class="keyword">out</span>.println(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在命令行中打印出如下图形：<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B06.png" alt=""><br>步骤：<br>（1）定义一个类，名为TestTriangle<br>（2）在类中定义一个主函数<br>（3）使用for循环打印4行，每行1个“<em>”<br>（4）打印4行，每行4个“</em> ”<br>（5）打印4行，第1行有1个“<em> ”，第2行有2个“</em> ”，以此类推<br>（6）在打印“* ”前先打印“ ”，第1行3个空格，第2行2个空格，即4-行数，以此类推。</li>
+</ol>
+<p>作业：（在论坛）</p>
+<ol>
+<li>想办法优化1中的TestPrimeNumber.java程序。<br>笔记：TestPrimeNumberOptimize.java从2~√2依次对n求余，若不为0则为素数。Java中开根号：double m=Math.sqrt(n);<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B07.png" alt=""></li>
+<li>打印出任意行的与2中类似的图形。<br>笔记：TestTriangleOptimize.java<br>（1）在命令行输入“ctrl+c”跳出当前运行的程序<br>（2）输入一个整数，为星号的行数。<br>使用Scanner<br>使用时需要引入包import java.util.Scanner;<br>首先定义Scanner对象<br>Scanner sc = new Scanner(System.in);<br>如果要输入整数，则 int n = sc.nextInt();<br>String类型的，则String temp = sc.next();<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B08.png" alt=""><h1 id="12面向对象基础_1">12面向对象基础_1</h1></li>
+<li>什么是面向对象？<br>（1）面向对象是一种编程方法<br>（2）…………………思维方式<br>（3）…………不是一种编程语言</li>
+<li>应该如何学习面向对象？<br>（1）掌握一门面向对象语言的语法<br>（2）掌握面向对象的思维方式<br>（3）熟悉面向对象设计原则：消除重复代码<br>（4）掌握面向对象设计模式：什么场合用什么方法</li>
+<li>什么是面向对象思维方式？<br>（1）首先确定谁来做，其次确定怎么做<br>（2）首先考虑整体，其次考虑局部<br>（3）首先考虑抽象，其次考虑具体：越抽象越容易。<br>总结：</li>
+<li>不要以为掌握了一门面向对象语言就是掌握了面向对象</li>
+<li>习惯于将面向对象与现实世界做比较</li>
+<li>面向对象终极目标：减少重复代码。<h1 id="13面向对象基础_2">13面向对象基础_2</h1></li>
+<li>创建类的方法</li>
+</ol>
+<ul>
+<li>定义类</li>
+</ul>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 类名</span><br><span class="line"></span>&#123;</span><br><span class="line">属性；	<span class="comment">//成员变量，描述类的状态</span></span><br><span class="line">方法；	<span class="comment">//成员方法（函数），描述类的行为</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类的表示方法<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B09.png" alt=""><br>一个矩形代表一个类<br>如果一个方法（函数）中有与成员变量同名的局部变量，该方法中对这个变量名的访问是局部变量，而不再是成员变量</li>
+</ul>
+<ol>
+<li>创建对象的方法<br>格式：<code>类名 对象名 = new 类名()</code>    对象为引用数据类型。<br>如：  <code>Dog  dog = new  Dog();</code><br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B010.png" alt=""><br>堆内存（圆）存储对象的本体，栈内存（矩形）存放对象的引用。<br>类是抽象的，对象是具体的。</li>
+<li>对象和对象的引用<br>当不存在对一个对象的引用时，该对象成为一个无用对象。Java的垃圾收集器会自动扫描对象的动态内存区，把没有引用的对象作为垃圾收集起来并释放——调用System.gc( )。当系统内存用尽或调用System.gc( )要求垃圾回收时，垃圾回收线程与系统同步运行。</li>
+</ol>
+<h1 id="14面向对象基础_3">14面向对象基础_3</h1><ol>
+<li>对象的使用方法<br>使用对象调用变量和函数：<br>1、<code>对象.变量</code>        （如：d.name = “大黄”;）<br>2、<code>对象.函数()</code> （如： d.jump( );）</li>
+<li>生成多个对象</li>
+</ol>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Dog d1 = <span class="keyword">new</span> Dog( );</span><br><span class="line">Dog d2 = <span class="keyword">new</span> Dog( );</span><br></pre></td></tr></table></figure>
+<p>凡是见“new”就在堆内存中生成一个对象，栈内存中2个引用。</p>
+<ol>
+<li>匿名对象的使用<br>可以不定义对象的引用名称，而直接调用这个对象的方法。这样的对象叫做匿名对象。如：<code>new Dog().jump();</code><br>没有对象名——一次性的。<h1 id="15面向对象基础_4">15面向对象基础_4</h1>1.函数的重载</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">A</span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">funA</span><span class="params">()</span></span>&#123;</span><br><span class="line">System.<span class="keyword">out</span>.println(“没有参数的funA函数”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">funA</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">System.<span class="keyword">out</span>.println(“拥有一个整型参数的funA函数”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">funA</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">double</span> d)</span></span>&#123;</span><br><span class="line">System.<span class="keyword">out</span>.println(“拥有<span class="number">2</span>个参数的funA函数 ”);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重载的定义：<br>（1）多个函数在同一个类中<br>（2）相同函数名<br>（3）参数列表不同。<br>应用时，</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Test</span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String args[] )</span></span>&#123;</span><br><span class="line">A a = <span class="keyword">new</span> A( );</span><br><span class="line">a.funA( );</span><br><span class="line">a.funA(<span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>构造函数的作用<br>构造函数不是成员函数。<br>（1）没有返回值类型的定义<code>A(){}</code><br>（2）名字必须和类名相同 （若自己未写上，编译器会自动加上该类的一个空构造函数——java类至少存在一个构造函数）<br>（3）调用<code>A a = new A();</code><br>（4）允许重载。<br>作用：<br>简化为对象的成员变量赋初始值的步骤——在创建对象的过程中对对象的一些属性初始化（对象的一些与生俱来的属性不能通过创建对象后设定初始值的形式来初始化）。<br>（笔记：或许可以理解为类没有参数，构造函数可以有参数，通过函数的参数初始化代入？）<br>注：<br>如果类中已有含参数的构造函数，编译器就不会自动添加无参数的构造函数。<br>调用的时候要写上参数<code>A a = new A(参数1，参数2…);</code><h1 id="16_this的使用方法">16 this的使用方法</h1></li>
+<li>使用this调用成员变量和成员函数</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Person</span>&#123;</span><br><span class="line">	String name;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">talk</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.<span class="keyword">out</span>.println( <span class="string">" my name is "</span> + <span class="keyword">this</span>.name );	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此处“this”可省略.如果”talk”的参数里有“name”变量那么此处“this”不可省略，否则会与成员变量“name”混淆。</p>
+<ol>
+<li>使用this调用构造函数<br>对this的调用必须是构造函数中的第一个语句。且不能在一个构造函数里调用多个this函数<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B011.png" alt=""></li>
+</ol>
+<h1 id="17_static关键字的作用">17 static关键字的作用</h1><ol>
+<li>静态成员变量的语法特点</li>
+</ol>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> name;</span><br></pre></td></tr></table></figure>
+<p>可以直接使用类名来调用成员变量（<strong>不用</strong>“<code>对象名.成员变量</code>”）<br>类层次的变量，属于这一个类而不是单个对象，静态成员变量的值只有一份</p>
+<ol>
+<li>静态函数的语法特点</li>
+</ol>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;……&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以直接用类名调用<br>静态函数类不能使用非静态的的成员变量<br>静态函数中不能使用this </p>
+<ol>
+<li>静态代码块的语法特点</li>
+</ol>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span>&#123;</span><br><span class="line">……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>没名字<br>在装载这个类的时候执行静态代码块，<strong>无需调用</strong><br>作用：为静态成员变量赋初始值。<br>（实际用的较少）</p>
+<h1 id="18_继承初步">18 继承初步</h1><p>面向对象最重要的3个基本特征：继承、封装、多态。</p>
+<ol>
+<li>什么是继承？<br>面向对象里，继承是一个类得到了另一个类当中的成员变量和成员方法。<br>只能继承成员变量和成员函数，不能继承构造函数。<br>java只支持单继承，不允许多继承：1个子类只能继承1个父类（C++可继承多个父类）——提供多重继承机制（接口机制）。</li>
+</ol>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Person</span>&#123;</span></span><br><span class="line"><span class="comment">//不仅可以直接继承父类的成员变量和函数还能继续定义自己的成员变量及函数。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在子类的构造函数中，必须先调用父类的构造函数（若未主动调用，编译器会自动加上【<code>super(参数);</code>只能在第1条语句】来自动调用）。 即不能继承但可调用父类构造函数。<br>子类通过super访问父类的内部引用：<br>（1）<code>super([参数列表])</code>调用父类的构造函数；<br>（2）<code>super.父类成员名</code>调用父类成员</p>
+<blockquote>
+<p>注：<br>在创建子类的对象时，Java虚拟机首先执行父类的构造方法，然后再执行子类的构造方法。<br>若子类的构造函数没有显式调用父类的构造函数，则系统默认调用父类的无参构造函数；若父类定义了非空构造函数则系统不再有默认的无参构造函数。<br>若父类没有无参构造函数，创建子类时若未显式调用父类的构造函数则代码不能编译。</p>
+</blockquote>
+<ol>
+<li>为什么要使用继承？<br>减少类定义的重复代码<br>共同的代码只需在父类修改即可<br>继承是在一些比较一般的类的基础上构造、建立和扩充新类的最有效的手段。</li>
+<li>继承的基本语法特点。<h1 id="19_子类实例化过程">19 子类实例化过程</h1>笔记见上。</li>
+</ol>
+<h1 id="20_函数的复写">20 函数的复写</h1><ol>
+<li><p>函数的复写/覆盖/重写（override）<br>（1）在具有父子关系的2个类当中<br>（2）父类和子类各有1个函数，这2个函数的定义（返回值类型、函数名、参数列表）完全相同</p>
+<blockquote>
+<p>注意：重载和复写的区别<br>成员变量的隐藏（override）：子类成员变量与父类成员变量同名。</p>
+</blockquote>
+</li>
+<li><p>使用super调用父类的成员函数和成员变量<br>作用和this类似</p>
+</li>
+</ol>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>.复写的父类成员函数</span><br></pre></td></tr></table></figure>
+<h1 id="21_对象的转型">21 对象的转型</h1><ol>
+<li>对象的向上转型——将子类的对象赋值给父类的引用（必须有继承关系）</li>
+</ol>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Student s</span> = new Student();	<span class="comment">//子类</span></span><br><span class="line"><span class="constant">Person p</span> = s;	<span class="comment">//父类</span></span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Person</span> p = <span class="keyword">new</span> <span class="type">Student</span><span class="literal">()</span>;</span><br></pre></td></tr></table></figure>
+<p>子类→父类<br>对象→引用<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B012.png" alt=""></p>
+<blockquote>
+<p>注：<br>（1）一个引用能够调用哪些成员（变量和函数），取决于这个引用的类型。<br>（2）一个引用调用的是哪一个方法，取决于这个引用所指向的对象。<br>（3）向上转型不可能失败，一定会成功，只要是继承关系。</p>
+</blockquote>
+<ol>
+<li>对象的向下转型——将父类的对象赋值给子类的引用</li>
+</ol>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Student s1</span> = new Student();</span><br><span class="line"><span class="constant">Person p</span> = s1;		<span class="comment">//前2句即【Person p = new Student();】先向上转型</span></span><br><span class="line"><span class="constant">Student s2</span> = (Student)p;		<span class="comment">//（强制类型转换）向下强制转型</span></span><br></pre></td></tr></table></figure>
+<h1 id="22_面向对象应用">22 面向对象应用</h1><p>被客户不断变化的需求“折磨”<br>用面向对象适应客户需求的变化<br>不同类的相同功能函数的<strong><em>重复代码</em></strong>——如何减少？<br>父类——n个子类继承</p>
+<h1 id="23_抽象类和抽象函数">23 抽象类和抽象函数</h1><ol>
+<li>什么是抽象函数<br>只有函数的定义，没有函数体的函数。</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abstract void <span class="function"><span class="title">fun</span><span class="params">()</span>;</span></span><br></pre></td></tr></table></figure>
+<p>往往用来表征我们在对问题领域进行分析、设计中得出的抽象概念，是对一系列看上去不同，但本质上相同的具体概念的抽象。</p>
+<ol>
+<li>什么是抽象类<br>使用abstract定义的类被称为抽象类——（基类）<br>（1）抽象类不能够生成对象——无法实例化<br>（2）若一个类中含有抽象函数，那么这个类必须被声明为抽象类<br>（3）若一个类中没有抽象函数，那么这个类也可以被声明为抽象类（因为某种原因不想让别人生成此类的对象时，可把此类声明为抽象类）<br>（4）实现多态——天生被子类继承→子类可以生成对象——复写（抽象类的子类需提供父类中所有抽象方法的实现，否则子类也必须是抽象类）<br>（5）主要用来进行类型隐藏。</li>
+<li>抽象类可以有构造函数吗？<br>24为什么用抽象类<br>25包和访问权限_1<br>26包和访问权限_2<br>27包和访问权限_3<br>28接口的基本语法<br>29接口的应用<br>30 Java当中的异常_1<br>31 Java当中的异常_2<br>32 Java当中的IO_1<br>33 Java当中的IO_2<br>34 Java当中的IO_3<br>35内部类和匿名内部类<br>36 Java当中的线程_1<br>37 Java当中的线程_2<br>38 Java当中的线程_3<br>39深入同步语法<br>40 Java当中的数组<br>41类集框架_1<br>42类集框架_2<br>43类集框架_3<br>44 equals函数的作用<br>45 hashCode()与toString()<br>46开发工具之Eclipse_1<br>47开发工具之Eclipse_2<br>48开发工具之Eclipse_3<br>49开发工具之Eclipse_4<br>50综合练习_1<br>51综合练习_2<br>52综合练习_3定义输入输出格式<br>53综合练习_4</li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-05-30T02:11:09.000Z"><a href="/2015/05/30/Android-notes/">2015-05-30 10:11, 22nd周 Saturday</a></time>
       
       
@@ -231,10 +562,10 @@
 <p><code>&lt;br/&gt;</code>和<code>&lt;p&gt;</code>标签换行的区别：</p>
 <ul>
 <li>&lt; br/&gt;是只需一个单独使用，而&lt; p&gt;和&lt; /p&gt;是一对使用</li>
-<li>br标签是小换行提行（相当于文本中输入一个回车），p标签是大换行（相当于两个回车）隔行作用。<h2 id="空格：&amp;nbsp;">空格：<code>&amp;nbsp;</code></h2>1个<code>&amp;nbsp;</code>显示为1个空格。是单词<code>Non-breaking space不间断空格</code>的缩写<h2 id="单独设置样式：&lt;span&gt;标签">单独设置样式：<code>&lt;span&gt;</code>标签</h2><code>&lt;span&gt;</code>标签是没有语义的，它的作用就是为了设置单独的样式用的，在<code>&lt;style&gt;</code>标签里设置样式。<h2 id="图像image：&lt;img&gt;标签">图像image：<code>&lt;img&gt;</code>标签</h2><pre><code><span class="comment"><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="tag">img</span> src=<span class="string">"http://res.jisuanke.com/img/fe/6.1.jpg"</span>/&gt;</span><br></pre></td></tr></table></figure></span>
-</code></pre></li>
+<li>br标签是小换行提行（相当于文本中输入一个回车），p标签是大换行（相当于两个回车）隔行作用。<h2 id="空格：&amp;nbsp;">空格：<code>&amp;nbsp;</code></h2>1个<code>&amp;nbsp;</code>显示为1个空格。是单词<code>Non-breaking space不间断空格</code>的缩写<h2 id="单独设置样式：&lt;span&gt;标签">单独设置样式：<code>&lt;span&gt;</code>标签</h2><code>&lt;span&gt;</code>标签是没有语义的，它的作用就是为了设置单独的样式用的，在<code>&lt;style&gt;</code>标签里设置样式。<h2 id="图片：&lt;img&gt;标签">图片：<code>&lt;img&gt;</code>标签</h2>语法：<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;img <span class="variable">src=</span><span class="string">"图片地址"</span> <span class="variable">alt=</span><span class="string">"图像不可见/下载失败时的提示文本"</span> <span class="variable">title =</span> <span class="string">"图像可见时(鼠标滑过图片时)的提示文本)"</span>&gt;</span><br><span class="line">&lt;img <span class="variable">src=</span><span class="string">"图片地址"</span>/&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p><img src="http://res.jisuanke.com/img/fe/6.1.jpg"></p>
+<p>图像可以是GIF，PNG，JPEG格式的图像文件。</p>
 <ul>
 <li>按钮button：<code>&lt;button&gt;</code>标签  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">button</span>&gt;</span>点我<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -356,8 +687,48 @@
 <li>标题：<code>&lt;caption&gt;</code>标签<br>用以描述表格内容，标题的显示位置：表格上方。<br>语法：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">caption</span>&gt;</span>标题文本<span class="tag">&lt;/<span class="title">caption</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">td</span>&gt;</span>…<span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">td</span>&gt;</span>…<span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">        …</span><br><span class="line">    <span class="tag">&lt;/<span class="title">tr</span>&gt;</span></span><br><span class="line">…</span><br><span class="line"><span class="tag">&lt;/<span class="title">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="链接：&lt;a&gt;标签">链接：<code>&lt;a&gt;</code>标签</h2><p>语法：<br><code>&lt;a  href=&quot;目标网址&quot;  title=&quot;鼠标滑过显示的文本&quot;&gt;链接显示的文本&lt;/a&gt;</code><br>新窗口打开链接：<code>target=&quot;_blank&quot;;</code><br>不显示下划线：<code>text-decoration:none;</code><br>点过的链接变色：<code>:visited</code>伪类<br>鼠标悬停时显示下划线且变色：<code>:hover</code>伪类<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">title</span>&gt;</span>学习a标签<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">        <span class="tag">a</span><span class="rules">&#123;</span><br><span class="line">            <span class="rule"><span class="attribute">text-decoration</span>:<span class="value">none</span></span>;   //不显示下划线</span><br><span class="line">            <span class="rule"><span class="attribute">color</span>:<span class="value">green</span></span>;</span><br><span class="line">        &#125;</span></span><br><span class="line">        <span class="rule"><span class="attribute">a</span>:<span class="value">visited&#123;  //点过的链接变色</span><br><span class="line">            color:blue</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="rule"><span class="attribute">a</span>:<span class="value">hover&#123;    //鼠标悬停时显示下划线且变色</span><br><span class="line">            text-decoration:underline</span></span>;  //显示下划线</span><br><span class="line">            <span class="rule"><span class="attribute">color</span>:<span class="value">red</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://www.jisuanke.com?28"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> &gt;</span>点我打开新窗口<span class="tag">&lt;/<span class="title">a</span>&gt;</span>   //新窗口打开链接</span><br><span class="line">    <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-
+<h2 id="链接：&lt;a&gt;标签">链接：<code>&lt;a&gt;</code>标签</h2><p>语法：<br><code>&lt;a  href=&quot;目标网址&quot;&gt;链接显示的文本&lt;/a&gt;</code></p>
+<ul>
+<li>鼠标悬停显示提示文字：<code>title=&quot;鼠标滑过显示的文本&quot;</code><br>title属性的作用，鼠标滑过链接文字时会显示这个属性的文本内容。这个属性在实际网页开发中作用很大，主要方便搜索引擎了解链接地址的内容（语义化更友好）</li>
+<li>新窗口打开链接：<code>target=&quot;_blank&quot;;</code></li>
+<li>不显示下划线：<code>text-decoration:none;</code></li>
+<li>点过的链接变色：<code>:visited</code>伪类</li>
+<li>鼠标悬停时显示下划线且变色：<code>:hover</code>伪类</li>
+<li>在网页中链接Email地址：<code>mailto</code><br>使用mailto能让访问者便捷向网站管理者发送电子邮件。<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/mailto.jpg" alt=""><br>注意：如果mailto后面同时有多个参数的话，第一个参数必须以<code>?</code>开头，后面的参数每一个都以<code>&amp;</code>分隔。<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/mailto2.jpg" alt=""><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">title</span>&gt;</span>学习a标签<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">        <span class="tag">a</span><span class="rules">&#123;</span><br><span class="line">            <span class="rule"><span class="attribute">text-decoration</span>:<span class="value">none</span></span>;   //不显示下划线</span><br><span class="line">            <span class="rule"><span class="attribute">color</span>:<span class="value">green</span></span>;</span><br><span class="line">        &#125;</span></span><br><span class="line">        <span class="rule"><span class="attribute">a</span>:<span class="value">visited&#123;  //点过的链接变色</span><br><span class="line">            color:blue</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="rule"><span class="attribute">a</span>:<span class="value">hover&#123;    //鼠标悬停时显示下划线且变色</span><br><span class="line">            text-decoration:underline</span></span>;  //显示下划线</span><br><span class="line">            <span class="rule"><span class="attribute">color</span>:<span class="value">red</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://www.jisuanke.com?28"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> &gt;</span>点我打开新窗口<span class="tag">&lt;/<span class="title">a</span>&gt;</span>   //新窗口打开链接</span><br><span class="line">    <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="与用户交互：&lt;form&gt;标签">与用户交互：<code>&lt;form&gt;</code>标签</h2><p>表单form是可以把浏览者输入的数据传送到服务器端，这样服务器端程序就可以处理表单传过来的数据。<br>语法：<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form   <span class="keyword">method</span>=<span class="string">"传送方式"</span>   action=<span class="string">"服务器文件"</span>&gt;...&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
+<p>讲解：<br>1.<code>&lt;form&gt;</code> 标签是成对出现的，以<code>&lt;form&gt;</code>开始，以<code>&lt;/form&gt;</code>结束。<br>2.<code>action</code> ：浏览者输入的数据被传送到的地方,比如一个PHP页面(save.php)。<br>3.<code>method</code> ： 数据传送的方式（get/post）。</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form    <span class="keyword">method</span>=<span class="string">"post"</span>   action=<span class="string">"save.php"</span>&gt;</span><br><span class="line">        &lt;label <span class="keyword">for</span>=<span class="string">"username"</span>&gt;用户名:&lt;/label&gt;</span><br><span class="line">        &lt;input <span class="keyword">type</span>=<span class="string">"text"</span> name=<span class="string">"username"</span> /&gt;</span><br><span class="line">        &lt;label <span class="keyword">for</span>=<span class="string">"pass"</span>&gt;密码:&lt;/label&gt;</span><br><span class="line">        &lt;input <span class="keyword">type</span>=<span class="string">"password"</span> name=<span class="string">"pass"</span> /&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意:<br>1、所有表单控件（文本框、文本域、按钮、单选框、复选框等）都必须放在<code>&lt;form&gt;&lt;/form&gt;</code>标签之间（否则用户输入的信息可提交不到服务器上哦！）。<br>2、<code>method:post/get</code>的区别<br>Form中的get和post方法，在数据传输过程中分别对应了GET和POST方法。</p>
+<pre><code>- Get将表单中数据的按照variable=<span class="keyword">value</span>的形式，添加到<span class="keyword">action</span>所指向的URL后面，并且两者使用“?”连接，而各个变量之间使用“&amp;”连接；Post是将表单中的数据放在<span class="keyword">form</span>的数据体中，按照变量和值相对应的方式，传递到<span class="keyword">action</span>所指向URL。
+</code></pre><p>如下形式：<br>     <a href="http://www.imooc.com/test.asp?name=lilian&amp;password=12345678" target="_blank" rel="external">http://www.imooc.com/test.asp?name=lilian&amp;password=12345678</a></p>
+<pre><code>-<span class="ruby"> <span class="constant">Get</span>是不安全的，因为在传输过程，数据被存放在请求的<span class="constant">URL</span>地址中，这样就可能会有一些隐私的信息被第三方看到。
+</span>-<span class="ruby"> <span class="constant">Get</span>方式传输的数据量非常小，一般限制在 <span class="number">2</span>KB 左右，但是执行效率却比 <span class="constant">Post</span> 方法好；而 <span class="constant">Post</span> 方式传递的数据量相对较大，它是等待服务器来读取数据，不过也有字节限制，这是为了避免对服务器用大量数据进行恶意攻击，根据微软方面的说法，微软对用<span class="string">`Request.Form()`</span>可接收的最大数据有限制，<span class="constant">IIS4</span>中为 <span class="number">80</span>KB 字节，<span class="constant">IIS5</span> 中为 <span class="number">100</span>KB 字节。</span>
+</code></pre><p>综上所述，请尽量用 Post 方法。</p>
+</blockquote>
+<h3 id="文本、密码输入框">文本、密码输入框</h3><p>当用户要在表单中键入字母、数字等内容时，就会用到文本输入框。文本框也可以转化为密码输入框。<br>语法：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">form</span>&gt;</span><br><span class="line">   &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"text/password"</span> name=<span class="string">"名称"</span> value=<span class="string">"文本"</span> /&gt;</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>1、<code>type</code>：<br>   当<code>type=&quot;text&quot;</code>时，输入框为文本输入框;<br>   当<code>type=&quot;password&quot;</code>时, 输入框为密码输入框。<br>2、<code>name</code>：为文本框命名，以备后台程序ASP 、PHP使用。<br>3、<code>value</code>：为文本输入框设置默认值。(一般起到提示作用)<br>举例：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">form</span>&gt;</span><br><span class="line">  姓名：</span><br><span class="line">  &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"text"</span> name=<span class="string">"myName"</span>&gt;</span><br><span class="line">  &lt;<span class="keyword">br</span>/&gt;</span><br><span class="line">  密码：</span><br><span class="line">  &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"password"</span> name=<span class="string">"pass"</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>在浏览器的效果：<br>（插入图片：文本输入框）</p>
+<h3 id="文本域，支持多行文本输入">文本域，支持多行文本输入</h3><p>当用户需要在表单中输入大段文字时，需要用到文本输入域。<br>语法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">textarea</span>  <span class="attribute">rows</span>=<span class="value">"行数"</span> <span class="attribute">cols</span>=<span class="value">"列数"</span>&gt;</span>文本<span class="tag">&lt;/<span class="title">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>1、<code>&lt;textarea&gt;</code>标签是成对出现的，以<code>&lt;textarea&gt;</code>开始，以<code>&lt;/textarea&gt;</code>结束。<br>2、<code>cols</code>：多行输入域的列数。<br>3、<code>rows</code>：多行输入域的行数。<br>4、在<code>&lt;textarea&gt;&lt;/textarea&gt;</code>标签之间可以输入默认值。<br>举例：</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form  <span class="keyword">method</span>=<span class="string">"post"</span> action=<span class="string">"save.php"</span>&gt;</span><br><span class="line">        &lt;label&gt;联系我们&lt;/label&gt;</span><br><span class="line">        &lt;textarea cols=<span class="string">"50"</span> rows=<span class="string">"10"</span> &gt;在这里输入内容...&lt;/textarea&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意<br>这两个属性可用css样式的width和height来代替：col用width、row用height来代替。<br>浏览器显示结果：<br>（插入图片：文本输入域）<br>例：</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE HTML&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">title</span>&gt;</span>文本域<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">action</span>=<span class="value">"save.php"</span> <span class="attribute">method</span>=<span class="value">"post"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">label</span>&gt;</span>个人简介：<span class="tag">&lt;/<span class="title">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">textarea</span> <span class="attribute">cols</span>=<span class="value">"50"</span> <span class="attribute">rows</span>=<span class="value">"10"</span>&gt;</span>在这里输入内容...<span class="tag">&lt;/<span class="title">textarea</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">value</span>=<span class="value">"确定"</span>  <span class="attribute">name</span>=<span class="value">"submit"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"reset"</span> <span class="attribute">value</span>=<span class="value">"重置"</span>  <span class="attribute">name</span>=<span class="value">"reset"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">form</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>显示结果：<br>（插入图片：文本输入域）</p>
+<h3 id="单选框、复选框">单选框、复选框</h3><p>在使用表单设计调查表时，为了减少用户的操作，使用选择框是一个好主意，html中有两种选择框，即单选框和复选框，两者的区别是单选框中的选项用户只能选择一项，而复选框中用户可以任意选择多项，甚至全选。请看下面的例子:<br>语法：</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input   <span class="variable">type=</span><span class="string">"radio/checkbox"</span>   <span class="variable">value=</span><span class="string">"值"</span>    <span class="variable">name=</span><span class="string">"名称"</span>   <span class="variable">checked=</span><span class="string">"checked"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>1、<code>type</code>:<br>   当 <code>type=&quot;radio&quot;</code> 时，控件为单选框<br>   当 <code>type=&quot;checkbox&quot;</code> 时，控件为复选框<br>2、<code>value</code>：提交数据到服务器的值（后台程序PHP使用）<br>3、<code>name</code>：为控件命名，以备后台程序 ASP、PHP 使用<br>4、<code>checked</code>：当设置 checked=”checked” 时，该选项被<strong>默认选中</strong></p>
+<blockquote>
+<p>注意:<br>同一组的<strong>单选</strong>按钮，name 取值一定要一致。</p>
+</blockquote>
+<h3 id="使用下拉列表框，节省空间">使用下拉列表框，节省空间</h3>
       
     </div>
     <footer>
@@ -1162,6 +1533,10 @@ hexo <span class="variable">d =</span>= hexo deploy
   
     <li><a href="/categories/Hexo/">Hexo</a><small>2</small></li>
   
+    <li><a href="/categories/Java/">Java</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>1</small></li>
+  
     <li><a href="/categories/前端/">前端</a><small>1</small></li>
   
   </ul>
@@ -1173,9 +1548,17 @@ hexo <span class="variable">d =</span>= hexo deploy
   <h3 class="title">标签</h3>
   <ul class="entry">
   
+    <li><a href="/tags/Android/">Android</a><small>1</small></li>
+  
+    <li><a href="/tags/Java/">Java</a><small>1</small></li>
+  
     <li><a href="/tags/html/">html</a><small>1</small></li>
   
+    <li><a href="/tags/java/">java</a><small>1</small></li>
+  
     <li><a href="/tags/前端/">前端</a><small>1</small></li>
+  
+    <li><a href="/tags/数据处理/">数据处理</a><small>1</small></li>
   
   </ul>
 </div>
