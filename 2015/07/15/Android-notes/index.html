@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>java 去掉小数里多余的0和小数点 | bubble sky</title>
+  <title>Android notes | bubble sky</title>
   <meta name="author" content="bubble">
   
   <meta name="description" content="Coding world, changing world ^_^">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="java 去掉小数里多余的0和小数点"/>
+  <meta property="og:title" content="Android notes"/>
   <meta property="og:site_name" content="bubble sky"/>
 
   
@@ -87,11 +87,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-07-04T11:25:35.000Z"><a href="/2015/07/04/java-del-num-zero/">2015-07-04 19:25, 27th周 Saturday</a></time>
+        <time datetime="2015-07-15T03:17:30.000Z"><a href="/2015/07/15/Android-notes/">2015-07-15 11:17, 29th周 Wednesday</a></time>
       
       
   
-    <h1 class="title">java 去掉小数里多余的0和小数点</h1>
+    <h1 class="title">Android notes</h1>
   
 
     </header>
@@ -100,23 +100,25 @@
 
 		      <!-- Table of Contents -->
           
+            <div id="toc" class="toc-article">
+              <strong class="toc-title">文章目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xxx_cannot_be_resolved_or_is_not_a_field"><span class="toc-number">1.</span> <span class="toc-text">xxx cannot be resolved or is not a field</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java代码批量初始化按钮"><span class="toc-number">2.</span> <span class="toc-text">java代码批量初始化按钮</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java代码中设置控件属性"><span class="toc-number">3.</span> <span class="toc-text">java代码中设置控件属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#隐藏标题栏"><span class="toc-number">4.</span> <span class="toc-text">隐藏标题栏</span></a></li></ol>
+            </div>
           
-        <h1 id="一、将double/String转成整数">一、将double/String转成整数</h1><p>1.</p>
-<pre><code><span class="keyword">if</span>( double num % <span class="number">1</span>.<span class="number">0</span> == <span class="number">0</span>){
-    long l = (long)<span class="type">Double</span>.parseDouble(num);
-    <span class="type">String</span> <span class="literal">result</span> = <span class="type">Long</span>.toString(l);
+          
+        <h1 id="xxx_cannot_be_resolved_or_is_not_a_field">xxx cannot be resolved or is not a field</h1><p>更改</p>
+<pre><code><span class="preprocessor"><span class="keyword">import</span> Android.R;</span>
+</code></pre><p>为</p>
+<pre><code><span class="preprocessor"><span class="keyword">import</span> your.application.packagename.R;</span>
+</code></pre><h1 id="java代码批量初始化按钮">java代码批量初始化按钮</h1><pre><code>Button btn[] = <span class="built_in">new</span> Button[<span class="built_in">len</span>];
+<span class="keyword">for</span>(<span class="typename">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">len</span>; i++){
+    btn[i] = <span class="built_in">new</span> Button(this);
+    ……
 }
-</code></pre><p>2.</p>
-<pre><code><span class="keyword">if</span>( double num % <span class="number">1</span>.<span class="number">0</span> == <span class="number">0</span>){
-    <span class="type">DecimalFormat</span> df = new <span class="type">DecimalFormat</span>();
-    <span class="type">String</span> <span class="literal">result</span> = df.format(num);
-}
-</code></pre><h1 id="二、去掉小数多余的0">二、去掉小数多余的0</h1><pre><code><span class="built_in">String</span> <span class="built_in">num</span>;
-<span class="keyword">if</span>(<span class="built_in">num</span>.indexOf(<span class="string">"."</span>) &gt; <span class="number">0</span>){  
-    <span class="built_in">num</span>= <span class="built_in">num</span>.replaceAll(<span class="string">"0+?$"</span>, <span class="string">""</span>);<span class="comment">//去掉多余的0  </span>
-    <span class="built_in">num</span>= <span class="built_in">num</span>.replaceAll(<span class="string">"[.]$"</span>, <span class="string">""</span>);<span class="comment">//如最后一位是.则去掉  </span>
-}
-</code></pre>
+</code></pre><h1 id="java代码中设置控件属性">java代码中设置控件属性</h1><p>使用LayoutParams</p>
+<h1 id="隐藏标题栏">隐藏标题栏</h1><pre><code>requestWindowFeature<span class="list">(<span class="keyword">Window</span>.FEATURE_NO_TITLE)</span><span class="comment">;</span>
+</code></pre><p>#</p>
+
       
     </div>
     <footer>
@@ -124,13 +126,13 @@
         
   
   <div class="categories">
-    <a href="/categories/Java/">Java</a>
+    <a href="/categories/Android/">Android</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/Java/">Java</a>, <a href="/tags/数据处理/">数据处理</a>
+    <a href="/tags/Android/">Android</a>
   </div>
 
         <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"0","bdPos":"right","bdTop":"0"},"image":{"viewList":["tsina","qzone","sqq","renren","weixin","tieba"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","sqq","renren","weixin","tieba"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
@@ -145,17 +147,17 @@
 
 <nav id="pagination" >
     
-    <a href="/2015/07/15/Android-notes/" class="alignleft prev" >上一篇</a>
+    <a href="/2015/08/06/SimpleWord-dev-log/" class="alignleft prev" >上一篇</a>
     
     
-    <a href="/2015/05/31/Java4Android-notes/" class="alignright next" >下一篇</a>
+    <a href="/2015/07/04/java-del-num-zero/" class="alignright next" >下一篇</a>
     
     <div class="clearfix"></div>
 </nav>
 
 <section id="comment">
 	<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="/2015/07/04/java-del-num-zero/" data-title="java 去掉小数里多余的0和小数点" data-url="http://codingbubble.github.io/2015/07/04/java-del-num-zero/"></div>
+		<div class="ds-thread" data-thread-key="/2015/07/15/Android-notes/" data-title="Android notes" data-url="http://codingbubble.github.io/2015/07/15/Android-notes/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

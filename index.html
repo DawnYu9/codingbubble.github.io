@@ -88,6 +88,378 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-08-06T07:06:40.000Z"><a href="/2015/08/06/SimpleWord-dev-log/">2015-08-06 15:06, 32nd周 Thursday</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/08/06/SimpleWord-dev-log/">SimpleWord简词开发记录笔记</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+
+		      <!-- Table of Contents -->
+          
+          
+        <p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。</p>
+<p>2015-8-6 15:07:54</p>
+<h1 id="1-词库">1.词库</h1><p>找不到词库，暂时找到一个带音标和释义的考研单词excel（估计是好几年前的大纲词汇），就先用这个吧。<br>excel不能显示音标的话，还得下载字体TOPhonetic.ttf。</p>
+<h1 id="2-数据库">2.数据库</h1><p>1.excel导入SQLite<br>试了几个可视化工具，就SQLiyeStudio比较满意，也没有乱码。<br>开始时把excel另存为.csv文件，系统的分隔符是逗号，但是去控制面板改了，excel导出时还是逗号，不知道为什么，可能需要重启电脑吧，懒得重启。竟然忘记replace了！所以excel → 制表符分隔的txt → replace分隔符，就ok了^_^</p>
+<ol>
+<li><h1 id="3-优化">3.优化</h1><p>1.延迟切换fragment</p>
+<p> public void switchContent(Fragment fragment) {</p>
+<pre><code>contentFragment = fragment;
+getFragmentManager<span class="literal">()</span>.beginTransaction<span class="literal">()</span>.replace(<span class="type">R</span>.id.content_frame, fragment).commit<span class="literal">()</span>;
+</code></pre><p> //  sm.showContent();</p>
+<pre><code><span class="type">Handler</span> h = <span class="keyword">new</span> <span class="type">Handler</span><span class="literal">()</span>;
+h.postDelayed(<span class="keyword">new</span> <span class="type">Runnable</span><span class="literal">()</span> {
+    public void run<span class="literal">()</span> {
+        sm.showContent<span class="literal">()</span>;
+    }
+}, <span class="number">50</span>);
+</code></pre><p> }</p>
+</li>
+</ol>
+<p>2015-8-10 20:54:25</p>
+<h1 id="1-单词本界面想做成卡片来滑动">1.单词本界面想做成卡片来滑动</h1><h2 id="1-RecyclerView">1.RecyclerView</h2><p>关于引入V7包：<a href="http://wp.aesean.com/?p=185" target="_blank" rel="external">http://wp.aesean.com/?p=185</a><br>2015-8-11 20:44:55</p>
+<ol>
+<li>继承RecyclerView.Adapter出现<em>The hierarchy of the type ViewHolder is inconsistent</em>，因为菜单用的SlidingMenu，support-v4包可能不是最新的，将SlidingMenu的libs下的v4包替换成最新的就可以了。</li>
+<li><p><em>Call requires API level 21 (current min is 17): android.content.Context#getDrawable</em><br><a href="http://stackoverflow.com/questions/29041027/android-getresources-getdrawable-deprecated-api-22" target="_blank" rel="external">解决</a></p>
+<p> ContextCompat.getDrawable(this, R.drawable.your_drawable)</p>
+</li>
+</ol>
+<p>2015-8-12 </p>
+<h1 id="在actionbar添加spinner下拉列表">在actionbar添加spinner下拉列表</h1><p>1.actionbar.xml</p>
+<pre><code><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>  
+<span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>  
+<span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>  
+<span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>  
+<span class="attribute">android:gravity</span>=<span class="value">"center_vertical"</span>  
+<span class="attribute">android:orientation</span>=<span class="value">"horizontal"</span> &gt;</span>  
+
+    <span class="tag">&lt;<span class="title">TextView</span>  
+        <span class="attribute">android:id</span>=<span class="value">"@+id/action_bar_title"</span>  
+        <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span>  
+        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>          
+        <span class="attribute">android:text</span>=<span class="value">"下拉列表"</span> /&gt;</span>  
+
+    <span class="comment">&lt;!-- 下拉列表  --&gt;</span>  
+    <span class="tag">&lt;<span class="title">Spinner</span>  
+        <span class="attribute">android:id</span>=<span class="value">"@+id/action_bar_spinner"</span>  
+        <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span>  
+        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>  
+        &gt;</span>  
+    <span class="tag">&lt;/<span class="title">Spinner</span>&gt;</span>  
+
+<span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span>  
+</code></pre><p>2.在activity的onCreate()或fragment的onCreateView()中添加代码，初始化下拉列表数据</p>
+<pre><code><span class="comment">//使自定义的普通View能在title栏显示，actionBar.setCustomView能起作用</span>
+getActivity().getActionBar().setDisplayShowCustomEnabled(<span class="literal">true</span>); 
+<span class="comment">//初始化下拉列表</span>
+View actionbarLayout = view.inflate(activity,R.layout.actionbar, <span class="literal">null</span>);  
+mActionbarSpinner = (Spinner) actionbarLayout.findViewById(R.id.actionbar_spinner);  
+
+<span class="comment">//初始化下拉列表数据</span>
+<span class="comment">//方法一  </span>
+initSpinnerMethod1();  
+<span class="comment">//方法二  </span>
+<span class="comment">//initSpinnerMethod2();  </span>
+
+<span class="comment">//事件监听  </span>
+mActionbarSpinner.setOnItemSelectedListener(<span class="keyword">new</span> SpinnerItemSelectedListener());  
+
+<span class="comment">//在Bar上显示定制view  </span>
+actionBar.setCustomView(actionbarLayout); 
+</code></pre><p>初始化下拉列表数据：<br>（1） 在strings.xml添加数组</p>
+<pre><code>&lt;<span class="type">string</span>-array <span class="property">name</span>=<span class="string">"spinner_list"</span> &gt;  
+&lt;<span class="property">item</span>&gt;item1&lt;/<span class="property">item</span>&gt;  
+&lt;<span class="property">item</span>&gt;item2&lt;/<span class="property">item</span>&gt;  
+&lt;<span class="property">item</span>&gt;item3&lt;/<span class="property">item</span>&gt;   
+&lt;/<span class="type">string</span>-array&gt;  
+</code></pre><p>代码：</p>
+<pre><code><span class="keyword">private</span> void initSpinnerMethod1<span class="literal">()</span> {  
+     <span class="type">String</span><span class="literal">[]</span> mItems = getResources<span class="literal">()</span>.getStringArray(<span class="type">R</span>.<span class="built_in">array</span>.spinner_list);  
+     <span class="type">ArrayAdapter</span>&lt;<span class="type">String</span>&gt; spinnerAdapter = <span class="keyword">new</span> <span class="type">ArrayAdapter</span>&lt;<span class="type">String</span>&gt;(activity,android.<span class="type">R</span>.layout.simple_spinner_item, mItems);  
+     spinnerAdapter.setDropDownViewResource(android.<span class="type">R</span>.layout.simple_spinner_dropdown_item);  
+     mActionbarSpinner.setAdapter(spinnerAdapter);  
+}  
+</code></pre><p>（2）在代码中添加数组</p>
+<pre><code><span class="keyword">private</span> <span class="built_in">List</span><span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> getData(){          
+    <span class="built_in">List</span><span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> <span class="built_in">data</span> <span class="subst">=</span> <span class="literal">new</span> ArrayList<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span>();  
+    <span class="built_in">data</span><span class="built_in">.</span>add(<span class="string">"item1"</span>);  
+    <span class="built_in">data</span><span class="built_in">.</span>add(<span class="string">"item2"</span>);  
+    <span class="built_in">data</span><span class="built_in">.</span>add(<span class="string">"item3"</span>);          
+    <span class="keyword">return</span> <span class="built_in">data</span>;  
+}  
+
+<span class="keyword">private</span> <span class="literal">void</span> initSpinnerMethod2()  {  
+    mActionbarSpinner<span class="built_in">.</span>setAdapter(  
+            <span class="literal">new</span> ArrayAdapter<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span>(activity,   
+                    android<span class="built_in">.</span>R<span class="built_in">.</span>layout<span class="built_in">.</span>simple_expandable_list_item_1,getData()));    
+}  
+</code></pre><p>3.监听action_bar的spinner的item选择事件</p>
+<pre><code><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">SpinnerItemSelectedListener</span> <span class="keyword">implements</span> <span class="title">OnItemSelectedListener</span> </span>{  
+
+    <span class="annotation">@Override</span>  
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemSelected</span><span class="params">(AdapterView&lt;?&gt; arg0, View view, <span class="keyword">int</span> position,<span class="keyword">long</span> arg3)</span> </span>{  
+         String str= arg0.getItemAtPosition(position).toString();  
+         Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"你选择的是:"</span>+str, <span class="number">2000</span>).show();             
+    }  
+
+    <span class="annotation">@Override</span>  
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNothingSelected</span><span class="params">(AdapterView&lt;?&gt; arg0)</span> </span>{}  
+}  
+</code></pre><h1 id="同一个activity的不同fragment显示不同的actionbar">同一个activity的不同fragment显示不同的actionbar</h1><p>在单词本界面的actionbar想显示一个spinner下拉选择单词本（暂时未加入切换单词本的功能），在WordBookFragment的<code>onCreateView()</code>里设置自定义actionbar</p>
+<pre><code>getActivity<span class="literal">()</span>.getActionBar<span class="literal">()</span>.setDisplayShowCustomEnabled(<span class="literal">true</span>);
+</code></pre><p>别的fragment里设置</p>
+<pre><code>getActivity<span class="literal">()</span>.getActionBar<span class="literal">()</span>.setDisplayShowCustomEnabled(<span class="literal">false</span>);
+</code></pre><p>或者加载另外的view。</p>
+<h1 id="不同fragment的标题">不同fragment的标题</h1><p>分别在<code>onCreateView()</code>里设置</p>
+<pre><code>getActivity<span class="comment">()</span>.setTitle<span class="comment">("标题")</span>;
+</code></pre><p>若写成</p>
+<pre><code>getActivity<span class="literal">()</span>.getActionBar<span class="literal">()</span>.setTitle(<span class="string">"标题"</span>);    
+</code></pre><p>会将所有fragment设置成同一标题</p>
+<h1 id="在fragment里获取actionbar">在fragment里获取actionbar</h1><p><em>cannot convert from android.support.v7.app.ActionBar to android.app.ActionBar</em></p>
+<pre><code><span class="attribute">ActionBar actionBar </span>=<span class="string"> getActivity.getActionBar();</span>
+</code></pre><p>使用quick fix：</p>
+<pre><code>android.<span class="keyword">app</span>.ActionBar actionBar;  
+</code></pre><p>2015-8-18</p>
+<h1 id="控件左右对齐">控件左右对齐</h1><p>使用<code>RelativeLayout</code></p>
+<pre><code><span class="label">android:</span>layout_alignParentRight=<span class="string">"true"</span>
+</code></pre><p>2015-8-19</p>
+<h1 id="判断程序是否首次运行">判断程序是否首次运行</h1><p>使用<code>SharedPreferences</code>，在<code>onCreate()</code>里：</p>
+<pre><code>SharedPreferences preferences;  
+Editor <span class="keyword">editor</span>;  
+<span class="keyword">if</span> (preferences.getBoolean(<span class="string">"firststart"</span>, true)) {  <span class="comment">//获取boolean值，可为缺省值，若缺省，则返回参数二的值</span>
+    <span class="keyword">editor</span> = preferences.edit();  
+    <span class="keyword">editor</span>.putBoolean(<span class="string">"firststart"</span>, false);  <span class="comment">//若是首次，则改为false</span>
+    <span class="keyword">editor</span>.commit();  <span class="comment">//提交</span>
+}  
+</code></pre><p>2015-8-20</p>
+<h1 id="状态栏通知">状态栏通知</h1><h2 id="可删除">可删除</h2><pre><code>NotificationCompat.Builder mBuilder =
+    <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>)
+    .setSmallIcon(R.drawable.notification_icon)
+    .setContentTitle(<span class="string">"My notification"</span>)
+    .setContentText(<span class="string">"Hello World!"</span>);
+<span class="comment">// Creates an explicit intent for an Activity in your app</span>
+Intent resultIntent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, ResultActivity.<span class="keyword">class</span>);
+<span class="comment">// The stack builder object will contain an artificial back stack for the</span>
+<span class="comment">// started Activity.</span>
+<span class="comment">// This ensures that navigating backward from the Activity leads out of</span>
+<span class="comment">// your application to the Home screen.</span>
+TaskStackBuilder stackBuilder = TaskStackBuilder.create(<span class="keyword">this</span>);
+<span class="comment">// Adds the back stack for the Intent (but not the Intent itself)</span>
+stackBuilder.addParentStack(ResultActivity.<span class="keyword">class</span>);
+<span class="comment">// Adds the Intent that starts the Activity to the top of the stack</span>
+stackBuilder.addNextIntent(resultIntent);
+PendingIntent resultPendingIntent =
+        stackBuilder.getPendingIntent(
+            <span class="number">0</span>,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        );
+mBuilder.setContentIntent(resultPendingIntent);
+NotificationManager mNotificationManager =
+    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+<span class="comment">// mId allows you to update the notification later on.</span>
+mNotificationManager.notify(mId, mBuilder.build());
+</code></pre><h2 id="常驻状态栏（显示在“进行中/ongoing”）">常驻状态栏（显示在“进行中/ongoing”）</h2><h3 id="Notification">Notification</h3><ul>
+<li><p>低于API 11</p>
+<p>  notification.flags |= Notification.FLAG_NO_CLEAR;</p>
+</li>
+<li><p>高于API 11 或者 使用Android Support Library</p>
+<p>  //获取状态通知栏管理<br>  NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);<br>  //实例化通知栏构造器<br>  NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);<br>  mBuilder.setSmallIcon(R.drawable.ic_launcher);//设置通知小图标</p>
+<pre><code>.<span class="function"><span class="title">setContentTitle</span><span class="params">(<span class="string">"标题"</span>)</span></span>  <span class="comment">//设置通知栏标题</span>
+.<span class="function"><span class="title">setContentText</span><span class="params">(<span class="string">"内容"</span>)</span></span>   <span class="comment">//设置通知栏显示内容</span>
+.<span class="function"><span class="title">setContentIntent</span><span class="params">(getDefalutIntent(Notification.FLAG_AUTO_CANCEL)</span></span>) <span class="comment">//设置通知栏点击意图</span>
+.<span class="function"><span class="title">setNumber</span><span class="params">(number)</span></span> <span class="comment">//设置通知集合的数量</span>
+.<span class="function"><span class="title">setTicker</span><span class="params">(<span class="string">"通知来啦"</span>)</span></span> <span class="comment">//通知首次出现在通知栏，带上升动画效果的</span>
+.<span class="function"><span class="title">setWhen</span><span class="params">(System.currentTimeMillis()</span></span>)<span class="comment">//通知产生的时间，会在通知信息里显示，一般是系统获取到的时间</span>
+.<span class="function"><span class="title">setPriority</span><span class="params">(Notification.PRIORITY_DEFAULT)</span></span> <span class="comment">//设置该通知优先级</span>
+.<span class="function"><span class="title">setAutoCancel</span><span class="params">(true)</span></span><span class="comment">//设置这个标志当用户单击面板就可以让通知将自动取消  </span>
+.<span class="function"><span class="title">setOngoing</span><span class="params">(false)</span></span><span class="comment">//ture，设置他为一个正在进行的通知。他们通常是用来表示一个后台任务,用户积极参与(如播放音乐)或以某种方式正在等待,因此占用设备(如一个文件下载,同步操作,主动网络连接)</span>
+.<span class="function"><span class="title">setDefaults</span><span class="params">(Notification.DEFAULT_VIBRATE)</span></span><span class="comment">//向通知添加声音、闪灯和振动效果的最简单、最一致的方式是使用当前的用户默认设置，使用defaults属性，可以组合</span>
+</code></pre><p>  //Notification.DEFAULT_ALL  Notification.DEFAULT_SOUND 添加声音 // requires VIBRATE permission</p>
+</li>
+</ul>
+<h3 id="service前台服务">service前台服务</h3><p>在service里</p>
+<pre><code>startForeground<span class="list">(<span class="keyword">mID</span>, notification)</span><span class="comment">;     //设置前台服务</span>
+</code></pre><h1 id="关于服务service">关于服务service</h1><ul>
+<li>启动service的时候，<code>onCreate</code>方法只有第一次会调用，<code>onStartCommand</code>和<code>onStart</code>（已被淘汰）每次都被调用。<code>onStartCommand</code>会告诉系统如何重启服务，如判断是否异常终止后重新启动，在何种情况下异常终止。</li>
+<li>2.0 API level之后，实现onStart等同于重写onStartCommand并返回START_STICKY 。</li>
+<li>2.0 API level之后，onStart()方法被onStartCommand()取代了。</li>
+</ul>
+<h1 id="保存、恢复spinner的选中项">保存、恢复spinner的选中项</h1><h2 id="保存">保存</h2><p>在<code>onItemSelected()</code>中</p>
+<pre><code><span class="built_in">int</span> userChoice = spinner.getSelectedItemPosition<span class="literal">()</span>;
+<span class="type">SharedPreferences</span> sharedPref = getSharedPreferences(<span class="string">"FileName"</span>,<span class="number">0</span>);
+<span class="type">SharedPreferences</span>.<span class="type">Editor</span> prefEditor = sharedPref.edit<span class="literal">()</span>;
+prefEditor.putInt(<span class="string">"userChoiceSpinner"</span>,usersChoice);
+prefEditor.commit<span class="literal">()</span>;
+</code></pre><h2 id="恢复">恢复</h2><pre><code>SharedPreferences <span class="variable">sharedPref =</span> getSharedPreferences(<span class="string">"FileName"</span>,MODE_PRIVATE);
+int <span class="variable">spinnerValue =</span> sharedPref.getInt<span class="string">"userChoiceSpinner"</span>,-<span class="number">1</span>);
+<span class="keyword">if</span>(spinnerValue != -<span class="number">1</span>) 
+    spinner.setSelection(spinnerValue);
+</code></pre><h1 id="关于Activity生命周期该做的事情">关于Activity生命周期该做的事情</h1><h2 id="onCreate()">onCreate()</h2><ul>
+<li>使用<code>onCreate()</code>初始化你的Activity：创建UI、为类的变量分配引用、绑定数据到控件、创建Service和线程。</li>
+<li>为避免快速的创建和销毁对象引发额外的垃圾回收，如果你的应用程序正常创建一套对象，建议它们在<code>onCreate()</code>中创建，因为在Activity的生命周期中它只被调用一次。</li>
+<li><code>onCreate()</code>里面尽量少做事情，避免程序启动太久都看不到界面。</li>
+</ul>
+<h2 id="onResume()">onResume()</h2><p>当从<code>Paused</code>状态恢复activity时，系统会调用<code>onResume()</code>方法。<br>系统每次调用<code>onResume()</code>时，activity都处于前台，包括第一次创建的时候。所以，应该实现<code>onResume()</code>来初始化那些在<code>onPause</code>方法里面释放掉的组件，并执行那些activity每次进入<code>Resumed state</code>都需要的初始化动作 (例如开始动画与初始化那些只有在获取用户焦点时才需要的组件)</p>
+<h2 id="onPause()">onPause()</h2><ul>
+<li>不应使用<code>onPause()</code>来保存用户改变的数据 (例如填入表格中的个人信息) 到永久存储(File或者DB)上。仅仅当确认用户期待那些改变能够被自动保存的时候(例如正在撰写邮件草稿)，才把那些数据存到永久存储 。</li>
+<li>避免在<code>onPause()</code>时执行CPU-intensive 的工作，例如写数据到DB，因为它会导致切换到下一个activity变得缓慢(应该把那些heavy-load的工作放到onStop()去做)。</li>
+<li>如果activity实际上是要被Stop，为了切换的顺畅应减少在OnPause()方法里面的工作量。</li>
+<li>停止动画或者是其他正在运行的操作，那些都会导致CPU的浪费.</li>
+<li>提交在用户离开时期待保存的内容(例如邮件草稿).</li>
+<li>释放系统资源，例如broadcast receivers, sensors (比如GPS), 或者是其他任何会影响到电量的资源。</li>
+</ul>
+<h2 id="onStop()">onStop()</h2><ul>
+<li>当activity调用<code>onStop()</code>方法, activity不再可见，并且应该释放那些不再需要的所有资源。一旦activity停止了，系统会在需要内存空间时摧毁它的实例。极端情况下，系统会直接杀死我们的app进程，并不执行activity的<code>onDestroy()</code>回调方法, 因此我们需要使用<code>onStop()</code>来释放资源，从而避免内存泄漏。<br>所以我们应该使用<code>onStop()</code>来执行那些耗时的释放资源的操作，例如往数据库写信息。<br>-无论什么原因导致activity停止，系统总是会在<code>onStop()</code>之前调用<code>onPause()</code>方法。</li>
+</ul>
+<h2 id="onDestroy()">onDestroy()</h2><p>大多数app并不需要实现这个方法，因为局部类的references会随着activity的销毁而销毁，并且我们的activity应该在<code>onPause()</code>与<code>onStop()</code>中执行清除activity资源的操作。然而，如果activity含有在onCreate调用时创建的后台线程，或者是其他有可能导致内存泄漏的资源，则应该在<code>OnDestroy()</code>时进行资源清理，杀死后台线程。</p>
+<p>除非程序在<code>onCreate()</code>方法里面就调用了<code>finish()</code>方法，系统通常是在执行了<code>onPause()</code>与<code>onStop()</code>之后再调用<code>onDestroy()</code>。在某些情况下，例如我们的activity只是做了一个临时的逻辑跳转的功能，它只是用来决定跳转到哪一个activity，这样的话，需要在onCreate里面调用<code>finish</code>方法，这样系统会直接调用<code>onDestory</code>，跳过生命周期中的其他方法。</p>
+<h2 id="与Activity生命周期结合的应用场景">与Activity生命周期结合的应用场景</h2><ul>
+<li>与广播(Broadcast)结合<br>在<code>onResume</code>注册广播(registerLinstener)，在<code>onPause</code>注销广播(unregisterLinstener)。<br>例如：做”摇一摇”功能（传感器）、监听网络变化，就可以在onResume中注册监听，在onPause里注销掉，已节省资源提高效率。</li>
+<li>与服务(Service)结合<br>在<code>onStartCommand</code>绑定服务(bindService)，在<code>onStop</code>中取消绑定(unbindService)。<br>例如：需要通过Service定时更新UI上的数据，而Activity的可见周期在<code>onStart</code>与<code>onStop</code>之间，那么就可以再<code>onStart</code>时启动服务，在<code>onStop</code>时停止服务。为了节约系统资源，除了提高用户体验以外，开发人员应尽可能的优化程序。</li>
+<li>与Cursor结合<br>使用<code>managedQuery让Activity</code>帮你管理<code>Cursor</code>的生命周期，不用自己去close。</li>
+<li>释放资源<br>可以在<code>onDestory</code>中释放一些资源。比如可以在<code>onDestory</code>时调用MediaPlayer的release。</li>
+</ul>
+<h1 id="AlarmManager定时启动Service">AlarmManager定时启动Service</h1><pre><code><span class="keyword">private</span> <span class="keyword">static</span> AlarmManager am;
+<span class="keyword">private</span> <span class="keyword">static</span> PendingIntent pendingIntent;
+<span class="comment">/**
+ * 使用 AlarmManager 来 定时启动服务
+ */</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">startPendingIntent</span><span class="params">(Context context)</span> </span>{
+    am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+    Intent intent = <span class="keyword">new</span> Intent(context, MyService.<span class="keyword">class</span>);<span class="comment">//启动示例Service</span>
+    pendingIntent = PendingIntent.getService(context, <span class="number">0</span>, intent, <span class="number">0</span>);
+    <span class="keyword">long</span> interval = DateUtils.MINUTE_IN_MILLIS * <span class="number">30</span>;<span class="comment">// 30分钟一次</span>
+    <span class="keyword">long</span> firstWake = System.currentTimeMillis() + interval;
+    am.setRepeating(AlarmManager.RTC, firstWake, interval, pendingIntent);
+}
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">stopPendingIntent</span><span class="params">()</span> </span>{
+    <span class="keyword">if</span> (pendingIntent != null) {
+        pendingIntent.cancel();
+    }
+};
+</code></pre><p>参考：<a href="http://www.cnblogs.com/code4app/p/3688115.html" target="_blank" rel="external">android 使用AlarmManager定时启动service</a></p>
+<h1 id="Switch开关">Switch开关</h1><pre><code><span class="keyword">Switch</span> mSwitch = (<span class="keyword">Switch</span>)view.findViewById(R.id.setting_switch_notification_word); 
+    mSwitch.setOnCheckedChangeListener(<span class="keyword">new</span> OnCheckedChangeListener(){
+
+        <span class="keyword">public</span> <span class="keyword">void</span> onCheckedChanged(CompoundButton buttonView,<span class="keyword">boolean</span> isChecked) {
+            <span class="keyword">if</span> (isChecked) {    
+                <span class="comment">// switch on，开启通知栏单词</span>
+                intentNotiService = <span class="keyword">new</span> Intent(mContext, ServiceNotification.<span class="keyword">class</span>);
+                pendingIntentNotiService = PendingIntent.getService(mContext, <span class="number">0</span>, intentNotiService, <span class="number">0</span>);
+                minute = <span class="number">1</span>;
+                startPendingIntent(pendingIntentNotiService);
+            } <span class="keyword">else</span> {
+                <span class="comment">//switch off，关闭通知栏单词</span>
+                stopPendingIntent(pendingIntentNotiService);
+            }
+        }
+    });
+</code></pre><p>2015-8-21</p>
+<h1 id="解决定时启动通知服务时pop_up无效">解决定时启动通知服务时pop up无效</h1><p>在Service的<code>onStartCommand()</code>里更新每次Notification需要更新的内容，如单词信息。无需改动的信息在<code>onCreate()</code>里初始化。</p>
+<ul>
+<li><p>原代码：</p>
+<p>  @Override<br>  public int onStartCommand(Intent intent, int flags, int startId) {</p>
+<pre><code>mBuilder
+    .<span class="built_in">set</span>ContentText(WordsDB.wordClass.<span class="keyword">to</span>String())   //测试用的单词信息
+    .<span class="built_in">set</span>When(System.currentTimeMillis())    //更新的时间
+    .<span class="built_in">set</span>Ticker(WordsDB.wordClass.<span class="keyword">to</span>String());   //在通知栏动画向上弹出
+startForeground(notifyID, mBuilder.build());    //display <span class="keyword">in</span> <span class="string">"ongoing"</span>
+Log.d(<span class="string">"通知栏单词"</span>, WordsDB.wordClass.<span class="keyword">to</span>String());
+return super.<span class="keyword">on</span>StartCommand(intent, <span class="keyword">flags</span>, startId);
+</code></pre><p>  }<br>按钮点击时会更新notification，也会在通知栏弹出提示。<br>但使用<code>AlarmManager</code>定时启动该service时，会更新内容，但不会在通知栏弹出提示，只能自己打开通知栏才能查看到更新。</p>
+</li>
+<li><p>改动：使用<code>NotificationManager.notify()</code></p>
+<p>  @Override<br>  public int onStartCommand(Intent intent, int flags, int startId) {</p>
+<pre><code>mBuilder
+    .<span class="built_in">set</span>ContentText(WordsDB.wordClass.<span class="keyword">to</span>String())
+    .<span class="built_in">set</span>When(System.currentTimeMillis())
+    .<span class="built_in">set</span>Ticker(WordsDB.wordClass.<span class="keyword">to</span>String());   //popup <span class="keyword">in</span> Status Bar
+mNotificationManager.notify(notifyID, notification);    //update data
+startForeground(notifyID, mBuilder.build());    //display <span class="keyword">in</span> <span class="string">"ongoing"</span>
+Log.d(<span class="string">"通知栏单词"</span>, WordsDB.wordClass.<span class="keyword">to</span>String());
+return super.<span class="keyword">on</span>StartCommand(intent, <span class="keyword">flags</span>, startId);
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p><code>notify</code>必须在<code>startForeground</code>前面，先更新通知的内容，再显示在前台。<br><code>notifyID</code>需一致。</p>
+<p>参考：<a href="http://stackoverflow.com/questions/5528288/how-do-i-update-the-notification-text-for-a-foreground-service-in-android" target="_blank" rel="external">How do I update the notification text for a foreground service in Android?</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-15T03:17:30.000Z"><a href="/2015/07/15/Android-notes/">2015-07-15 11:17, 29th周 Wednesday</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/07/15/Android-notes/">Android notes</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+
+		      <!-- Table of Contents -->
+          
+          
+        <h1 id="xxx_cannot_be_resolved_or_is_not_a_field">xxx cannot be resolved or is not a field</h1><p>更改</p>
+<pre><code><span class="preprocessor"><span class="keyword">import</span> Android.R;</span>
+</code></pre><p>为</p>
+<pre><code><span class="preprocessor"><span class="keyword">import</span> your.application.packagename.R;</span>
+</code></pre><h1 id="java代码批量初始化按钮">java代码批量初始化按钮</h1><pre><code>Button btn[] = <span class="built_in">new</span> Button[<span class="built_in">len</span>];
+<span class="keyword">for</span>(<span class="typename">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">len</span>; i++){
+    btn[i] = <span class="built_in">new</span> Button(this);
+    ……
+}
+</code></pre><h1 id="java代码中设置控件属性">java代码中设置控件属性</h1><p>使用LayoutParams</p>
+<h1 id="隐藏标题栏">隐藏标题栏</h1><pre><code>requestWindowFeature<span class="list">(<span class="keyword">Window</span>.FEATURE_NO_TITLE)</span><span class="comment">;</span>
+</code></pre><p>#</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-07-04T11:25:35.000Z"><a href="/2015/07/04/java-del-num-zero/">2015-07-04 19:25, 27th周 Saturday</a></time>
       
       
@@ -397,43 +769,6 @@
 <li>抽象类可以有构造函数吗？<br>24为什么用抽象类<br>25包和访问权限_1<br>26包和访问权限_2<br>27包和访问权限_3<br>28接口的基本语法<br>29接口的应用<br>30 Java当中的异常_1<br>31 Java当中的异常_2<br>32 Java当中的IO_1<br>33 Java当中的IO_2<br>34 Java当中的IO_3<br>35内部类和匿名内部类<br>36 Java当中的线程_1<br>37 Java当中的线程_2<br>38 Java当中的线程_3<br>39深入同步语法<br>40 Java当中的数组<br>41类集框架_1<br>42类集框架_2<br>43类集框架_3<br>44 equals函数的作用<br>45 hashCode()与toString()<br>46开发工具之Eclipse_1<br>47开发工具之Eclipse_2<br>48开发工具之Eclipse_3<br>49开发工具之Eclipse_4<br>50综合练习_1<br>51综合练习_2<br>52综合练习_3定义输入输出格式<br>53综合练习_4</li>
 </ol>
 
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-05-30T02:11:09.000Z"><a href="/2015/05/30/Android-notes/">2015-05-30 10:11, 22nd周 Saturday</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/05/30/Android-notes/">Android notes</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-
-		      <!-- Table of Contents -->
-          
-          
-        
       
     </div>
     <footer>
@@ -1531,11 +1866,11 @@ hexo <span class="variable">d =</span>= hexo deploy
   <h3 class="title">分类</h3>
   <ul class="entry">
   
+    <li><a href="/categories/Android/">Android</a><small>1</small></li>
+  
     <li><a href="/categories/Hexo/">Hexo</a><small>2</small></li>
   
     <li><a href="/categories/Java/">Java</a><small>2</small></li>
-  
-    <li><a href="/categories/java/">java</a><small>0</small></li>
   
     <li><a href="/categories/前端/">前端</a><small>1</small></li>
   
@@ -1548,13 +1883,11 @@ hexo <span class="variable">d =</span>= hexo deploy
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/Android/">Android</a><small>1</small></li>
+    <li><a href="/tags/Android/">Android</a><small>2</small></li>
   
     <li><a href="/tags/Java/">Java</a><small>2</small></li>
   
     <li><a href="/tags/html/">html</a><small>1</small></li>
-  
-    <li><a href="/tags/java/">java</a><small>0</small></li>
   
     <li><a href="/tags/前端/">前端</a><small>1</small></li>
   
