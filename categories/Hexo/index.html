@@ -28,245 +28,73 @@
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
-    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css" type="text/css">
-    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css" type="text/css">
-    <link rel="stylesheet" href="/assets/css/tranquilpeak.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
     <!--STYLES END-->
     
 </head>
 
     <body>
         <div id="blog">
-            <header id="header" data-behavior="2">
+            <header id="header" data-behavior="undefined">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <h1 class="header-title">
         <a class="header-title-link" href="/ ">bubble sky</a>
     </h1>
     
 </header>
-            <nav id="sidebar" data-behavior="2">
+            <nav id="sidebar" data-behavior="undefined">
     
-    
-        <ul class="sidebar-buttons">
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="/ "
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
-                    <span class="sidebar-button-desc">Início</span>
-                </a>
-        </li>
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="/all-categories"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-                    <span class="sidebar-button-desc">Categorias</span>
-                </a>
-        </li>
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="/all-tags"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-                    <span class="sidebar-button-desc">Tags</span>
-                </a>
-        </li>
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="/all-archives"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-                    <span class="sidebar-button-desc">Arquivo</span>
-                </a>
-        </li>
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link st-search-show-outputs"
-                         href="/#search"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
-                    <span class="sidebar-button-desc">Pesquisar</span>
-                </a>
-        </li>
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="/#about"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
-                    <span class="sidebar-button-desc">Sobre</span>
-                </a>
-        </li>
-        
-    </ul>
-    
-        <ul class="sidebar-buttons">
-        
-    </ul>
-    
-        <ul class="sidebar-buttons">
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="/atom.xml"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
-                    <span class="sidebar-button-desc">RSS</span>
-                </a>
-        </li>
-        
-    </ul>
     
 </nav>
 
             
-            <div id="main" data-behavior="2"
+            <div id="main" data-behavior="undefined"
                  class="
                         hasCoverMetaIn
                         ">
                 
     
-<section class="postShorten-group main-content-wrap">
-    
+<div id="archives" class="main-content-wrap">
+    <form id="filter-form" action="#">
+        <input name="date" type="text" class="form-control input--xlarge" placeholder="Search a date" autofocus="autofocus">
+    </form>
+    <h5 class="archive-result text-color-base text-xlarge"></h5>
+    <section class="boxes">
         
-        
-                <article class="postShorten" itemscope itemType="http://schema.org/BlogPosting">
-        
-            <div class="postShorten-wrap">
-                <div class="postShorten-header">
-                    <h1 class="postShorten-title" itemprop="headline">
-                        
-                                <a class="link-unstyled" href="/2015/05/08/个性化你的Hexo/">个性化你的Hexo-笔记</a>
-                        
-                    </h1>
-                    <div class="postShorten-meta">
-    <time itemprop="datePublished" content="Fri May 08 2015 22:09:02 GMT+0800">
-	
-		    08/05/2015
-    	
-    </time>
-    
-        <span>em </span>
-        
-    <a class="category-link" href="/categories/Hexo/">Hexo</a>
-
-
-    
-</div>
-                </div>
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    
-                        <p>
-                            注意：1.修改配置文件时注意YAML语法，参数冒号:后一定要留空格2.若出现中文乱码请修改文件编码格式为UTF-8
-hexo目录介绍默认目录结构：
-.
-├── .deploy #执行hexo deploy命令部署到GitHub上的内容目录
-├── public #执行hexo generate命令，输出的静态网页内容目录
-├── scaffolds #layout模板文件目录，其中的md文件可以添<br>
-                    
-                    
-                        
-                            <a href="/2015/05/08/个性化你的Hexo/" class="postShorten-excerpt_link link ">Continuar leitura</a>
-                            
-                        
-                    
-                    
-                        </p>
-                    
-                </div>
-            </div>
             
-        </article>
-    
-        
-        
-                <article class="postShorten" itemscope itemType="http://schema.org/BlogPosting">
-        
-            <div class="postShorten-wrap">
-                <div class="postShorten-header">
-                    <h1 class="postShorten-title" itemprop="headline">
-                        
-                                <a class="link-unstyled" href="/2015/05/07/Github-Hexo搭建个人博客/">GitHub+Hexo搭建个人博客-笔记</a>
-                        
-                    </h1>
-                    <div class="postShorten-meta">
-    <time itemprop="datePublished" content="Thu May 07 2015 23:30:17 GMT+0800">
-	
-		    07/05/2015
-    	
-    </time>
-    
-        <span>em </span>
-        
-    <a class="category-link" href="/categories/Hexo/">Hexo</a>
-
-
-    
-</div>
-                </div>
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    
-                        <p>
-                            刚入驻GitHub的菜鸟一枚，第一篇博文就用来做搭建博客的笔记吧~
-本文针对windows平台和Hexo 3.x
-环境准备，搭建本地博客安装Node.jsNode.js官网下载
-安装GitGit官网下载
-
-cmd下使用Git命令 配置系统环境变量Path，添加如下2个路径，路径之间用英文分号”;”隔开
-git安装路径中bin的位置，如：D:\Program Files\Git\bin
-git安装路<br>
-                    
-                    
-                        
-                            <a href="/2015/05/07/Github-Hexo搭建个人博客/" class="postShorten-excerpt_link link ">Continuar leitura</a>
-                            
-                        
-                    
-                    
-                        </p>
-                    
-                </div>
-            </div>
             
-        </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
+            
+                
+                
+                <div class="archive archive-year box" data-date="2015">
+                    <h4 class="archive-title">
+                        <a class="link-unstyled" href="/archives/2015">2015</a>
+                    </h4>
+            
+            
+                
+                <ul class="archive-posts archive-month" data-date="201505">
+                    <h5 class="archive-title">
+                        <a class="link-unstyled" href="/archives/2015/05">五月</a>
+                    </h5>
+                
+            
+                <li class="archive-post archive-day" data-date="20150508">
+                    <a class="archive-post-title" href="/2015/05/08/个性化你的Hexo/">个性化你的Hexo-笔记</a>
+                    <span class="archive-post-date"> - 08/05/2015</span>
+                </li>
         
+            
+            
+            
+            
+                <li class="archive-post archive-day" data-date="20150507">
+                    <a class="archive-post-title" href="/2015/05/07/Github-Hexo搭建个人博客/">GitHub+Hexo搭建个人博客-笔记</a>
+                    <span class="archive-post-date"> - 07/05/2015</span>
+                </li>
         
-        <li class="pagination-number">página 1 de 1</li>
-    </ul>
+    </section>
 </div>
-
-</section>
-
 
 
                 <footer id="footer" class="main-content-wrap">
@@ -301,13 +129,10 @@ git安装路<br>
     </div>
 </div>
 
-        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+        <div id="cover" style="background-image:url('/');"></div>
     </body>
     <!--SCRIPTS-->
-<script src="/assets/js/jquery.js" type="text/javascript"></script>
-<script src="/assets/js/jquery.fancybox.js" type="text/javascript"></script>
-<script src="/assets/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
-<script src="/assets/js/tranquilpeak.js" type="text/javascript"></script>
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
 <!--SCRIPTS END-->
 
 
