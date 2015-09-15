@@ -1,111 +1,257 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
   <title>Java4Android notes | bubble sky</title>
-  <meta name="author" content="bubble">
-  
-  <meta name="description" content="Coding world, changing world ^_^">
-  
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="Java4Android notes"/>
-  <meta property="og:site_name" content="bubble sky"/>
-
+  <meta name="description" content="Java4Android学习笔记
+01 Java考古学
+伟大的1970年（前后）（1）1963年，剑桥大学将ALGOL 60语言发展成为CPL（Combined Programming Language）语言。（2）1967年，剑桥大学的Matin Richards对CPL语言进行了简化，产生了BCPL语言。（3）1970年，美国贝尔实验室的Ken Thompson将BCPL进行了修改，起名为“B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java4Android notes">
+<meta property="og:url" content="http://codingbubble.github.io/2015/05/31/Java4Android-notes/index.html">
+<meta property="og:site_name" content="bubble sky">
+<meta property="og:description" content="Java4Android学习笔记
+01 Java考古学
+伟大的1970年（前后）（1）1963年，剑桥大学将ALGOL 60语言发展成为CPL（Combined Programming Language）语言。（2）1967年，剑桥大学的Matin Richards对CPL语言进行了简化，产生了BCPL语言。（3）1970年，美国贝尔实验室的Ken Thompson将BCPL进行了修改，起名为“B">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B01.png">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B02.png">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B03.png">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B04.png">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B05.png">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B06.png">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B07.png">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B08.png">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B09.png">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B010.png">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B011.png">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/Java4Android%E7%AC%94%E8%AE%B012.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java4Android notes">
+<meta name="twitter:description" content="Java4Android学习笔记
+01 Java考古学
+伟大的1970年（前后）（1）1963年，剑桥大学将ALGOL 60语言发展成为CPL（Combined Programming Language）语言。（2）1967年，剑桥大学的Matin Richards对CPL语言进行了简化，产生了BCPL语言。（3）1970年，美国贝尔实验室的Ken Thompson将BCPL进行了修改，起名为“B">
   
-    <meta property="og:image" content="undefined"/>
+    <link rel="alternative" href="/atom.xml" title="bubble sky" type="application/atom+xml">
   
-
-  <link href="/favicon.ico" rel="icon" type="image/x-ico">
-  <link rel="alternate" href="/atom.xml" title="bubble sky" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
-	<script type="text/javascript">
-		
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		  ga('create', 'UA-62747330-1', 'auto');
-		  ga('send', 'pageview');
-
-		</script>
-	</script>
-
-
+    <link rel="icon" href="/favicon.png">
   
-	<script type="text/javascript">
-		#百度统计代码
-		<script>
-		var _hmt = _hmt || [];
-		(function() {
-		  var hm = document.createElement("script");
-		  hm.src = "//hm.baidu.com/hm.js?086c69233d338486c8e682985d43bc2c";
-		  var s = document.getElementsByTagName("script")[0]; 
-		  s.parentNode.insertBefore(hm, s);
-		})();
-		</script>
-	</script>
-
-  <meta name="baidu-site-verification" content="AsGSFa0HbA" />
-
-  <script type="text/javascript" name="baidu-tc-cerfication" data-appid="5864411" src="http://apps.bdimg.com/cloudaapi/lightapp.js"></script>
-  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 </head>
-
-
 <body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">bubble sky</a></h1>
-  <h2><a href="/">Coding world, changing world ^_^</a></h2>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">bubble</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Coding world, changing world ^_^</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a><a href="/tags/Java/" style="font-size: 20px;">Java</a><a href="/tags/html/" style="font-size: 10px;">html</a><a href="/tags/前端/" style="font-size: 10px;">前端</a><a href="/tags/数据处理/" style="font-size: 10px;">数据处理</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
 </div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-      <li><a href="/About">About</a></li>
-    
-	<li> 
-		<a href="/atom.xml">RSS</a> 
-	</li>
-  </ul>
-  <div class="clearfix"></div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">bubble</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">bubble</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Coding world, changing world ^_^</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
 </nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+      <div class="body-wrap"><article id="post-Java4Android-notes" class="article article-type-post" itemscope itemprop="blogPost">
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-05-31T15:13:42.713Z"><a href="/2015/05/31/Java4Android-notes/">2015-05-31 23:13, 22nd周 Sunday</a></time>
-      
-      
+    <div class="article-meta">
+      <a href="/2015/05/31/Java4Android-notes/" class="article-date">
+  	<time datetime="2015-05-31T15:13:42.713Z" itemprop="datePublished">2015-05-31 23:13, 22周周 星期日</time>
+</a>
+    </div>
   
-    <h1 class="title">Java4Android notes</h1>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java4Android notes
+    </h1>
   
 
-    </header>
-    <div class="entry">
+      </header>
       
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
 
-		      <!-- Table of Contents -->
-          
-            <div id="toc" class="toc-article">
-              <strong class="toc-title">文章目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#01_Java考古学"><span class="toc-number">1.</span> <span class="toc-text">01 Java考古学</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#02_Java创世纪"><span class="toc-number">2.</span> <span class="toc-text">02 Java创世纪</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#03_Java基本概念"><span class="toc-number">3.</span> <span class="toc-text">03 Java基本概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#04_Java的变量"><span class="toc-number">4.</span> <span class="toc-text">04 Java的变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#05_Java的基本数据类型"><span class="toc-number">5.</span> <span class="toc-text">05 Java的基本数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#06练习课（1）"><span class="toc-number">6.</span> <span class="toc-text">06练习课（1）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#07运算符与表达式"><span class="toc-number">7.</span> <span class="toc-text">07运算符与表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#08分支语句"><span class="toc-number">8.</span> <span class="toc-text">08分支语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#09练习课（2）"><span class="toc-number">9.</span> <span class="toc-text">09练习课（2）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10循环语句"><span class="toc-number">10.</span> <span class="toc-text">10循环语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11练习课（3）"><span class="toc-number">11.</span> <span class="toc-text">11练习课（3）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12面向对象基础_1"><span class="toc-number">12.</span> <span class="toc-text">12面向对象基础_1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13面向对象基础_2"><span class="toc-number">13.</span> <span class="toc-text">13面向对象基础_2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14面向对象基础_3"><span class="toc-number">14.</span> <span class="toc-text">14面向对象基础_3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15面向对象基础_4"><span class="toc-number">15.</span> <span class="toc-text">15面向对象基础_4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#16_this的使用方法"><span class="toc-number">16.</span> <span class="toc-text">16 this的使用方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#17_static关键字的作用"><span class="toc-number">17.</span> <span class="toc-text">17 static关键字的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#18_继承初步"><span class="toc-number">18.</span> <span class="toc-text">18 继承初步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19_子类实例化过程"><span class="toc-number">19.</span> <span class="toc-text">19 子类实例化过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#20_函数的复写"><span class="toc-number">20.</span> <span class="toc-text">20 函数的复写</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#21_对象的转型"><span class="toc-number">21.</span> <span class="toc-text">21 对象的转型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#22_面向对象应用"><span class="toc-number">22.</span> <span class="toc-text">22 面向对象应用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#23_抽象类和抽象函数"><span class="toc-number">23.</span> <span class="toc-text">23 抽象类和抽象函数</span></a></li></ol>
-            </div>
-          
-          
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
         <p>Java4Android学习笔记</p>
 <h1 id="01_Java考古学">01 Java考古学</h1><ol>
 <li>伟大的1970年（前后）<br>（1）1963年，剑桥大学将ALGOL 60语言发展成为CPL（Combined Programming Language）语言。<br>（2）1967年，剑桥大学的Matin Richards对CPL语言进行了简化，产生了BCPL语言。<br>（3）1970年，美国贝尔实验室的Ken Thompson将BCPL进行了修改，起名为“B语言”。意为将CPL语言煮干，提炼出其精华。他用B语言写出了第一个UNIX操作系统。<br>（4）1973年，B语言也给人“煮”了一下，美国贝尔实验室的D.M.RITCHIE在B语言的基础上最终设计出了一种新的语言，取BCPL第二个字母为名，即C语言。</li>
@@ -351,143 +497,121 @@
 
       
     </div>
-    <footer>
-      
-        
+    
+  </div>
   
-  <div class="categories">
-    <a href="/categories/Java/">Java</a>
-  </div>
-
-        
+    
+<nav id="article-nav">
   
-  <div class="tags">
-    <a href="/tags/Android/">Android</a>, <a href="/tags/Java/">Java</a>
-  </div>
+    <a href="/2015/07/04/java-del-num-zero/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          java 去掉小数里多余的0和小数点
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/05/21/Html-notes-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Html学习笔记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"0","bdPos":"right","bdTop":"0"},"image":{"viewList":["tsina","qzone","sqq","renren","weixin","tieba"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","sqq","renren","weixin","tieba"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
   
 </article>
 
 
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-<nav id="pagination" >
-    
-    <a href="/2015/07/04/java-del-num-zero/" class="alignleft prev" >上一篇</a>
-    
-    
-    <a href="/2015/05/21/Html-notes-1/" class="alignright next" >下一篇</a>
-    
-    <div class="clearfix"></div>
-</nav>
 
-<section id="comment">
+
+<div class="duoshuo">
 	<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="/2015/05/31/Java4Android-notes/" data-title="Java4Android notes" data-url="http://codingbubble.github.io/2015/05/31/Java4Android-notes/"></div>
+	<div class="ds-thread" data-thread-key="Java4Android-notes" data-title="Java4Android notes" data-url="http://codingbubble.github.io/2015/05/31/Java4Android-notes/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"hexo2github"};
-		(function() {
-			var ds = document.createElement('script');
-			ds.type = 'text/javascript';ds.async = true;
-			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-			ds.charset = 'UTF-8';
-			(document.getElementsByTagName('head')[0] 
-			 || document.getElementsByTagName('body')[0]).appendChild(ds);
-		})();
-		</script>
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
 	<!-- 多说公共JS代码 end -->
-</section>
-
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install','ezmTb2UZ-bmXA95SCea3','2.0.0');
-</script>
-
-  
-<div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/Android/">Android</a><small>1</small></li>
-  
-    <li><a href="/categories/Hexo/">Hexo</a><small>2</small></li>
-  
-    <li><a href="/categories/Java/">Java</a><small>2</small></li>
-  
-    <li><a href="/categories/前端/">前端</a><small>1</small></li>
-  
-  </ul>
 </div>
 
 
-  
-<div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/Android/">Android</a><small>2</small></li>
-  
-    <li><a href="/tags/Java/">Java</a><small>2</small></li>
-  
-    <li><a href="/tags/html/">html</a><small>1</small></li>
-  
-    <li><a href="/tags/前端/">前端</a><small>1</small></li>
-  
-    <li><a href="/tags/数据处理/">数据处理</a><small>1</small></li>
-  
-  </ul>
-</div>
 
-
-  <div class="widget tag">
-	<h3 class="title">友情链接</h3>
-	<ul class="entry">
-	<li><a href="http://codingbubble.github.io/" title="bubble sky">bubble's blog</a></li>
-	</ul>
 </div>
-</aside>
-    <div class="clearfix"></div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 bubble
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2015 bubble
-  
-</div>
-<div class="clearfix"></div></footer>
-  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
 
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
 
-<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
-<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-</div>
-<script src="/js/totop.js"></script>
-
-  <a href="https://github.com/codingbubble"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
+  </div>
 </body>
 </html>
