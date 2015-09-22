@@ -844,7 +844,7 @@ Cursor <span class="built_in">cursor</span> = db.rawQuery(<span class="string">"
 </code></pre><h1 id="AlertDialog对话框">AlertDialog对话框</h1><p>参考：<a href="http://www.imyukin.com/?p=236" target="_blank" rel="external">Android的AlertDialog详解</a></p>
 <p>2015-9-10</p>
 <h1 id="RecyclerView添加点击事件，并获取item_position">RecyclerView添加点击事件，并获取item position</h1><p>参考：<br>1.<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1118/2004.html" target="_blank" rel="external">RecyclerView使用介绍</a><br>2.<a href="https://gist.github.com/riyazMuhammad/1c7b1f9fa3065aa5a46f" target="_blank" rel="external">Easy Implementation of RecyclerView custom onItemClickListener</a></p>
-<h1 id="RecyclerView水平滑动类似viewpager">RecyclerView水平滑动类似viewpager</h1><p>参考：<br>1.<a href="https://gist.github.com/lauw/fc84f7d04f8c54e56d56" target="_blank" rel="external">SnappingRecyclerView.java</a><br>2.<a href="http://stackoverflow.com/questions/26370289/snappy-scrolling-in-recyclerview" target="_blank" rel="external">Snappy scrolling in RecyclerView</a></p>
+<h1 id="RecyclerView水平滑动类似viewpager——继承SnappingRecyclerView">RecyclerView水平滑动类似viewpager——继承SnappingRecyclerView</h1><p>参考：<br>1.<a href="https://gist.github.com/lauw/fc84f7d04f8c54e56d56" target="_blank" rel="external">SnappingRecyclerView.java</a><br>2.<a href="http://stackoverflow.com/questions/26370289/snappy-scrolling-in-recyclerview" target="_blank" rel="external">Snappy scrolling in RecyclerView</a></p>
 <h1 id="RecyclerView-Adapter根据viewType动态加载不同的item布局">RecyclerView.Adapter根据viewType动态加载不同的item布局</h1><p>在Adapter里<br>1.设置viewType</p>
 <pre><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TYPE_VIEW_VERTICAL = <span class="number">0</span>;
 <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TYPE_VIEW_HORIZON = <span class="number">1</span>;
@@ -1025,6 +1025,667 @@ recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);<span 
         }
     }
 }
+</code></pre><ul>
+<li><p>这个方法不受生命周期的限制，但在上述情况中视觉体验不太好，所以可以跟方法2结合起来使用。</p>
+<p>  private void saveRecyclerViewPosition(String tableName) {</p>
+<pre><code><span class="constant">recyclerViewState</span> = recyclerView.getLayoutManager().onSaveInstanceState();
+hmRecyclerViewState.put(tableName, recyclerViewState);
+
+<span class="constant">firstVisibleItemPosition</span> = ((LinearLayoutManager)recyclerView.getLayoutManager()).findFirstVisibleItemPosition();
+
+<span class="constant">savedFirstVisibleChild</span> = recyclerView.getChildAt(0);
+//dy正，手指将列表往上拉
+//dy负，手指将列表往下拉
+<span class="constant">dyTop</span> = savedFirstVisibleChild.getHeight() - savedFirstVisibleChild.getBottom(); 
+<span class="constant">dyBottom</span> = recyclerView.getHeight() - savedFirstVisibleChild.getBottom();
+
+prefEditorSettings.putInt(KEY_RECYCLERVIEW_SCROLL_POSITION + tableName, firstVisibleItemPosition);
+prefEditorSettings.putInt(KEY_RECYCLERVIEW_SCROLL_DY_TOP + tableName, dyTop);
+prefEditorSettings.putInt(KEY_RECYCLERVIEW_SCROLL_DY_BOTTOM + tableName, dyBottom);
+prefEditorSettings.commit();
+</code></pre><p>  }</p>
+<p>  private void restoreRecyclerViewPosition(String tableName) {</p>
+<pre><code>recyclerViewState = hmRecyclerViewState.<span class="keyword">get</span>(tableName);
+<span class="keyword">if</span> (recyclerViewState != <span class="literal">null</span>) {
+    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+} <span class="keyword">else</span> {
+    <span class="keyword">if</span> ( recyclerView != <span class="literal">null</span>) {
+        savedFirstVisiblePosition = prefSettings.getInt(KEY_RECYCLERVIEW_SCROLL_POSITION + tableName, <span class="number">0</span>);
+        dyTop = prefSettings.getInt(KEY_RECYCLERVIEW_SCROLL_DY_TOP + tableName, <span class="number">0</span>);
+        dyBottom = prefSettings.getInt(KEY_RECYCLERVIEW_SCROLL_DY_BOTTOM + tableName, <span class="number">0</span>);
+
+        currentFirstVisiblePosition =  ((LinearLayoutManager)recyclerView.getLayoutManager()).findFirstVisibleItemPosition();
+
+        recyclerView.scrollToPosition(savedFirstVisiblePosition);
+
+        <span class="keyword">if</span>(currentFirstVisiblePosition &gt; -<span class="number">1</span>) {
+            <span class="keyword">if</span> (currentFirstVisiblePosition &gt;= savedFirstVisiblePosition) { <span class="comment">//savedFirstVisiblePosition在顶部</span>
+                recyclerView.scrollBy(<span class="number">0</span>, dyTop);
+            } <span class="keyword">else</span> <span class="keyword">if</span> (currentFirstVisiblePosition &lt; savedFirstVisiblePosition){    <span class="comment">//savedFirstVisiblePosition在底部</span>
+                <span class="keyword">if</span> (savedFirstVisiblePosition &gt; <span class="number">4</span>)
+                    recyclerView.scrollBy(<span class="number">0</span>, dyBottom);             
+                <span class="keyword">else</span> {  <span class="comment">//第一页的item用handler/smoothScrollBy会有跳转动作显示，暂时会找到合适的办法</span>
+                    recyclerView.scrollBy(<span class="number">0</span>, recyclerView.getHeight());
+                    recyclerView.scrollToPosition(savedFirstVisiblePosition);
+                    recyclerView.smoothScrollBy(<span class="number">0</span>, dyTop);
+                }
+            } 
+        } <span class="keyword">else</span> {    <span class="comment">//第一次打开，还未出现界面</span>
+            recyclerView.scrollToPosition(savedFirstVisiblePosition);
+            recyclerView.scrollBy(<span class="number">0</span>, dyTop);
+        }
+    }
+}
+</code></pre><p>  }</p>
+</li>
+</ul>
+<h1 id="slidingmenu切换fragment时的优化">slidingmenu切换fragment时的优化</h1><p>避免每次切换fragment时都重新加载view。<br>注意：一个activity只有一个actionbar。</p>
+<p>1.<code>SlidingmenuFragment</code></p>
+<pre><code>@<span class="function">Override
+<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onListItemClick</span><span class="params">(ListView lv, View v, <span class="keyword">int</span> position, <span class="keyword">long</span> id)</span> </span>{
+    newContentFragment = <span class="keyword">null</span>;
+
+    <span class="keyword">object</span> = lv.getItemAtPosition(position);
+    str=(String)<span class="keyword">object</span>;
+
+    getActivity().setTitle(str);
+    actionBar.setDisplayShowCustomEnabled(<span class="keyword">false</span>);
+
+    <span class="keyword">if</span> (str.matches(getResources().getString(R.<span class="keyword">string</span>.center))){
+        <span class="keyword">if</span> (centerFragment == <span class="keyword">null</span>)
+            centerFragment = <span class="keyword">new</span> CenterFragment();
+        newContentFragment = centerFragment;
+    } <span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(str.matches(getResources()</span>.<span class="title">getString</span><span class="params">(R.<span class="keyword">string</span>.home)</span>))</span>{
+        <span class="keyword">if</span> (homeFragment == <span class="keyword">null</span>)
+            homeFragment = <span class="keyword">new</span> HomeFragment(getActivity());
+        newContentFragment = homeFragment;
+    } <span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(str.matches(getResources()</span>.<span class="title">getString</span><span class="params">(R.<span class="keyword">string</span>.wordbook)</span>))</span>{
+        <span class="keyword">if</span> (wordBookFragment == <span class="keyword">null</span>)
+            wordBookFragment = <span class="keyword">new</span> WordBookFragment();
+        newContentFragment = wordBookFragment;
+        <span class="comment">//加载自定义actionbar布局，在wordBookFragment里实现actionBar.setCustomView()后，在这里设置为true即可。</span>
+        actionBar.setDisplayShowCustomEnabled(<span class="keyword">true</span>);
+    } <span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(str.matches(getResources()</span>.<span class="title">getString</span><span class="params">(R.<span class="keyword">string</span>.BBS)</span>))</span>{
+        <span class="keyword">if</span> (bbsFragment == <span class="keyword">null</span>)
+            bbsFragment = <span class="keyword">new</span> BBSFragment();
+        newContentFragment = bbsFragment;
+    } <span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(str.matches(getResources()</span>.<span class="title">getString</span><span class="params">(R.<span class="keyword">string</span>.settings)</span>))</span>{
+        <span class="keyword">if</span> (settingsFragment == <span class="keyword">null</span>)
+            settingsFragment = <span class="keyword">new</span> SettingsFragment();
+        newContentFragment = settingsFragment;
+    }
+
+
+    <span class="keyword">if</span> (newContentFragment != <span class="keyword">null</span>){
+        switchFragment(newContentFragment);
+    }
+}
+
+<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">switchFragment</span><span class="params">(Fragment fragment)</span> </span>{
+    <span class="keyword">if</span> (getActivity() == <span class="keyword">null</span>)
+        <span class="keyword">return</span>;
+
+    <span class="keyword">if</span> (getActivity() instanceof MainActivity) {
+        MainActivity main = (MainActivity) getActivity();
+        main.switchContent(fragment);
+    } 
+}
+</code></pre><p>2.<code>MainActivity</code></p>
+<pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">switchContent</span><span class="params">(Fragment newFragment)</span> </span>{
+    <span class="keyword">if</span> ( contentFragment == <span class="keyword">null</span> || newFragment == <span class="keyword">null</span>)
+        <span class="keyword">return</span>;
+
+    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+    <span class="keyword">if</span> (contentFragment != newFragment) {
+        <span class="keyword">if</span> (!newFragment.isAdded()) {
+            <span class="comment">// 隐藏当前的fragment，add下一个到Activity中</span>
+            transaction.hide(contentFragment).add(R.id.content_frame,newFragment).commit();
+        } <span class="keyword">else</span> {
+           <span class="comment">// 隐藏当前的fragment，显示下一个</span>
+            transaction.hide(contentFragment).show(newFragment).commit();
+        }
+        contentFragment = newFragment;
+    }
+
+    <span class="comment">//通过handler来避免滑动卡顿的情况</span>
+    <span class="keyword">handler</span>.post(<span class="keyword">new</span> Runnable() {
+
+        <span class="annotation">@Override</span>
+        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+            sm.showContent();
+        }
+    });
+}
+</code></pre><p>参考：</p>
+<ul>
+<li>1.<a href="http://m.blog.csdn.net/blog/u011677471/42970339" target="_blank" rel="external">Android SlidingMenu Fragment的简单优化</a></li>
+<li>2.<a href="http://bbs.csdn.net/topics/390767905" target="_blank" rel="external">SlidingMenu 左侧菜单切换</a></li>
+<li>3.<a href="http://blog.csdn.net/csr_yang/article/details/33502141" target="_blank" rel="external">slidingmenu+fragment实现常用的侧滑效果（包括Fragment状态的保存）</a></li>
+<li>4.<a href="http://blog.csdn.net/telenewbie/article/details/45486657" target="_blank" rel="external">SlidingMenu切换fragment卡顿问题</a></li>
+</ul>
+<p>2015-9-16</p>
+<h1 id="联网解析JSON数据">联网解析JSON数据</h1><p>本来想用金山的，但一直没收到key，发现扇贝的查单词不用key，就用了<a href="http://www.shanbay.com/developer/wiki/api_v1/#query_word" target="_blank" rel="external">扇贝的API</a>。<br>1.在AsyncTask里联网并解析数据</p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">ParseJsonTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">String</span>, <span class="title">Void</span>, <span class="title">Boolean</span>&gt; </span>{
+    HorizonViewHolder horizonViewHolder;
+    WordCls wordCls;
+    <span class="keyword">int</span> position;
+
+    String definitionEN;
+    String definitionCN;
+    String audioUrlUS;
+
+    Handler <span class="keyword">handler</span>;    <span class="comment">//用来传值</span>
+
+    <span class="function"><span class="keyword">public</span> <span class="title">ParseJsonTask</span><span class="params">(HorizonViewHolder horizonViewHolder,
+            WordCls wordCls, <span class="keyword">int</span> position, Handler <span class="keyword">handler</span>)</span> </span>{
+        <span class="keyword">super</span>();
+        <span class="keyword">this</span>.horizonViewHolder = horizonViewHolder;
+        <span class="keyword">this</span>.wordCls = wordCls;
+        <span class="keyword">this</span>.position = position;
+        <span class="keyword">this</span>.<span class="keyword">handler</span> = <span class="keyword">handler</span>;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onPreExecute</span><span class="params">()</span> </span>{
+        horizonViewHolder.progressBar.setVisibility(View.VISIBLE);
+        <span class="keyword">super</span>.onPreExecute();
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(Boolean result)</span> </span>{
+        Message msg = <span class="keyword">handler</span>.obtainMessage();
+
+        horizonViewHolder.progressBar.setVisibility(View.INVISIBLE);
+        <span class="keyword">if</span> (result) {
+            wordCls.setDefinitionEN(definitionEN);
+            wordCls.setDefinitionCN(definitionCN);
+            wordCls.setAudioUrlUS(audioUrlUS);
+            wordCls.setLoaded(<span class="keyword">true</span>);
+            WordsManager.addWordLoadInfo(tableName, wordCls);
+            updateItem(position, wordCls);
+
+            msg.what = position;
+        }<span class="keyword">else</span> {
+            msg.what = <span class="number">0</span>;
+            Log.i(wordCls.getWord(), <span class="string">"获取数据失败"</span>);
+        }
+
+        <span class="keyword">handler</span>.sendMessage(msg);
+
+        <span class="keyword">super</span>.onPostExecute(result);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">protected</span> <span class="function">Boolean <span class="title">doInBackground</span><span class="params">(String... params)</span> </span>{
+        String path = <span class="string">"https://api.shanbay.com/bdc/search/?word="</span> + wordCls.getWord();
+        <span class="keyword">try</span> {
+            URL url = <span class="keyword">new</span> URL(path);
+            Source source = <span class="keyword">new</span> Source(url.openConnection());   <span class="comment">//jericho-html-3.1.jar</span>
+            String jsonstr = source.toString();
+
+            JSONObject jsonObj = <span class="keyword">new</span> JSONObject(jsonstr);
+
+            JSONObject data = jsonObj.getJSONObject(<span class="string">"data"</span>);
+
+            JSONObject defEN = data.getJSONObject(<span class="string">"en_definition"</span>);
+            definitionEN = defEN.getString(<span class="string">"pos"</span>) + <span class="string">"."</span> + defEN.getString(<span class="string">"defn"</span>); 
+
+            JSONObject defCN = data.getJSONObject(<span class="string">"cn_definition"</span>);
+            definitionCN = defCN.getString(<span class="string">"pos"</span>) + defCN.getString(<span class="string">"defn"</span>); 
+
+            audioUrlUS = data.getString(<span class="string">"us_audio"</span>);
+
+            <span class="keyword">return</span> <span class="keyword">true</span>;
+        } <span class="keyword">catch</span> (Exception e) {
+            Toast.makeText(mContext, <span class="string">"获取数据失败"</span>, Toast.LENGTH_SHORT).show();
+            <span class="keyword">return</span> <span class="keyword">false</span>;
+        }
+    }
+}
+
+<span class="keyword">if</span> ( ! wordCls.isLoaded() ) {
+    Handler <span class="keyword">handler</span> = <span class="keyword">new</span> Handler(){
+
+        <span class="annotation">@Override</span>
+        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>{    根据AsyncTask的执行结果传递的值来判断下一步操作
+            <span class="keyword">if</span> (msg.what == position)
+                horizonViewHolder.tvHint.setVisibility(View.INVISIBLE);
+            <span class="keyword">else</span>
+                horizonViewHolder.tvHint.setText(<span class="string">"数据获取失败，请重试"</span>);
+        }
+
+    };
+    ParseJsonTask parseJsonTask = <span class="keyword">new</span> ParseJsonTask(horizonViewHolder, wordCls, position, <span class="keyword">handler</span>);
+    parseJsonTask.execute();
+} 
+</code></pre><p>参考：</p>
+<ul>
+<li>1.<a href="http://blog.chinaunix.net/uid-29006784-id-3865030.html" target="_blank" rel="external">Json方式获取网络数据</a></li>
+<li>2.<a href="http://sunzone.iteye.com/blog/2038135" target="_blank" rel="external">Android 之 网络访问服务器，解析JSON数据</a></li>
+<li>3.<a href="http://blog.csdn.net/tengweitw/article/details/46506945" target="_blank" rel="external">【Qt编程】基于Qt的词典开发系列&lt;九&gt;—JSON数据解析</a></li>
+<li>4.<a href="http://bbs.chinaunix.net/thread-4184233-1-1.html" target="_blank" rel="external">android两种方式获取AsyncTask返回值</a></li>
+</ul>
+<p>2015-9-17</p>
+<h1 id="RecyclerView水平滑动类似viewpager——自定义方法实现">RecyclerView水平滑动类似viewpager——自定义方法实现</h1><p>之前继承的<a href="https://gist.github.com/lauw/fc84f7d04f8c54e56d56" target="_blank" rel="external">SnappingRecyclerView</a>，水平状态的时候，点击item里的TextView更新会出现错位，有时还会跑到第一个位置去，并且感觉他的有点复杂。。<br>然后发现自己写一个实现也并不难@_@ 我的每一个item都是全屏的卡片，所以这样就可以了。</p>
+<pre><code><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">scrollToCenter</span><span class="params">(RecyclerView recyclerView)</span> </span>{
+    firstVisibleItemPosition = ((LinearLayoutManager)recyclerView.getLayoutManager()).findFirstVisibleItemPosition();
+    lastVisibleItemPosition = ((LinearLayoutManager)recyclerView.getLayoutManager()).findLastVisibleItemPosition();
+
+    <span class="keyword">if</span> ( firstVisibleItemPosition &lt; lastVisibleItemPosition ) {
+        recyclerViewWidth = recyclerView.getWidth();
+        firstVisibleChild = recyclerView.getChildAt(<span class="number">0</span>);
+        firstChildVisibleWidth = firstVisibleChild.getRight();
+        <span class="keyword">if</span> ( firstChildVisibleWidth &gt; ( recyclerViewWidth / <span class="number">2</span> ) )
+            recyclerView.smoothScrollToPosition(firstVisibleItemPosition);
+        <span class="keyword">else</span> <span class="keyword">if</span> ( firstChildVisibleWidth &lt; ( recyclerViewWidth / <span class="number">2</span> ) )
+            recyclerView.smoothScrollToPosition(lastVisibleItemPosition);
+    }
+}
+
+<span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(<span class="keyword">final</span> RecyclerView recyclerView, <span class="keyword">int</span> newState)</span> </span>{
+    <span class="keyword">super</span>.onScrollStateChanged(recyclerView, newState);
+
+    <span class="keyword">switch</span> (newState) {
+    <span class="keyword">case</span> RecyclerView.SCROLL_STATE_IDLE:
+        <span class="keyword">switch</span> (wordCardAdapter.getItemViewType()) {
+        <span class="keyword">case</span> TYPE_VIEW_HORIZON:
+            scrollToCenter(recyclerView);
+            <span class="keyword">break</span>;
+        <span class="keyword">case</span> TYPE_VIEW_VERTICAL:
+        <span class="keyword">default</span>:
+            <span class="keyword">break</span>;
+        }
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> RecyclerView.SCROLL_STATE_DRAGGING:
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> RecyclerView.SCROLL_STATE_SETTLING:
+        <span class="keyword">break</span>;
+ }
+}
+</code></pre><h1 id="actionbar下拉列表——PopupWindow">actionbar下拉列表——PopupWindow</h1><pre><code>View view = LayoutInflater.<span class="keyword">from</span>(context).inflate(R.layout.popmenu, <span class="keyword">null</span>);       
+popupWindow = <span class="keyword">new</span> PopupWindow(view, <span class="number">100</span>, LayoutParams.WRAP_CONTENT);
+<span class="comment">// 使其聚集</span>
+popupWindow.setFocusable(<span class="keyword">true</span>);
+<span class="comment">// 设置允许在外点击消失</span>
+popupWindow.setOutsideTouchable(<span class="keyword">true</span>);
+<span class="comment">//刷新状态（必须刷新否则无效）</span>
+popupWindow.update();
+<span class="comment">// 这个是为了点击“返回Back”也能使其消失，并且并不会影响你的背景</span>
+popupWindow.setBackgroundDrawable(<span class="keyword">new</span> BitmapDrawable()); 
+
+popupWindow.showAsDropDown(v); <span class="comment">//设置显示位置</span>
+</code></pre><p>参考：</p>
+<ul>
+<li>1.<a href="http://www.apkbus.com/android-51289-1-1.html" target="_blank" rel="external">android 下拉菜单实现详解 PopupWindow </a></li>
+</ul>
+<p>2015-9-18</p>
+<h1 id="RecyclerView高度wrap_content无效">RecyclerView高度wrap_content无效</h1><p><a href="https://github.com/serso/android-linear-layout-manager/blob/master/lib/src/main/java/org/solovyev/android/views/llm/LinearLayoutManager.java" target="_blank" rel="external">自定义<code>MyLayoutManager</code></a></p>
+<pre><code><span class="comment">/*
+ * Copyright 2015 serso aka se.solovyev
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *
+ * Contact details
+ *
+ * Email: se.solovyev@gmail.com
+ * Site:  http://se.solovyev.org
+ */</span>
+
+<span class="keyword">package</span> org.solovyev.android.views.llm;
+
+<span class="keyword">import</span> android.content.Context;
+<span class="keyword">import</span> android.graphics.Rect;
+<span class="keyword">import</span> android.support.v4.view.ViewCompat;
+<span class="keyword">import</span> android.support.v7.widget.RecyclerView;
+<span class="keyword">import</span> android.util.Log;
+<span class="keyword">import</span> android.view.View;
+
+<span class="keyword">import</span> java.lang.reflect.Field;
+
+<span class="comment">/**
+ * {@link android.support.v7.widget.LinearLayoutManager} which wraps its content. Note that this class will always
+ * wrap the content regardless of {@link android.support.v7.widget.RecyclerView} layout parameters.
+ * &lt;p/&gt;
+ * Now it's impossible to run add/remove animations with child views which have arbitrary dimensions (height for
+ * VERTICAL orientation and width for HORIZONTAL). However if child views have fixed dimensions
+ * {@link #setChildSize(int)} method might be used to let the layout manager know how big they are going to be.
+ * If animations are not used at all then a normal measuring procedure will run and child views will be measured during
+ * the measure pass.
+ */</span>
+<span class="keyword">public</span> class LinearLayoutManager extends android.support.v7.widget.LinearLayoutManager {
+
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">boolean</span> canMakeInsetsDirty = <span class="keyword">true</span>;
+    <span class="keyword">private</span> <span class="keyword">static</span> Field insetsDirtyField = <span class="keyword">null</span>;
+
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> CHILD_WIDTH = <span class="number">0</span>;
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> CHILD_HEIGHT = <span class="number">1</span>;
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> DEFAULT_CHILD_SIZE = <span class="number">100</span>;
+
+    <span class="keyword">private</span> <span class="keyword">final</span> <span class="built_in">int</span>[] childDimensions = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>];
+    <span class="keyword">private</span> <span class="keyword">final</span> RecyclerView view;
+
+    <span class="keyword">private</span> <span class="built_in">int</span> childSize = DEFAULT_CHILD_SIZE;
+    <span class="keyword">private</span> <span class="built_in">boolean</span> hasChildSize;
+    <span class="keyword">private</span> <span class="built_in">int</span> overScrollMode = ViewCompat.OVER_SCROLL_ALWAYS;
+    <span class="keyword">private</span> <span class="keyword">final</span> Rect tmpRect = <span class="keyword">new</span> Rect();
+
+    @SuppressWarnings(<span class="string">"UnusedDeclaration"</span>)
+    <span class="keyword">public</span> LinearLayoutManager(Context context) {
+        <span class="keyword">super</span>(context);
+        <span class="keyword">this</span>.view = <span class="keyword">null</span>;
+    }
+
+    @SuppressWarnings(<span class="string">"UnusedDeclaration"</span>)
+    <span class="keyword">public</span> LinearLayoutManager(Context context, <span class="built_in">int</span> orientation, <span class="built_in">boolean</span> reverseLayout) {
+        <span class="keyword">super</span>(context, orientation, reverseLayout);
+        <span class="keyword">this</span>.view = <span class="keyword">null</span>;
+    }
+
+    @SuppressWarnings(<span class="string">"UnusedDeclaration"</span>)
+    <span class="keyword">public</span> LinearLayoutManager(RecyclerView view) {
+        <span class="keyword">super</span>(view.getContext());
+        <span class="keyword">this</span>.view = view;
+        <span class="keyword">this</span>.overScrollMode = ViewCompat.getOverScrollMode(view);
+    }
+
+    @SuppressWarnings(<span class="string">"UnusedDeclaration"</span>)
+    <span class="keyword">public</span> LinearLayoutManager(RecyclerView view, <span class="built_in">int</span> orientation, <span class="built_in">boolean</span> reverseLayout) {
+        <span class="keyword">super</span>(view.getContext(), orientation, reverseLayout);
+        <span class="keyword">this</span>.view = view;
+        <span class="keyword">this</span>.overScrollMode = ViewCompat.getOverScrollMode(view);
+    }
+
+    <span class="keyword">public</span> <span class="keyword">void</span> setOverScrollMode(<span class="built_in">int</span> overScrollMode) {
+        <span class="keyword">if</span> (overScrollMode &lt; ViewCompat.OVER_SCROLL_ALWAYS || overScrollMode &gt; ViewCompat.OVER_SCROLL_NEVER)
+            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Unknown overscroll mode: "</span> + overScrollMode);
+        <span class="keyword">if</span> (<span class="keyword">this</span>.view == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"view == null"</span>);
+        <span class="keyword">this</span>.overScrollMode = overScrollMode;
+        ViewCompat.setOverScrollMode(view, overScrollMode);
+    }
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> makeUnspecifiedSpec() {
+        <span class="keyword">return</span> View.MeasureSpec.makeMeasureSpec(<span class="number">0</span>, View.MeasureSpec.UNSPECIFIED);
+    }
+
+    @Override
+    <span class="keyword">public</span> <span class="keyword">void</span> onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state, <span class="built_in">int</span> widthSpec, <span class="built_in">int</span> heightSpec) {
+        <span class="keyword">final</span> <span class="built_in">int</span> widthMode = View.MeasureSpec.getMode(widthSpec);
+        <span class="keyword">final</span> <span class="built_in">int</span> heightMode = View.MeasureSpec.getMode(heightSpec);
+
+        <span class="keyword">final</span> <span class="built_in">int</span> widthSize = View.MeasureSpec.getSize(widthSpec);
+        <span class="keyword">final</span> <span class="built_in">int</span> heightSize = View.MeasureSpec.getSize(heightSpec);
+
+        <span class="keyword">final</span> <span class="built_in">boolean</span> hasWidthSize = widthMode != View.MeasureSpec.UNSPECIFIED;
+        <span class="keyword">final</span> <span class="built_in">boolean</span> hasHeightSize = heightMode != View.MeasureSpec.UNSPECIFIED;
+
+        <span class="keyword">final</span> <span class="built_in">boolean</span> exactWidth = widthMode == View.MeasureSpec.EXACTLY;
+        <span class="keyword">final</span> <span class="built_in">boolean</span> exactHeight = heightMode == View.MeasureSpec.EXACTLY;
+
+        <span class="keyword">final</span> <span class="built_in">int</span> unspecified = makeUnspecifiedSpec();
+
+        <span class="keyword">if</span> (exactWidth &amp;&amp; exactHeight) {
+            <span class="comment">// in case of exact calculations for both dimensions let's use default "onMeasure" implementation</span>
+            <span class="keyword">super</span>.onMeasure(recycler, state, widthSpec, heightSpec);
+            <span class="keyword">return</span>;
+        }
+
+        <span class="keyword">final</span> <span class="built_in">boolean</span> vertical = getOrientation() == VERTICAL;
+
+        initChildDimensions(widthSize, heightSize, vertical);
+
+        <span class="built_in">int</span> <span class="variable">width</span> = <span class="number">0</span>;
+        <span class="built_in">int</span> <span class="variable">height</span> = <span class="number">0</span>;
+
+        <span class="comment">// it's possible to get scrap views in recycler which are bound to old (invalid) adapter entities. This</span>
+        <span class="comment">// happens because their invalidation happens after "onMeasure" method. As a workaround let's clear the</span>
+        <span class="comment">// recycler now (it should not cause any performance issues while scrolling as "onMeasure" is never</span>
+        <span class="comment">// called whiles scrolling)</span>
+        recycler.<span class="built_in">clear</span>();
+
+        <span class="keyword">final</span> <span class="built_in">int</span> stateItemCount = state.getItemCount();
+        <span class="keyword">final</span> <span class="built_in">int</span> adapterItemCount = getItemCount();
+        <span class="comment">// adapter always contains actual data while state might contain old data (f.e. data before the animation is</span>
+        <span class="comment">// done). As we want to measure the view with actual data we must use data from the adapter and not from  the</span>
+        <span class="comment">// state</span>
+        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; adapterItemCount; i++) {
+            <span class="keyword">if</span> (vertical) {
+                <span class="keyword">if</span> (!hasChildSize) {
+                    <span class="keyword">if</span> (i &lt; stateItemCount) {
+                        <span class="comment">// we should not exceed state count, otherwise we'll get IndexOutOfBoundsException. For such items</span>
+                        <span class="comment">// we will use previously calculated dimensions</span>
+                        measureChild(recycler, i, widthSize, unspecified, childDimensions);
+                    } <span class="keyword">else</span> {
+                        logMeasureWarning(i);
+                    }
+                }
+                <span class="variable">height</span> += childDimensions[CHILD_HEIGHT];
+                <span class="keyword">if</span> (i == <span class="number">0</span>) {
+                    <span class="variable">width</span> = childDimensions[CHILD_WIDTH];
+                }
+                <span class="keyword">if</span> (hasHeightSize &amp;&amp; <span class="variable">height</span> &gt;= heightSize) {
+                    <span class="keyword">break</span>;
+                }
+            } <span class="keyword">else</span> {
+                <span class="keyword">if</span> (!hasChildSize) {
+                    <span class="keyword">if</span> (i &lt; stateItemCount) {
+                        <span class="comment">// we should not exceed state count, otherwise we'll get IndexOutOfBoundsException. For such items</span>
+                        <span class="comment">// we will use previously calculated dimensions</span>
+                        measureChild(recycler, i, unspecified, heightSize, childDimensions);
+                    } <span class="keyword">else</span> {
+                        logMeasureWarning(i);
+                    }
+                }
+                <span class="variable">width</span> += childDimensions[CHILD_WIDTH];
+                <span class="keyword">if</span> (i == <span class="number">0</span>) {
+                    <span class="variable">height</span> = childDimensions[CHILD_HEIGHT];
+                }
+                <span class="keyword">if</span> (hasWidthSize &amp;&amp; <span class="variable">width</span> &gt;= widthSize) {
+                    <span class="keyword">break</span>;
+                }
+            }
+        }
+
+        <span class="keyword">if</span> (exactWidth) {
+            <span class="variable">width</span> = widthSize;
+        } <span class="keyword">else</span> {
+            <span class="variable">width</span> += getPaddingLeft() + getPaddingRight();
+            <span class="keyword">if</span> (hasWidthSize) {
+                <span class="variable">width</span> = Math.<span class="built_in">min</span>(<span class="variable">width</span>, widthSize);
+            }
+        }
+
+        <span class="keyword">if</span> (exactHeight) {
+            <span class="variable">height</span> = heightSize;
+        } <span class="keyword">else</span> {
+            <span class="variable">height</span> += getPaddingTop() + getPaddingBottom();
+            <span class="keyword">if</span> (hasHeightSize) {
+                <span class="variable">height</span> = Math.<span class="built_in">min</span>(<span class="variable">height</span>, heightSize);
+            }
+        }
+
+        setMeasuredDimension(<span class="variable">width</span>, <span class="variable">height</span>);
+
+        <span class="keyword">if</span> (view != <span class="keyword">null</span> &amp;&amp; overScrollMode == ViewCompat.OVER_SCROLL_IF_CONTENT_SCROLLS) {
+            <span class="keyword">final</span> <span class="built_in">boolean</span> fit = (vertical &amp;&amp; (!hasHeightSize || <span class="variable">height</span> &lt; heightSize))
+                    || (!vertical &amp;&amp; (!hasWidthSize || <span class="variable">width</span> &lt; widthSize));
+
+            ViewCompat.setOverScrollMode(view, fit ? ViewCompat.OVER_SCROLL_NEVER : ViewCompat.OVER_SCROLL_ALWAYS);
+        }
+    }
+
+    <span class="keyword">private</span> <span class="keyword">void</span> logMeasureWarning(<span class="built_in">int</span> child) {
+        <span class="keyword">if</span> (BuildConfig.DEBUG) {
+            Log.w(<span class="string">"LinearLayoutManager"</span>, <span class="string">"Can't measure child #"</span> + child + <span class="string">", previously used dimensions will be reused."</span> +
+                    <span class="string">"To remove this message either use #setChildSize() method or don't run RecyclerView animations"</span>);
+        }
+    }
+
+    <span class="keyword">private</span> <span class="keyword">void</span> initChildDimensions(<span class="built_in">int</span> <span class="variable">width</span>, <span class="built_in">int</span> <span class="variable">height</span>, <span class="built_in">boolean</span> vertical) {
+        <span class="keyword">if</span> (childDimensions[CHILD_WIDTH] != <span class="number">0</span> || childDimensions[CHILD_HEIGHT] != <span class="number">0</span>) {
+            <span class="comment">// already initialized, skipping</span>
+            <span class="keyword">return</span>;
+        }
+        <span class="keyword">if</span> (vertical) {
+            childDimensions[CHILD_WIDTH] = <span class="variable">width</span>;
+            childDimensions[CHILD_HEIGHT] = childSize;
+        } <span class="keyword">else</span> {
+            childDimensions[CHILD_WIDTH] = childSize;
+            childDimensions[CHILD_HEIGHT] = <span class="variable">height</span>;
+        }
+    }
+
+    @Override
+    <span class="keyword">public</span> <span class="keyword">void</span> setOrientation(<span class="built_in">int</span> orientation) {
+        <span class="comment">// might be called before the constructor of this class is called</span>
+        <span class="comment">//noinspection ConstantConditions</span>
+        <span class="keyword">if</span> (childDimensions != <span class="keyword">null</span>) {
+            <span class="keyword">if</span> (getOrientation() != orientation) {
+                childDimensions[CHILD_WIDTH] = <span class="number">0</span>;
+                childDimensions[CHILD_HEIGHT] = <span class="number">0</span>;
+            }
+        }
+        <span class="keyword">super</span>.setOrientation(orientation);
+    }
+
+    <span class="keyword">public</span> <span class="keyword">void</span> clearChildSize() {
+        hasChildSize = <span class="keyword">false</span>;
+        setChildSize(DEFAULT_CHILD_SIZE);
+    }
+
+    <span class="keyword">public</span> <span class="keyword">void</span> setChildSize(<span class="built_in">int</span> childSize) {
+        hasChildSize = <span class="keyword">true</span>;
+        <span class="keyword">if</span> (<span class="keyword">this</span>.childSize != childSize) {
+            <span class="keyword">this</span>.childSize = childSize;
+            requestLayout();
+        }
+    }
+
+    <span class="keyword">private</span> <span class="keyword">void</span> measureChild(RecyclerView.Recycler recycler, <span class="built_in">int</span> position, <span class="built_in">int</span> widthSize, <span class="built_in">int</span> heightSize, <span class="built_in">int</span>[] dimensions) {
+        <span class="keyword">final</span> View child;
+        <span class="keyword">try</span> {
+            child = recycler.getViewForPosition(position);
+        } <span class="keyword">catch</span> (IndexOutOfBoundsException e) {
+            <span class="keyword">if</span> (BuildConfig.DEBUG) {
+                Log.w(<span class="string">"LinearLayoutManager"</span>, <span class="string">"LinearLayoutManager doesn't work well with animations. Consider switching them off"</span>, e);
+            }
+            <span class="keyword">return</span>;
+        }
+
+        <span class="keyword">final</span> RecyclerView.LayoutParams p = (RecyclerView.LayoutParams) child.getLayoutParams();
+
+        <span class="keyword">final</span> <span class="built_in">int</span> hPadding = getPaddingLeft() + getPaddingRight();
+        <span class="keyword">final</span> <span class="built_in">int</span> vPadding = getPaddingTop() + getPaddingBottom();
+
+        <span class="keyword">final</span> <span class="built_in">int</span> hMargin = p.leftMargin + p.rightMargin;
+        <span class="keyword">final</span> <span class="built_in">int</span> vMargin = p.topMargin + p.bottomMargin;
+
+        <span class="comment">// we must make insets dirty in order calculateItemDecorationsForChild to work</span>
+        makeInsetsDirty(p);
+        <span class="comment">// this method should be called before any get<span class="label">XxxDecorationXxx() methods</span></span>
+        calculateItemDecorationsForChild(child, tmpRect);
+
+        <span class="keyword">final</span> <span class="built_in">int</span> hDecoration = getRightDecorationWidth(child) + getLeftDecorationWidth(child);
+        <span class="keyword">final</span> <span class="built_in">int</span> vDecoration = getTopDecorationHeight(child) + getBottomDecorationHeight(child);
+
+        <span class="keyword">final</span> <span class="built_in">int</span> childWidthSpec = getChildMeasureSpec(widthSize, hPadding + hMargin + hDecoration, p.<span class="variable">width</span>, canScrollHorizontally());
+        <span class="keyword">final</span> <span class="built_in">int</span> childHeightSpec = getChildMeasureSpec(heightSize, vPadding + vMargin + vDecoration, p.<span class="variable">height</span>, canScrollVertically());
+
+        child.measure(childWidthSpec, childHeightSpec);
+
+        dimensions[CHILD_WIDTH] = getDecoratedMeasuredWidth(child) + p.leftMargin + p.rightMargin;
+        dimensions[CHILD_HEIGHT] = getDecoratedMeasuredHeight(child) + p.bottomMargin + p.topMargin;
+
+        <span class="comment">// as view is recycled let's not keep old measured values</span>
+        makeInsetsDirty(p);
+        recycler.recycleView(child);
+    }
+
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> makeInsetsDirty(RecyclerView.LayoutParams p) {
+        <span class="keyword">if</span> (!canMakeInsetsDirty) {
+            <span class="keyword">return</span>;
+        }
+        <span class="keyword">try</span> {
+            <span class="keyword">if</span> (insetsDirtyField == <span class="keyword">null</span>) {
+                insetsDirtyField = RecyclerView.LayoutParams.class.getDeclaredField(<span class="string">"mInsetsDirty"</span>);
+                insetsDirtyField.setAccessible(<span class="keyword">true</span>);
+            }
+            insetsDirtyField.<span class="built_in">set</span>(p, <span class="keyword">true</span>);
+        } <span class="keyword">catch</span> (NoSuchFieldException e) {
+            onMakeInsertDirtyFailed();
+        } <span class="keyword">catch</span> (IllegalAccessException e) {
+            onMakeInsertDirtyFailed();
+        }
+    }
+
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> onMakeInsertDirtyFailed() {
+        canMakeInsetsDirty = <span class="keyword">false</span>;
+        <span class="keyword">if</span> (BuildConfig.DEBUG) {
+            Log.w(<span class="string">"LinearLayoutManager"</span>, <span class="string">"Can't make LayoutParams insets dirty, decorations measurements might be incorrect"</span>);
+        }
+    }
+}
+</code></pre><p>参考：<a href="http://blog.csdn.net/guxiao1201/article/details/40425231" target="_blank" rel="external">RecyclerView高度随Item自适应</a></p>
+<p>2015-9-19</p>
+<h1 id="ListView高度">ListView高度</h1><p>在ListView下面有一个Button，ListView设置高度为<code>wrap_content</code>，当ListView高度超出屏幕时，Button就不显示了。<br>解决：<br>给ListView增加</p>
+<pre><code><span class="label">android:</span>layout_weight=<span class="string">"1"</span> 
+</code></pre><p>2015-9-21</p>
+<h1 id="SearchView">SearchView</h1><h2 id="按返回键关闭SearchView">按返回键关闭SearchView</h2><pre><code><span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span> </span>{
+    <span class="keyword">if</span> ( searchView != <span class="keyword">null</span> ) {
+        <span class="keyword">if</span> (!searchView.isIconified()) {
+            searchView.setIconified(<span class="keyword">true</span>);
+        } <span class="keyword">else</span> {
+            <span class="keyword">super</span>.onBackPressed();
+        }
+    }
+}
+</code></pre><p>参考：<a href="http://stackoverflow.com/a/17782575/5315255" target="_blank" rel="external">How do I close a SearchView programmatically?</a></p>
+<h2 id="点击外部关闭SearchView">点击外部关闭SearchView</h2><pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">setupUI</span><span class="params">(View view)</span> </span>{
+
+    <span class="keyword">if</span>(!(view <span class="keyword">instanceof</span> SearchView)) {
+
+        view.setOnTouchListener(<span class="keyword">new</span> OnTouchListener() {
+
+            <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>{
+                searchMenuItem.collapseActionView();
+                <span class="keyword">return</span> <span class="keyword">false</span>;
+            }
+
+        });
+    }
+
+    <span class="comment">//If a layout container, iterate over children and seed recursion.</span>
+    <span class="keyword">if</span> (view <span class="keyword">instanceof</span> ViewGroup) {
+
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ((ViewGroup) view).getChildCount(); i++) {
+
+            View innerView = ((ViewGroup) view).getChildAt(i);
+
+            setupUI(innerView);
+        }
+    }
+}
+</code></pre><p>参考：<a href="http://stackoverflow.com/a/17591520/5315255" target="_blank" rel="external">how to make searchview loose focus and collapse when clicked elsewhere on activity</a></p>
+<p>2015-9-22</p>
+<h1 id="Sqlite判断记录是否存在">Sqlite判断记录是否存在</h1><pre><code>Cursor <span class="built_in">cursor</span> = db.query(……);
+<span class="keyword">if</span> (<span class="built_in">cursor</span>.moveToNext())
+    <span class="keyword">return</span> <span class="keyword">true</span>;
+<span class="keyword">else</span>
+    <span class="keyword">return</span> <span class="keyword">false</span>;
 </code></pre>
       
     </div>
