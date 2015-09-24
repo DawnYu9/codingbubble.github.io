@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Coding world, changing world ^_^]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://codingbubble.github.io/"/>
-  <updated>2015-09-22T06:49:04.123Z</updated>
+  <updated>2015-09-24T14:40:59.922Z</updated>
   <id>http://codingbubble.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/"/>
     <id>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</id>
     <published>2015-08-06T07:06:40.000Z</published>
-    <updated>2015-09-22T06:49:04.123Z</updated>
+    <updated>2015-09-24T14:40:59.922Z</updated>
     <content type="html"><![CDATA[<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。</p>
 <p>2015-8-6 15:07:54</p>
 <h1 id="1-词库">1.词库</h1><p>找不到词库，暂时找到一个带音标和释义的考研单词excel（估计是好几年前的大纲词汇），就先用这个吧。<br>excel不能显示音标的话，还得下载字体TOPhonetic.ttf。</p>
@@ -1605,7 +1605,171 @@ popupWindow.showAsDropDown(v); <span class="comment">//设置显示位置</span>
     <span class="keyword">return</span> <span class="keyword">true</span>;
 <span class="keyword">else</span>
     <span class="keyword">return</span> <span class="keyword">false</span>;
-</code></pre>]]></content>
+</code></pre><h1 id="Sqlite模糊查询">Sqlite模糊查询</h1><pre><code><span class="keyword">String</span>[] columns = { COLUMN_WORD, COLUMN_DEFINITION };
+<span class="keyword">String</span> selection = COLUMN_DEFINITION + <span class="string">" like ? "</span>; 
+<span class="keyword">String</span>[] selectionArgs = <span class="keyword">new</span> <span class="keyword">String</span>[]{ <span class="string">"%"</span> + value + <span class="string">"%"</span> };
+
+db = wordsDbHelper.getReadableDatabase();
+Cursor <span class="built_in">cursor</span> = db.query(tableName, columns, selection, selectionArgs, <span class="keyword">null</span>, <span class="keyword">null</span>, COLUMN_WORD);
+</code></pre><h1 id="Bundle实现Android_Activity间消息的传递">Bundle实现Android Activity间消息的传递</h1><pre><code>Intent intent = <span class="keyword">new</span> Intent();  
+intent.setClass(TestBundle.<span class="keyword">this</span>, Target.<span class="keyword">class</span>);  
+Bundle mBundle = <span class="keyword">new</span> Bundle();  
+mBundle.putString(<span class="string">"Data"</span>, <span class="string">"ray'blog"</span>);<span class="comment">//压入数据  </span>
+intent.putExtras(mBundle);  
+startActivity(intent);  
+
+Bundle bundle = getIntent().getExtras();    
+<span class="built_in">String</span> data=bundle.getString(<span class="string">"Data"</span>);<span class="comment">//取出数据</span>
+</code></pre><h1 id="Volley">Volley</h1><h2 id="JsonRequest">JsonRequest</h2><pre><code>RequestQueue mQueue = Volley.newRequestQueue(context);  
+JsonObjectRequest jsonObjectRequest = <span class="keyword">new</span> JsonObjectRequest(<span class="string">"http://m.weather.com.cn/data/101010100.html"</span>, <span class="keyword">null</span>,  
+    <span class="keyword">new</span> Response.Listener&lt;JSONObject&gt;() {  
+        <span class="annotation">@Override</span>  
+        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(JSONObject response)</span> </span>{  
+            Log.d(<span class="string">"TAG"</span>, response.toString());  
+        }  
+    }, <span class="keyword">new</span> Response.ErrorListener() {  
+        <span class="annotation">@Override</span>  
+        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onErrorResponse</span><span class="params">(VolleyError <span class="keyword">error</span>)</span> </span>{  
+            Log.e(<span class="string">"TAG"</span>, <span class="keyword">error</span>.getMessage(), <span class="keyword">error</span>);  
+        }  
+    }); 
+mQueue.add(jsonObjectRequest);  
+</code></pre><p>2015-9-24</p>
+<h1 id="半透明背景">半透明背景</h1><p><code>res/values/color.xml</code></p>
+<pre><code>&lt;<span class="attribute">color</span> name=<span class="string">"transparent_background"</span>&gt;<span class="hexcolor">#500000</span>00&lt;/<span class="attribute">color</span>&gt;
+</code></pre><p><code>#5000000</code>前两位是透明的效果参数从00—99（透明—不怎么透明），后6位是颜色的设置 </p>
+<p>参考：<a href="http://norety.iteye.com/blog/648725" target="_blank" rel="external">android 成长 UI 学习之 Activity 透明，半透明效果的设置transparent</a></p>
+<h1 id="圆角边框">圆角边框</h1><p>在<code>drawable</code>目录里定义一个<code>corners_bg.xml</code>: </p>
+<pre><code><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>    
+<span class="tag">&lt;<span class="title">shape</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>&gt;</span>      
+    <span class="tag">&lt;<span class="title">solid</span> <span class="attribute">android:color</span>=<span class="value">"@color/translucent_background"</span> /&gt;</span>     //填充颜色，这里设置的半透明 
+    <span class="tag">&lt;<span class="title">corners</span> <span class="attribute">android:radius</span>=<span class="value">"3dp"</span> /&gt;</span>    //圆角弧度
+<span class="tag">&lt;/<span class="title">shape</span>&gt;</span>   
+</code></pre><p>引用：</p>
+<pre><code><span class="label">android:</span>background=<span class="string">"@drawable/corners_bg"</span>
+</code></pre><p>参考：<a href="http://blog.csdn.net/jueblog/article/details/11857479" target="_blank" rel="external">【Android】Android布局中实现圆角边框</a></p>
+<h1 id="播放音频">播放音频</h1><ol>
+<li>MediaPlayer</li>
+</ol>
+<ul>
+<li>适合播放较大文件，文件应该存储在SD卡上，而不是在资源文件里</li>
+<li>资源占用量较高，延迟时间较长。 </li>
+<li>不支持多个音频同时播放 </li>
+</ul>
+<p>（1）从资源文件中播放</p>
+<pre><code>MediaPlayer player = <span class="keyword">new</span> MediaPlayer.create(<span class="keyword">this</span>,R.raw.test);
+player.stare();
+</code></pre><p>（2）从文件系统播放</p>
+<pre><code><span class="type">MediaPlayer</span> player = <span class="keyword">new</span> <span class="type">MediaPlayer</span><span class="literal">()</span>;
+<span class="type">String</span> path = <span class="string">"/sdcard/test.mp3"</span>;
+player.setDataSource(path);
+player.prepare<span class="literal">()</span>;
+player.start<span class="literal">()</span>;
+</code></pre><p>（3）从网络播放</p>
+<ul>
+<li><p>通过URI的方式:</p>
+<p>  String path=”<a href="http://**************.mp3" target="_blank" rel="external">http://**************.mp3</a>“;     //音频的网络地址<br>  Uri uri = Uri.parse(path);<br>  MediaPlayer player = new MediaPlayer.create(this,uri);<br>  player.start();</p>
+<ul>
+<li><p>通过设置数据源的方式：</p>
+<p> MediaPlayer player = new MediaPlayer.create();<br> String path=”<a href="http://**************.mp3" target="_blank" rel="external">http://**************.mp3</a>“;          //音频的网络地址<br> player.setDataSource(path);<br> player.prepare();<br> player.start();<br>参考：<a href="http://www.cnblogs.com/xiaoQLu/archive/2011/04/24/2026520.html" target="_blank" rel="external">Android中的音频播放（MediaPlayer和SoundPool）</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>2.SoundPool<br>低延迟播放，适合播放实时音实现同时播放多个声音，如游戏中炸弹的爆炸音等小资源文件，此类音频比较适合放到资源文件夹 res/raw下和程序一起打成APK文件</p>
+<ul>
+<li>SoundPool 使用音效池的概念来管理多个短促的音效； </li>
+<li>cpu资源占用量低和反应延迟小； </li>
+<li>支持自行设置的品质、音量、播放比率等参数； </li>
+<li>异步线程，占用资源少，可以同时合成多种音效；</li>
+</ul>
+<h1 id="修改ActionBar_icon大小">修改ActionBar icon大小</h1><p>API &lt; 17，res/values/styles.xml :</p>
+<pre><code>&lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"android:actionButtonStyle"</span>&gt;@style/ActionButtonStyle&lt;/<span class="property">item</span>&gt;
+
+&lt;style <span class="property">name</span>=<span class="string">"ActionButtonStyle"</span> parent=<span class="string">"@android:style/Widget.Holo.Light.ActionButton"</span>&gt;
+    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"android:minWidth"</span>&gt;<span class="number">0</span>dip&lt;/<span class="property">item</span>&gt;
+    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"android:paddingLeft"</span>&gt;<span class="number">0</span>dip&lt;/<span class="property">item</span>&gt;
+    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"android:paddingRight"</span>&gt;<span class="number">0</span>dip&lt;/<span class="property">item</span>&gt;                  
+&lt;/style&gt;
+</code></pre><p>API &gt; 17res/values-v17/styles.xml :</p>
+<pre><code>&lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"android:actionButtonStyle"</span>&gt;@style/ActionButtonStyle&lt;/<span class="property">item</span>&gt;
+
+&lt;style <span class="property">name</span>=<span class="string">"ActionButtonStyle"</span> parent=<span class="string">"@android:style/Widget.Holo.Light.ActionButton"</span>&gt;
+    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"android:minWidth"</span>&gt;<span class="number">0</span>dip&lt;/<span class="property">item</span>&gt;
+    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"android:paddingStart"</span>&gt;<span class="number">0</span>dip&lt;/<span class="property">item</span>&gt;
+    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"android:paddingEnd"</span>&gt;<span class="number">0</span>dip&lt;/<span class="property">item</span>&gt;                  
+&lt;/style&gt;
+</code></pre><p>参考：<a href="http://stackoverflow.com/a/25410775/5315255" target="_blank" rel="external">Is there a way to reduce the spacing between the Action Item Icons on Action Bar?</a></p>
+<h1 id="修改actionbar的高度">修改actionbar的高度</h1><p>style.xml:</p>
+<pre><code><span class="tag">&lt;<span class="title">resources</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"AppTheme"</span> <span class="attribute">parent</span>=<span class="value">"@android:style/Theme.Holo.Light"</span>&gt;</span><span class="css">
+        &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="rule"><span class="attribute">android</span>:<span class="value">actionBarSize<span class="string">"&gt;30dp&lt;/item&gt;
+    </span></span></span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">resources</span>&gt;</span>
+</code></pre><p>manifest.xml:</p>
+<pre><code>&lt;application
+    android:<span class="variable">label=</span><span class="string">"@string/app_name"</span>
+    android:<span class="variable">theme=</span><span class="string">"@style/AppTheme"</span>
+    android:<span class="variable">icon=</span><span class="string">"@drawable/ic_launcher"</span>
+ &gt;
+</code></pre><p>参考:<a href="http://www.eoeandroid.com/blog-537168-4722.html" target="_blank" rel="external">ActonBar介绍-修改actionbar的高度</a></p>
+<h1 id="修改SearchView样式">修改SearchView样式</h1><h2 id="文字颜色">文字颜色</h2><p>输入的文字：</p>
+<pre><code>int <span class="variable">id =</span> searchView.getContext().getResources().getIdentifier(<span class="string">"android:id/search_src_text"</span>, <span class="constant">null</span>, <span class="constant">null</span>);
+TextView <span class="variable">textView =</span> (TextView) searchView.findViewById(id);
+textView.setTextColor(Color.WHITE);
+</code></pre><p>参考：<a href="http://www.cnblogs.com/fighter/p/20686e027c8702343b1baf86ed715a14.html" target="_blank" rel="external">Android中SearchView修改字体颜色</a></p>
+<p>hint提示文字：</p>
+<pre><code>searchView.setQueryHint(<span class="type">Html</span>.fromHtml(<span class="string">"&lt;font color = #999999&gt;"</span> + getResources<span class="literal">()</span>.getString(<span class="type">R</span>.<span class="built_in">string</span>.search_input) + <span class="string">"&lt;/font&gt;"</span>));
+</code></pre><p>参考：<a href="http://www.eoeandroid.com/thread-551698-1-1.html" target="_blank" rel="external">关于SearchView的一些小细节</a></p>
+<h2 id="自定义样式">自定义样式</h2><p>使用<a href="https://gist.github.com/ademar111190/7d31dab71502e6a85b8a" target="_blank" rel="external">SearchViewFormatter</a><br><a href="http://stackoverflow.com/a/24045746/5315255" target="_blank" rel="external">用法</a>：</p>
+<pre><code>new SearchViewFormatter()
+        .<span class="built_in">set</span>SearchBackGroundResource(R.drawable.my_bg)
+        .<span class="built_in">set</span>SearchIconResource(R.drawable.my_ic, true, false) //true <span class="keyword">to</span> icon inside edittext, false <span class="keyword">to</span> outside
+        .<span class="built_in">set</span>SearchVoiceIconResource(R.drawable.my_ic)
+        .<span class="built_in">set</span>SearchTextColorResource(R.color.my_color)
+        .<span class="built_in">set</span>SearchHintColorResource(R.color.my_color)
+        .<span class="built_in">set</span>SearchCloseIconResource(R.drawable.my_ic)
+        .<span class="built_in">set</span>InputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS)
+        .format(mSearchView);
+</code></pre><h2 id="修改Cursor颜色">修改Cursor颜色</h2><pre><code><span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>{
+    getMenuInflater().inflate(R.menu.entity_list_actions, menu);
+    <span class="keyword">final</span> SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+    <span class="keyword">final</span> <span class="keyword">int</span> textViewID = searchView.getContext().getResources().getIdentifier(<span class="string">"android:id/search_src_text"</span>,<span class="keyword">null</span>, <span class="keyword">null</span>);
+    <span class="keyword">final</span> AutoCompleteTextView searchTextView = (AutoCompleteTextView) searchView.findViewById(textViewID);
+    <span class="keyword">try</span> {
+        Field mCursorDrawableRes = TextView.class.getDeclaredField(<span class="string">"mCursorDrawableRes"</span>);
+        mCursorDrawableRes.setAccessible(<span class="keyword">true</span>);
+        mCursorDrawableRes.set(searchTextView, <span class="number">0</span>); <span class="comment">//This sets the cursor resource ID to 0 or @null which will make it visible on white background</span>
+    } <span class="keyword">catch</span> (Exception e) {}
+    <span class="function"><span class="keyword">return</span> <span class="keyword">super</span>.<span class="title">onCreateOptionsMenu</span><span class="params">(menu)</span></span>;
+}
+</code></pre><p>参考：<a href="http://stackoverflow.com/a/19796417/5315255" target="_blank" rel="external">Changing the cursor color in SearchView without ActionBarSherlock</a></p>
+<h1 id="ActionBar返回上一个Activity">ActionBar返回上一个Activity</h1><p>在此Activity里设置</p>
+<pre><code><span class="constant">ActionBar mActionBar</span> = getActionBar();
+mActionBar.setDisplayHomeAsUpEnabled(<span class="literal">true</span>);<span class="comment">//show back button</span>
+</code></pre><p>在Manifest.xml文件中设置这个Activity的parentActivity</p>
+<pre><code>&lt;activity
+    android:<span class="variable">parentActivityName=</span><span class="string">".MainActivity"</span>
+    android:<span class="variable">name=</span><span class="string">".BackActionBarActivity"</span>
+    android:<span class="variable">launchMode=</span><span class="string">"singleTask"</span>
+    android:<span class="variable">label=</span><span class="string">"@string/title_activity_back_action_bar"</span>&gt;
+    &lt;meta-data
+        android:<span class="variable">name=</span><span class="string">"android.support.PARENT_ACTIVITY"</span>
+        android:<span class="variable">value=</span><span class="string">".MainActivity"</span>/&gt;
+&lt;/activity&gt;
+</code></pre><p>参考：<a href="http://blog.csdn.net/juxuny/article/details/46636323" target="_blank" rel="external">Android ActionBar 返回上一个Activity</a></p>
+<h1 id="修改指定Activity的Actionbar">修改指定Activity的Actionbar</h1><p>styles.xml：</p>
+<pre><code>&lt;style <span class="property">name</span>=<span class="string">"CustomActivityTheme"</span> parent=<span class="string">"AppTheme"</span>&gt;
+    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"android:homeAsUpIndicator"</span>&gt;@drawable/custom_home_as_up_icon&lt;/<span class="property">item</span>&gt;
+&lt;/style&gt;
+</code></pre><p>Manifest.xml：</p>
+<pre><code><span class="tag">&lt;<span class="title">activity</span>
+        <span class="attribute">android:name</span>=<span class="value">"com.example.CustomActivity"</span>
+        <span class="attribute">android:theme</span>=<span class="value">"@style/CustomActivityTheme"</span> &gt;</span>
+<span class="tag">&lt;/<span class="title">activity</span>&gt;</span>
+</code></pre><p>参考：<a href="http://stackoverflow.com/a/17593380/5315255" target="_blank" rel="external">Change the actionbar homeAsUpIndicator Programamtically</a></p>
+]]></content>
     <summary type="html">
     <![CDATA[<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。</p>
 <p>2015-8-6 15:07:54</p>
