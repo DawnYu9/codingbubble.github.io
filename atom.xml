@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Coding world, changing world ^_^]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://codingbubble.github.io/"/>
-  <updated>2015-09-25T00:32:34.576Z</updated>
+  <updated>2015-09-25T01:37:21.325Z</updated>
   <id>http://codingbubble.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/"/>
     <id>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</id>
     <published>2015-08-06T07:06:40.000Z</published>
-    <updated>2015-09-25T00:32:34.576Z</updated>
+    <updated>2015-09-25T01:37:21.325Z</updated>
     <content type="html"><![CDATA[<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。</p>
 <p>2015-8-6 15:07:54</p>
 <h1 id="1-词库">1.词库</h1><p>找不到词库，暂时找到一个带音标和释义的考研单词excel（估计是好几年前的大纲词汇），就先用这个吧。<br>excel不能显示音标的话，还得下载字体TOPhonetic.ttf。</p>
