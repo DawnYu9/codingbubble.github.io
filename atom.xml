@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Coding world, changing world ^_^]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://codingbubble.github.io/"/>
-  <updated>2015-09-24T14:40:59.922Z</updated>
+  <updated>2015-09-25T00:32:34.576Z</updated>
   <id>http://codingbubble.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/"/>
     <id>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</id>
     <published>2015-08-06T07:06:40.000Z</published>
-    <updated>2015-09-24T14:40:59.922Z</updated>
+    <updated>2015-09-25T00:32:34.576Z</updated>
     <content type="html"><![CDATA[<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。</p>
 <p>2015-8-6 15:07:54</p>
 <h1 id="1-词库">1.词库</h1><p>找不到词库，暂时找到一个带音标和释义的考研单词excel（估计是好几年前的大纲词汇），就先用这个吧。<br>excel不能显示音标的话，还得下载字体TOPhonetic.ttf。</p>
@@ -1769,6 +1769,17 @@ mActionBar.setDisplayHomeAsUpEnabled(<span class="literal">true</span>);<span cl
         <span class="attribute">android:theme</span>=<span class="value">"@style/CustomActivityTheme"</span> &gt;</span>
 <span class="tag">&lt;/<span class="title">activity</span>&gt;</span>
 </code></pre><p>参考：<a href="http://stackoverflow.com/a/17593380/5315255" target="_blank" rel="external">Change the actionbar homeAsUpIndicator Programamtically</a></p>
+<p>2015-9-25</p>
+<h1 id="RecyclerView添加分割线">RecyclerView添加分割线</h1><p>使用<a href="https://github.com/yqritc/RecyclerView-FlexibleDivider" target="_blank" rel="external">RecyclerView-FlexibleDivider</a></p>
+<pre><code><span class="type">RecyclerView</span> recyclerView = (<span class="type">RecyclerView</span>) findViewById(<span class="type">R</span>.id.recyclerview);
+recyclerView.addItemDecoration(
+        <span class="keyword">new</span> <span class="type">HorizontalDividerItemDecoration</span>.<span class="type">Builder</span>(this)
+            .color(<span class="type">Color</span>.<span class="type">RED</span>)
+            .size(getResources<span class="literal">()</span>.getDimensionPixelSize(<span class="type">R</span>.dimen.divider))
+            .margin(getResources<span class="literal">()</span>.getDimensionPixelSize(<span class="type">R</span>.dimen.leftmargin),
+                    getResources<span class="literal">()</span>.getDimensionPixelSize(<span class="type">R</span>.dimen.rightmargin))
+            .build<span class="literal">()</span>);
+</code></pre><p>参考：<a href="http://www.mobile-open.com/2015/38629.html" target="_blank" rel="external">RecyclerView-FlexibleDivider——控制RecyclerView项目分割的Android类库</a></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。</p>

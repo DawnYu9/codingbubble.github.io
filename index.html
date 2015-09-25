@@ -1851,6 +1851,17 @@ mActionBar.setDisplayHomeAsUpEnabled(<span class="literal">true</span>);<span cl
         <span class="attribute">android:theme</span>=<span class="value">"@style/CustomActivityTheme"</span> &gt;</span>
 <span class="tag">&lt;/<span class="title">activity</span>&gt;</span>
 </code></pre><p>参考：<a href="http://stackoverflow.com/a/17593380/5315255" target="_blank" rel="external">Change the actionbar homeAsUpIndicator Programamtically</a></p>
+<p>2015-9-25</p>
+<h1 id="RecyclerView添加分割线">RecyclerView添加分割线</h1><p>使用<a href="https://github.com/yqritc/RecyclerView-FlexibleDivider" target="_blank" rel="external">RecyclerView-FlexibleDivider</a></p>
+<pre><code><span class="type">RecyclerView</span> recyclerView = (<span class="type">RecyclerView</span>) findViewById(<span class="type">R</span>.id.recyclerview);
+recyclerView.addItemDecoration(
+        <span class="keyword">new</span> <span class="type">HorizontalDividerItemDecoration</span>.<span class="type">Builder</span>(this)
+            .color(<span class="type">Color</span>.<span class="type">RED</span>)
+            .size(getResources<span class="literal">()</span>.getDimensionPixelSize(<span class="type">R</span>.dimen.divider))
+            .margin(getResources<span class="literal">()</span>.getDimensionPixelSize(<span class="type">R</span>.dimen.leftmargin),
+                    getResources<span class="literal">()</span>.getDimensionPixelSize(<span class="type">R</span>.dimen.rightmargin))
+            .build<span class="literal">()</span>);
+</code></pre><p>参考：<a href="http://www.mobile-open.com/2015/38629.html" target="_blank" rel="external">RecyclerView-FlexibleDivider——控制RecyclerView项目分割的Android类库</a></p>
 
       
     </div>
