@@ -104,25 +104,22 @@
           
         <p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。</p>
 <p>2015-8-6 15:07:54</p>
-<h1 id="1-词库">1.词库</h1><p>找不到词库，暂时找到一个带音标和释义的考研单词excel（估计是好几年前的大纲词汇），就先用这个吧。<br>excel不能显示音标的话，还得下载字体TOPhonetic.ttf。</p>
-<h1 id="2-数据库">2.数据库</h1><p>1.excel导入SQLite<br>试了几个可视化工具，就SQLiyeStudio比较满意，也没有乱码。<br>开始时把excel另存为.csv文件，系统的分隔符是逗号，但是去控制面板改了，excel导出时还是逗号，不知道为什么，可能需要重启电脑吧，懒得重启。竟然忘记replace了！所以excel → 制表符分隔的txt → replace分隔符，就ok了^_^</p>
-<ol>
-<li><h1 id="3-优化">3.优化</h1><p>1.延迟切换fragment</p>
-<p> public void switchContent(Fragment fragment) {</p>
-<pre><code>contentFragment = fragment;
-getFragmentManager<span class="literal">()</span>.beginTransaction<span class="literal">()</span>.replace(<span class="type">R</span>.id.content_frame, fragment).commit<span class="literal">()</span>;
-</code></pre><p> //  sm.showContent();</p>
-<pre><code><span class="type">Handler</span> h = <span class="keyword">new</span> <span class="type">Handler</span><span class="literal">()</span>;
-h.postDelayed(<span class="keyword">new</span> <span class="type">Runnable</span><span class="literal">()</span> {
-    public void run<span class="literal">()</span> {
-        sm.showContent<span class="literal">()</span>;
-    }
-}, <span class="number">50</span>);
-</code></pre><p> }</p>
-</li>
-</ol>
-<p>2015-8-10 20:54:25</p>
-<h1 id="1-单词本界面想做成卡片来滑动">1.单词本界面想做成卡片来滑动</h1><h2 id="1-RecyclerView">1.RecyclerView</h2><p>关于引入V7包：<a href="http://wp.aesean.com/?p=185" target="_blank" rel="external">http://wp.aesean.com/?p=185</a><br>2015-8-11 20:44:55</p>
+<h1 id="词库">词库</h1><p>找不到词库，暂时找到一个带音标和释义的考研单词excel（估计是好几年前的大纲词汇），就先用这个吧。<br>excel不能显示音标的话，还得下载字体TOPhonetic.ttf。</p>
+<h1 id="数据库">数据库</h1><p>excel导入SQLite<br>试了几个可视化工具，就SQLiyeStudio比较满意，也没有乱码。<br>开始时把excel另存为.csv文件，系统的分隔符是逗号，但是去控制面板改了，excel导出时还是逗号，不知道为什么，可能需要重启电脑吧，懒得重启。竟然忘记replace了！所以excel → 制表符分隔的txt → replace分隔符，就ok了^_^</p>
+<h1 id="优化——延迟切换fragment">优化——延迟切换fragment</h1><pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">switchContent</span><span class="params">(Fragment fragment)</span> </span>{
+    contentFragment = fragment;
+    getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+<span class="comment">//  sm.showContent();</span>
+    Handler h = <span class="keyword">new</span> Handler();
+    h.postDelayed(<span class="keyword">new</span> Runnable() {
+        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+            sm.showContent();
+        }
+    }, <span class="number">50</span>);
+}
+</code></pre><p>2015-8-10 </p>
+<h1 id="单词本界面想做成卡片来滑动">单词本界面想做成卡片来滑动</h1><h2 id="RecyclerView">RecyclerView</h2><p>关于引入V7包：<a href="http://wp.aesean.com/?p=185" target="_blank" rel="external">http://wp.aesean.com/?p=185</a></p>
+<p>2015-8-11 </p>
 <ol>
 <li>继承RecyclerView.Adapter出现<em>The hierarchy of the type ViewHolder is inconsistent</em>，因为菜单用的SlidingMenu，support-v4包可能不是最新的，将SlidingMenu的libs下的v4包替换成最新的就可以了。</li>
 <li><p><em>Call requires API level 21 (current min is 17): android.content.Context#getDrawable</em><br><a href="http://stackoverflow.com/questions/29041027/android-getresources-getdrawable-deprecated-api-22" target="_blank" rel="external">解决</a></p>
@@ -171,7 +168,7 @@ mActionbarSpinner.setOnItemSelectedListener(<span class="keyword">new</span> Spi
 
 <span class="comment">//在Bar上显示定制view  </span>
 actionBar.setCustomView(actionbarLayout); 
-</code></pre><p>初始化下拉列表数据：<br>（1） 在strings.xml添加数组</p>
+</code></pre><p>初始化下拉列表数据：<br>（1） 在<code>strings.xml</code>添加数组</p>
 <pre><code>&lt;<span class="type">string</span>-array <span class="property">name</span>=<span class="string">"spinner_list"</span> &gt;  
 &lt;<span class="property">item</span>&gt;item1&lt;/<span class="property">item</span>&gt;  
 &lt;<span class="property">item</span>&gt;item2&lt;/<span class="property">item</span>&gt;  
