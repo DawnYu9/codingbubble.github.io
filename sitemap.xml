@@ -2,6 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</loc>
+    <lastmod>2015-09-28T05:41:11.128Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://codingbubble.github.io/2015/07/15/Android-notes/</loc>
+    <lastmod>2015-09-28T05:41:01.608Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://codingbubble.github.io/2015/09/28/Java4Android-notes/</loc>
+    <lastmod>2015-09-28T05:40:49.543Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://codingbubble.github.io/2015/07/04/java-del-num-zero/</loc>
+    <lastmod>2015-09-28T05:40:46.205Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://codingbubble.github.io/2015/05/07/Github-Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2015-09-28T05:36:39.186Z</lastmod>
   </url>
@@ -9,26 +29,6 @@
   <url>
     <loc>http://codingbubble.github.io/2015/05/05/hello-world/</loc>
     <lastmod>2015-09-28T05:36:30.868Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://codingbubble.github.io/2015/07/15/Android-notes/</loc>
-    <lastmod>2015-09-28T05:36:19.706Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://codingbubble.github.io/2015/09/28/Java4Android-notes/</loc>
-    <lastmod>2015-09-28T05:36:15.845Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</loc>
-    <lastmod>2015-09-28T05:36:10.724Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://codingbubble.github.io/2015/07/04/java-del-num-zero/</loc>
-    <lastmod>2015-09-28T05:36:01.227Z</lastmod>
   </url>
   
   <url>

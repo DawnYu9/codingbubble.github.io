@@ -106,9 +106,7 @@
             </div>
           
           
-        <a id="more"></a>
-<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。</p>
-<p>2015-8-6 15:07:54</p>
+        <p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。<br><a id="more"></a><br>2015-8-6 15:07:54</p>
 <h1 id="词库">词库</h1><p>找不到词库，暂时找到一个带音标和释义的考研单词excel（估计是好几年前的大纲词汇），就先用这个吧。<br>excel不能显示音标的话，还得下载字体TOPhonetic.ttf。</p>
 <h1 id="数据库">数据库</h1><p>excel导入SQLite<br>试了几个可视化工具，就SQLiyeStudio比较满意，也没有乱码。<br>开始时把excel另存为.csv文件，系统的分隔符是逗号，但是去控制面板改了，excel导出时还是逗号，不知道为什么，可能需要重启电脑吧，懒得重启。竟然忘记replace了！所以excel → 制表符分隔的txt → replace分隔符，就ok了^_^</p>
 <h1 id="优化——延迟切换fragment">优化——延迟切换fragment</h1><pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">switchContent</span><span class="params">(Fragment fragment)</span> </span>{

@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Coding world, changing world ^_^]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://codingbubble.github.io/"/>
-  <updated>2015-09-28T05:36:15.845Z</updated>
+  <updated>2015-09-28T05:40:49.543Z</updated>
   <id>http://codingbubble.github.io/</id>
   
   <author>
@@ -18,10 +18,9 @@
     <title><![CDATA[Java4Android notes]]></title>
     <link href="http://codingbubble.github.io/2015/09/28/Java4Android-notes/"/>
     <id>http://codingbubble.github.io/2015/09/28/Java4Android-notes/</id>
-    <published>2015-09-28T05:36:15.845Z</published>
-    <updated>2015-09-28T05:36:15.845Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
-<p>Java4Android学习笔记</p>
+    <published>2015-09-28T05:40:49.543Z</published>
+    <updated>2015-09-28T05:40:49.543Z</updated>
+    <content type="html"><![CDATA[<p>Java4Android学习笔记<br><a id="more"></a></p>
 <h1 id="01_Java考古学">01 Java考古学</h1><ol>
 <li>伟大的1970年（前后）<br>（1）1963年，剑桥大学将ALGOL 60语言发展成为CPL（Combined Programming Language）语言。<br>（2）1967年，剑桥大学的Matin Richards对CPL语言进行了简化，产生了BCPL语言。<br>（3）1970年，美国贝尔实验室的Ken Thompson将BCPL进行了修改，起名为“B语言”。意为将CPL语言煮干，提炼出其精华。他用B语言写出了第一个UNIX操作系统。<br>（4）1973年，B语言也给人“煮”了一下，美国贝尔实验室的D.M.RITCHIE在B语言的基础上最终设计出了一种新的语言，取BCPL第二个字母为名，即C语言。</li>
 <li>Sun公司 </li>
@@ -265,10 +264,8 @@
 </ol>
 ]]></content>
     <summary type="html">
-    <![CDATA[<a id="more"></a>
-<p>Java4Android学习笔记</p>
-<h1 id="01_Java考古学">01 Java考古学</h1><ol>
-<li>伟大的1970年（前后）<br>（1）1963年，剑桥大学将ALGOL 60语言发展成为CPL（Combin]]>
+    <![CDATA[<p>Java4Android学习笔记<br>]]>
+    
     </summary>
     
       <category term="Android" scheme="http://codingbubble.github.io/tags/Android/"/>
@@ -284,10 +281,8 @@
     <link href="http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/"/>
     <id>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</id>
     <published>2015-08-06T07:06:40.000Z</published>
-    <updated>2015-09-28T05:36:10.724Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
-<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。</p>
-<p>2015-8-6 15:07:54</p>
+    <updated>2015-09-28T05:41:11.128Z</updated>
+    <content type="html"><![CDATA[<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。<br><a id="more"></a><br>2015-8-6 15:07:54</p>
 <h1 id="词库">词库</h1><p>找不到词库，暂时找到一个带音标和释义的考研单词excel（估计是好几年前的大纲词汇），就先用这个吧。<br>excel不能显示音标的话，还得下载字体TOPhonetic.ttf。</p>
 <h1 id="数据库">数据库</h1><p>excel导入SQLite<br>试了几个可视化工具，就SQLiyeStudio比较满意，也没有乱码。<br>开始时把excel另存为.csv文件，系统的分隔符是逗号，但是去控制面板改了，excel导出时还是逗号，不知道为什么，可能需要重启电脑吧，懒得重启。竟然忘记replace了！所以excel → 制表符分隔的txt → replace分隔符，就ok了^_^</p>
 <h1 id="优化——延迟切换fragment">优化——延迟切换fragment</h1><pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">switchContent</span><span class="params">(Fragment fragment)</span> </span>{
@@ -2124,10 +2119,8 @@ textView.setText(Html.fromHtml(<span class="string">"我要添加一个&lt;img s
 </code></pre><h1 id="文字和背景合并插入正文中">文字和背景合并插入正文中</h1><p>自定义TextDrawable，将文字内容传入，用canvas将文字和绘制的圆角矩形合并（本地图片同理）<br>    @Override<br>    public void draw(Canvas canvas) {<br>          paint.setColor(Color.RED);<br>          rectF.set(padding,  -height-linsSpaceExtra, padding+rectWidth, -linsSpaceExtra);<br>          canvas.drawRoundRect(rectF, height/2, height/2, paint);<br>          //canvas.drawRect(padding,  -height-linsSpaceExtra, padding+rectWidth, -linsSpaceExtra, paint);<br>          int baseline = (int) (rectF.top + (rectF.bottom - rectF.top - paint.getFontMetrics().bottom + paint.getFontMetrics().top) / 2 - paint.getFontMetrics().top)-2;<br>          paint.setColor(Color.WHITE);<br>        canvas.drawText(text, rectF.centerX(),  baseline, paint);<br>    }<br>参考：<a href="http://www.pffair.com/blog/2014/07/10/textviewbu-fen-wen-zi-jia-bei-jing-tu-pian/" target="_blank" rel="external">Textview文字末尾拼接带本地图片背景文字</a></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<a id="more"></a>
-<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。</p>
-<p>2015-8-6 15:07:54</p>
-<h1 id="词库">词库</h1><p>找不到词库，暂时找到一个带音标和释义的考研单词excel（]]>
+    <![CDATA[<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。<br>]]>
+    
     </summary>
     
   </entry>
@@ -2137,9 +2130,9 @@ textView.setText(Html.fromHtml(<span class="string">"我要添加一个&lt;img s
     <link href="http://codingbubble.github.io/2015/07/15/Android-notes/"/>
     <id>http://codingbubble.github.io/2015/07/15/Android-notes/</id>
     <published>2015-07-15T03:17:30.000Z</published>
-    <updated>2015-09-28T05:36:19.706Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
-<h1 id="xxx_cannot_be_resolved_or_is_not_a_field">xxx cannot be resolved or is not a field</h1><p>更改</p>
+    <updated>2015-09-28T05:41:01.608Z</updated>
+    <content type="html"><![CDATA[<h1 id="xxx_cannot_be_resolved_or_is_not_a_field">xxx cannot be resolved or is not a field</h1><a id="more"></a>
+<p>更改</p>
 <pre><code><span class="preprocessor"><span class="keyword">import</span> Android.R;</span>
 </code></pre><p>为</p>
 <pre><code><span class="preprocessor"><span class="keyword">import</span> your.application.packagename.R;</span>
@@ -2152,9 +2145,8 @@ textView.setText(Html.fromHtml(<span class="string">"我要添加一个&lt;img s
 <h1 id="隐藏标题栏">隐藏标题栏</h1><pre><code>requestWindowFeature<span class="list">(<span class="keyword">Window</span>.FEATURE_NO_TITLE)</span><span class="comment">;</span>
 </code></pre>]]></content>
     <summary type="html">
-    <![CDATA[<a id="more"></a>
-<h1 id="xxx_cannot_be_resolved_or_is_not_a_field">xxx cannot be resolved or is not a field</h1><p>更改</p>
-<pre><code><span ]]>
+    <![CDATA[<h1 id="xxx_cannot_be_resolved_or_is_not_a_field">xxx cannot be resolved or is not a field</h1>]]>
+    
     </summary>
     
       <category term="Android" scheme="http://codingbubble.github.io/tags/Android/"/>
@@ -2168,9 +2160,8 @@ textView.setText(Html.fromHtml(<span class="string">"我要添加一个&lt;img s
     <link href="http://codingbubble.github.io/2015/07/04/java-del-num-zero/"/>
     <id>http://codingbubble.github.io/2015/07/04/java-del-num-zero/</id>
     <published>2015-07-04T11:25:35.000Z</published>
-    <updated>2015-09-28T05:36:01.227Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
-<h1 id="一、将double/String转成整数">一、将double/String转成整数</h1><p>1.</p>
+    <updated>2015-09-28T05:40:46.205Z</updated>
+    <content type="html"><![CDATA[<h1 id="一、将double/String转成整数">一、将double/String转成整数</h1><p>1.</p>
 <pre><code><span class="keyword">if</span>( double num % <span class="number">1</span>.<span class="number">0</span> == <span class="number">0</span>){
     long l = (long)<span class="type">Double</span>.parseDouble(num);
     <span class="type">String</span> <span class="literal">result</span> = <span class="type">Long</span>.toString(l);
@@ -2187,9 +2178,8 @@ textView.setText(Html.fromHtml(<span class="string">"我要添加一个&lt;img s
 }
 </code></pre>]]></content>
     <summary type="html">
-    <![CDATA[<a id="more"></a>
-<h1 id="一、将double/String转成整数">一、将double/String转成整数</h1><p>1.</p>
-<pre><code><span class="keyword">if</span>( double num % ]]>
+    <![CDATA[<h1 id="一、将double/String转成整数">一、将double/String转成整数</h1><p>1.</p>
+<pre><code><span class="keyword">if</span>( double num % <span class="numbe]]>
     </summary>
     
       <category term="Java" scheme="http://codingbubble.github.io/tags/Java/"/>
