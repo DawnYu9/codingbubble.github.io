@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://codingbubble.github.io/2015/08/06/Java4Android-notes/</loc>
+    <lastmod>2015-09-28T05:50:36.312Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</loc>
     <lastmod>2015-09-28T05:45:52.768Z</lastmod>
   </url>
@@ -9,11 +14,6 @@
   <url>
     <loc>http://codingbubble.github.io/2015/07/15/Android-notes/</loc>
     <lastmod>2015-09-28T05:41:01.608Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://codingbubble.github.io/2015/09/28/Java4Android-notes/</loc>
-    <lastmod>2015-09-28T05:40:49.543Z</lastmod>
   </url>
   
   <url>
