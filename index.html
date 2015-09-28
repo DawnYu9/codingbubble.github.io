@@ -1862,6 +1862,65 @@ recyclerView.addItemDecoration(
                     getResources<span class="literal">()</span>.getDimensionPixelSize(<span class="type">R</span>.dimen.rightmargin))
             .build<span class="literal">()</span>);
 </code></pre><p>参考：<a href="http://www.mobile-open.com/2015/38629.html" target="_blank" rel="external">RecyclerView-FlexibleDivider——控制RecyclerView项目分割的Android类库</a></p>
+<p>2015-9-26</p>
+<h1 id="Volley加载网络图片">Volley加载网络图片</h1><h2 id="ImageRequest的用法">ImageRequest的用法</h2><ol>
+<li>创建一个RequestQueue对象。</li>
+<li>创建一个Request对象。</li>
+<li><p>将Request对象添加到RequestQueue里面。</p>
+<p> RequestQueue mQueue = Volley.newRequestQueue(context);<br> ImageRequest imageRequest = new ImageRequest(</p>
+<pre><code><span class="string">"http://developer.android.com/images/home/aw_dac.png"</span>,
+<span class="keyword">new</span> Response.Listener&lt;Bitmap&gt;() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Bitmap response)</span> </span>{
+        imageView.setImageBitmap(response);
+    }
+}, <span class="number">0</span>, <span class="number">0</span>, Config.RGB_565, <span class="keyword">new</span> Response.ErrorListener() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onErrorResponse</span><span class="params">(VolleyError <span class="keyword">error</span>)</span> </span>{
+        imageView.setImageResource(R.drawable.default_image);
+    }
+});
+</code></pre><p> mQueue.add(imageRequest);</p>
+</li>
+</ol>
+<p>ImageRequest的构造函数接收六个参数，第一个参数就是图片的URL地址，这个没什么需要解释的。第二个参数是图片请求成功的回调，这里我们把返回的Bitmap参数设置到ImageView中。第三第四个参数分别用于指定允许图片最大的宽度和高度，如果指定的网络图片的宽度或高度大于这里的最大值，则会对图片进行压缩，指定成0的话就表示不管图片有多大，都不会进行压缩。第五个参数用于指定图片的颜色属性，Bitmap.Config下的几个常量都可以在这里使用，其中<code>ARGB_8888</code>可以展示最好的颜色属性，每个图片像素占据4个字节的大小，而<code>RGB_565</code>则表示每个图片像素占据2个字节大小。第六个参数是图片请求失败的回调，这里我们当请求失败时在ImageView中显示一张默认图片。</p>
+<h2 id="ImageLoader">ImageLoader</h2><p>ImageLoader也可以用于加载网络上的图片，并且它的内部也是使用ImageRequest来实现的，不过ImageLoader明显要比ImageRequest更加高效，因为它不仅可以帮我们对图片进行缓存，还可以过滤掉重复的链接，避免重复发送请求。</p>
+<ol>
+<li>创建一个RequestQueue对象。</li>
+<li>创建一个ImageLoader对象。</li>
+<li>获取一个ImageListener对象。</li>
+<li><p>调用ImageLoader的get()方法加载网络上的图片。</p>
+<p> ImageLoader imageLoader = new ImageLoader(mQueue, new ImageCache() {</p>
+<pre><code><span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">putBitmap</span><span class="params">(String url, Bitmap bitmap)</span> </span>{
+}
+
+<span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function">Bitmap <span class="title">getBitmap</span><span class="params">(String url)</span> </span>{
+    <span class="keyword">return</span> <span class="keyword">null</span>;
+}
+</code></pre><p> });<br> ImageListener listener = ImageLoader.getImageListener(imageView,</p>
+<pre><code>R.drawable.default_image, R.drawable.failed_image);
+</code></pre><p> //imageLoader.get(“<a href="http://img.my.csdn.net/uploads/201404/13/1397393290_5765.jpeg" target="_blank" rel="external">http://img.my.csdn.net/uploads/201404/13/1397393290_5765.jpeg</a>“, listener);<br> imageLoader.get(“<a href="http://img.my.csdn.net/uploads/201404/13/1397393290_5765.jpeg" target="_blank" rel="external">http://img.my.csdn.net/uploads/201404/13/1397393290_5765.jpeg</a>“, listener);</p>
+</li>
+</ol>
+<p>参考：<a href="http://blog.csdn.net/guolin_blog/article/details/17482165" target="_blank" rel="external">Android Volley完全解析(二)，使用Volley加载网络图片</a></p>
+<h1 id="Textview文字末尾拼接带本地图片背景文字">Textview文字末尾拼接带本地图片背景文字</h1><pre><code>textView = (TextView) findViewById(R.id.text);
+
+ImageGetter imageGetter = <span class="keyword">new</span> ImageGetter() {
+  <span class="annotation">@Override</span>
+  <span class="keyword">public</span> <span class="function">Drawable <span class="title">getDrawable</span><span class="params">(String source)</span> </span>{
+      <span class="keyword">int</span> resId = Integer.parseInt(source);
+      Drawable drawable = MainActivity.<span class="keyword">this</span>.getResources()
+              .getDrawable(resId);
+      drawable.setBounds(<span class="number">0</span>, <span class="number">0</span>, drawable.getIntrinsicWidth(),
+              drawable.getIntrinsicHeight());
+      <span class="keyword">return</span> drawable;
+  }
+};
+
+textView.setText(Html.fromHtml(<span class="string">"我要添加一个&lt;img src=\""</span>+R.drawable.ic_launcher+<span class="string">"\"&gt;，看到了吗?"</span>, imageGetter, <span class="keyword">null</span>));
+</code></pre><h1 id="文字和背景合并插入正文中">文字和背景合并插入正文中</h1><p>自定义TextDrawable，将文字内容传入，用canvas将文字和绘制的圆角矩形合并（本地图片同理）<br>    @Override<br>    public void draw(Canvas canvas) {<br>          paint.setColor(Color.RED);<br>          rectF.set(padding,  -height-linsSpaceExtra, padding+rectWidth, -linsSpaceExtra);<br>          canvas.drawRoundRect(rectF, height/2, height/2, paint);<br>          //canvas.drawRect(padding,  -height-linsSpaceExtra, padding+rectWidth, -linsSpaceExtra, paint);<br>          int baseline = (int) (rectF.top + (rectF.bottom - rectF.top - paint.getFontMetrics().bottom + paint.getFontMetrics().top) / 2 - paint.getFontMetrics().top)-2;<br>          paint.setColor(Color.WHITE);<br>        canvas.drawText(text, rectF.centerX(),  baseline, paint);<br>    }<br>参考：<a href="http://www.pffair.com/blog/2014/07/10/textviewbu-fen-wen-zi-jia-bei-jing-tu-pian/" target="_blank" rel="external">Textview文字末尾拼接带本地图片背景文字</a></p>
 
       
     </div>
