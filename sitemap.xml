@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</loc>
+    <lastmod>2015-10-09T15:23:48.318Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://codingbubble.github.io/Resume/index.html</loc>
     <lastmod>2015-10-09T05:36:52.791Z</lastmod>
   </url>
@@ -9,11 +14,6 @@
   <url>
     <loc>http://codingbubble.github.io/About/index.html</loc>
     <lastmod>2015-10-09T02:15:22.198Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</loc>
-    <lastmod>2015-10-06T17:13:18.280Z</lastmod>
   </url>
   
   <url>
