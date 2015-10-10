@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="markdown," />
 
 
 
@@ -39,15 +39,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
 
 
-<meta name="description" content="xxx cannot be resolved or is not a field">
+<meta name="description" content="2015-10-10
+页内跳转">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android notes">
-<meta property="og:url" content="http://codingbubble.github.io/2015/07/15/Android-notes/index.html">
+<meta property="og:title" content="Markdown学习笔记">
+<meta property="og:url" content="http://codingbubble.github.io/2015/10/10/markdown-notes/index.html">
 <meta property="og:site_name" content="bubble sky">
-<meta property="og:description" content="xxx cannot be resolved or is not a field">
+<meta property="og:description" content="2015-10-10
+页内跳转">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android notes">
-<meta name="twitter:description" content="xxx cannot be resolved or is not a field">
+<meta name="twitter:title" content="Markdown学习笔记">
+<meta name="twitter:description" content="2015-10-10
+页内跳转">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -57,7 +60,7 @@
   };
 </script>
 
-    <title> Android notes // bubble sky </title>
+    <title> Markdown学习笔记 // bubble sky </title>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 <!--[if lte IE 8]>
@@ -160,7 +163,7 @@
           
           
             
-              Android notes
+              Markdown学习笔记
             
           
         </h1>
@@ -169,8 +172,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-07-15T11:17:30+08:00" content="2015-07-15 11:17, 29th周 Wednesday">
-            2015-07-15 11:17, 29th周 Wednesday
+          <time itemprop="dateCreated" datetime="2015-10-10T15:56:11+08:00" content="2015-10-10 15:56, 41st周 Saturday">
+            2015-10-10 15:56, 41st周 Saturday
           </time>
         </span>
 
@@ -178,7 +181,7 @@
           <span class="post-category" >
             &nbsp; | &nbsp; 分类于
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/markdown/" itemprop="url" rel="index"><span itemprop="name">markdown</span></a></span>
 
               
               
@@ -191,8 +194,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/07/15/Android-notes/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/15/Android-notes/" itemprop="commentsCount"></span>
+              <a href="/2015/10/10/markdown-notes/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/10/markdown-notes/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -206,19 +209,23 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="xxx_cannot_be_resolved_or_is_not_a_field">xxx cannot be resolved or is not a field</h1><a id="more"></a>
-<p>更改</p>
-<pre><code><span class="preprocessor"><span class="keyword">import</span> Android.R;</span>
-</code></pre><p>为</p>
-<pre><code><span class="preprocessor"><span class="keyword">import</span> your.application.packagename.R;</span>
-</code></pre><h1 id="java代码批量初始化按钮">java代码批量初始化按钮</h1><pre><code>Button btn[] = <span class="built_in">new</span> Button[<span class="built_in">len</span>];
-<span class="keyword">for</span>(<span class="typename">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">len</span>; i++){
-    btn[i] = <span class="built_in">new</span> Button(this);
-    ……
-}
-</code></pre><h1 id="java代码中设置控件属性">java代码中设置控件属性</h1><p>使用LayoutParams</p>
-<h1 id="隐藏标题栏">隐藏标题栏</h1><pre><code>requestWindowFeature<span class="list">(<span class="keyword">Window</span>.FEATURE_NO_TITLE)</span><span class="comment">;</span>
-</code></pre></span>
+        <span itemprop="articleBody"><p>2015-10-10</p>
+<h1 id="jump">页内跳转</h1>
+
+<a id="more"></a>
+<h2 id="Html标签实现">Html标签实现</h2><p>定义一个锚(id)：</p>
+<pre><code><span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span>=<span class="value">"jump"</span>&gt;</span>跳转到的地方<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+</code></pre><p>使用markdown语法：</p>
+<pre><code>[<span class="link_label">点击跳转</span>](<span class="link_url">#jump</span>)
+</code></pre><h2 id="MarkDown实现目录">MarkDown实现目录</h2><p>在正文中，将章节标题的id对应上去:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">h2</span> <span class="attribute">id</span>=<span class="value">"1"</span>&gt;</span>1.语法示例<span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">h3</span> <span class="attribute">id</span>=<span class="value">"1.1"</span>&gt;</span>1.1图片<span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>生成目录：</p>
+<pre><code>[<span class="link_label">1.语法示例</span>](<span class="link_url">#1</span>)
+[<span class="link_label">1.1图片</span>](<span class="link_url">#1.1</span>)
+[<span class="link_label">1.2换行</span>](<span class="link_url">#1.2</span>)
+[<span class="link_label">1.3强调</span>](<span class="link_url">#1.3</span>)
+</code></pre><p>效果：<br>    <a href="#jump">点击跳转</a></p>
+<p>参考：<a href="http://www.cnblogs.com/JohnTsai/p/4027229.html?utm_source=tuicool" target="_blank" rel="external">MarkDown技巧：两种方式实现页内跳转</a></p>
+</span>
       
     </div>
 
@@ -226,7 +233,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag">#Android</a>
+            <a href="/tags/markdown/" rel="tag">#markdown</a>
           
         </div>
       
@@ -235,13 +242,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/06/Java4Android-notes/" rel="prev">Java4Android notes</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/04/java-del-num-zero/" rel="next">java 去掉小数里多余的0和小数点</a>
+              <a href="/2015/08/06/SimpleWord-dev-log/" rel="next">SimpleWord简词开发记录笔记</a>
             
           </div>
         </div>
@@ -269,8 +274,8 @@
                 
                 
                 <!-- 多说评论框 start -->
-                <div class="ds-thread" data-thread-key="/2015/07/15/Android-notes/"
-                     data-title="Android notes" data-url="http://codingbubble.github.io/2015/07/15/Android-notes/">
+                <div class="ds-thread" data-thread-key="/2015/10/10/markdown-notes/"
+                     data-title="Markdown学习笔记" data-url="http://codingbubble.github.io/2015/10/10/markdown-notes/">
                 </div>
                 <!-- 多说评论框 end -->
 
@@ -361,7 +366,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#xxx_cannot_be_resolved_or_is_not_a_field"><span class="nav-number">1.</span> <span class="nav-text">xxx cannot be resolved or is not a field</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java代码批量初始化按钮"><span class="nav-number">2.</span> <span class="nav-text">java代码批量初始化按钮</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java代码中设置控件属性"><span class="nav-number">3.</span> <span class="nav-text">java代码中设置控件属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#隐藏标题栏"><span class="nav-number">4.</span> <span class="nav-text">隐藏标题栏</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jump"><span class="nav-number">1.</span> <span class="nav-text">页内跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Html标签实现"><span class="nav-number">1.1.</span> <span class="nav-text">Html标签实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MarkDown实现目录"><span class="nav-number">1.2.</span> <span class="nav-text">MarkDown实现目录</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="Hexo," />
 
 
 
@@ -42,11 +42,12 @@
 <meta name="description" content="注意：1.修改配置文件时注意YAML语法，参数冒号:后一定要留空格2.若出现中文乱码请修改文件编码格式为UTF-8">
 <meta property="og:type" content="article">
 <meta property="og:title" content="个性化你的Hexo-笔记">
-<meta property="og:url" content="http://codingbubble.github.io/2015/05/08/个性化你的Hexo/index.html">
+<meta property="og:url" content="http://codingbubble.github.io/2015/05/08/custom-your-Hexo/index.html">
 <meta property="og:site_name" content="bubble sky">
 <meta property="og:description" content="注意：1.修改配置文件时注意YAML语法，参数冒号:后一定要留空格2.若出现中文乱码请修改文件编码格式为UTF-8">
 <meta property="og:image" content="/img/scrollup.png">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/0067jhJ4gw1erz8cbug7wj301e01e3y9.jpg">
+<meta property="og:image" content="http://7xj9f8.com1.z0.glb.clouddn.com/多说评论1.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个性化你的Hexo-笔记">
 <meta name="twitter:description" content="注意：1.修改配置文件时注意YAML语法，参数冒号:后一定要留空格2.若出现中文乱码请修改文件编码格式为UTF-8">
@@ -193,8 +194,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/05/08/个性化你的Hexo/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/08/个性化你的Hexo/" itemprop="commentsCount"></span>
+              <a href="/2015/05/08/custom-your-Hexo/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/08/custom-your-Hexo/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -461,7 +462,7 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 &lt;/form&gt;
 &lt;/div&gt;
 </code></pre><p>将如上代码加入即可，您需要修改css以便这个搜索框比较美观。<br>再如，你要修改页脚版权信息，直接编辑<code>hexo\themes\themename\layout\_partial\footer.ejs</code>。同理，你需要修改css，直接去修改对应位置的styl文件。</p>
-<h3 id="社会化评论系统——多说">社会化评论系统——多说</h3><p>hexo默认使用国外比较流行的disqus，国内多使用“多说”。步骤非常简单：</p>
+<h3 id="社会化评论系统——多说"><span id="duoshuo">社会化评论系统——多说</span></h3><p>hexo默认使用国外比较流行的disqus，国内多使用“多说”。步骤非常简单：</p>
 <ol>
 <li>在<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>进行注册，获得通用代码。</li>
 <li><p>将通用代码粘贴到<code>themes\themename\layout\_partial\comment.ejs</code>里面，如下：</p>
@@ -676,16 +677,35 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 &lt;/form&gt;
 </code></pre><h3 id="添加FlagCounter">添加FlagCounter</h3><p><a href="http://www.flagcounter.com/" target="_blank" rel="external">FlagCounter</a>是来自美国的一个免费流量统计工具，和传统的免费统计工具不同，Flagcounter可记录网站访问者所在的国家，用国旗表示，可统计到访国家的数量，并带有简单的统计分析功能。代码仅仅是一段简短的Html图片超链接代码，非JavaScript代码，适合于支持HTML代码的网站或博客。</p>
 <h3 id="图床">图床</h3><p>我看大部分都用的<a href="http://www.qiniu.com/" target="_blank" rel="external">七牛</a>，我也用七牛吧<br>注册以后，新建空间，选择<strong>公开空间</strong>，上传图片后即可获得外链。</p>
+<h2 id="更换主题">更换主题</h2><h3 id="同步多说评论"><span id="synchduoshuo">同步多说评论</span></h3><p>更换主题后，可能会因为主题的配置文件格式不同导致多说的历史评论没有同步过来。</p>
+<blockquote>
+<p><code>Thread Key</code>是用来区分不同文章评论的最重要手段，<code>Thread Key</code>通常是你的网站系统里的文章ID。进入多说后台可以看到每篇文章对应不同的<code>Thread Key</code>。<br><img src="http://7xj9f8.com1.z0.glb.clouddn.com/多说评论1.png" alt="多说Thread Key"><br>在配置多说时，<code>data-thread-key</code>是文章在原站点中的id或其他唯一标识。通用代码中，站点中的文章id是区分文章、解决分页问题的好方法，评论回流时，也以此来定位原站点文章，同id的文章，显示的是相同的评论内容。<code>data-thread-key</code>中<code>:</code>和<code>,</code>即冒号和逗号有特别的用途，<strong>请不要使用url或其他有这两个符号的内容作为<code>data-thread-key</code></strong>。同时也请尽量<strong>避免将<code>data-thread-key</code>设作0、空字符串或中文</strong>。</p>
+</blockquote>
+<p>之前在<code>light</code>主题里<a href="#duoshuo">配置多说</a>如下：</p>
+<pre><code><span class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ds-thread"</span> <span class="attribute">data-thread-key</span>=<span class="value">"</span></span></span>&lt;%-<span class="ruby"> config.root </span>%&gt;<span class="xml"><span class="tag"><span class="value"></span></span></span>&lt;%-<span class="ruby"> item.path</span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">data-title</span>=<span class="value">"</span></span></span>&lt;%-<span class="ruby"> item.title </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">data-url</span>=<span class="value">"</span></span></span>&lt;%-<span class="ruby"> item.permalink </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span>
+</code></pre><p>注意<code>data-thread-key</code>的值为<code>&lt;%- config.root %&gt;&lt;%- item.path%&gt;</code>。</p>
+<p>而在<code>next</code>主题中的<code>hexo\themes\next\layout\_layout.swig</code>文件中，对多说的配置为</p>
+<pre><code>&lt;div <span class="keyword">class</span>=<span class="string">"ds-thread"</span> <span class="typedef"><span class="keyword">data</span>-thread-key="<span class="container">{ { <span class="title">page</span>.<span class="title">path</span> }</span>}" <span class="keyword">data</span>-title="<span class="container">{ { <span class="title">page</span>.<span class="title">title</span> }</span>}" <span class="keyword">data</span>-url="<span class="container">{ { <span class="title">page</span>.<span class="title">permalink</span> }</span>}"&gt;&lt;/div&gt;</span>
+</code></pre><p>这里将<code>data-thread-key</code>的值改为<code>{ { config.root }}</code>，这样在next主题中每篇文章的<code>Thread Key</code>格式仍和之前一样，在生成静态页面部署后就可以同步之前的评论了。</p>
+<p>如果不修改的话，就会对每篇文章生成新的<code>Thread Key</code>，更换主题前的评论会保存在旧的<code>Thread Key</code>中，更换主题后的评论会保存在新的<code>Thread Key</code>中，导致评论不同步。</p>
+<p>多说官方文档：<a href="http://dev.duoshuo.com/docs/5003ecd94cab3e7250000008" target="_blank" rel="external">评论框调用代码参数说明</a></p>
 <h1 id="速度优化">速度优化</h1><p>由于 Google 被大陆屏蔽，Github 从大陆访问也比较慢，且不太稳定。所以一方面可以把 Blog 迁移到国内，比如Gitcafe提供的免费Page服务，又快又好用，可以参考<a href="http://zipperary.com/2013/11/23/hexo-to-gitcafe/" target="_blank" rel="external">托管博客到gitcafe</a>。</p>
 <ol>
 <li>把 google 提供的<code>jquery</code>和<code>fonts api</code>全换掉。由于不同的主题其位置不同，最好是搜索一下。<br>Unix/Linux 用户在 shell 中切换到自己的主题目录下面；Windows 用户用 Git Bash 切换到主题目录下面。然后用<code>grep &#39;jquery&#39; -r ./</code>搜索使用 jquery 的位置，如果是用的 google 的，则替换成国内的相应版本，我用的是百度，<code>//libs.baidu.com/jquery/2.0.3/jquery.min.js</code>，<code>//libs.baidu.com/jquery/1.8.0/jquery.min.js</code>。</li>
 <li>替换google fonts，同样的方法，<code>grep &#39;fonts&#39; -r ./</code>，找到后替换为<code>//fonts.useso.com/css?family=Lato:400,400italic</code>即可。</li>
 </ol>
-<h1 id="更新记录">更新记录</h1><p>2015.05.23</p>
+<h1 id="更新记录">更新记录</h1><p>2015-10-10</p>
+<ul>
+<li><a href="#synchduoshuo">更换主题后同步多说评论</a><br>一直想换个主题，最开始用的light主题很简洁，是想以后自己做一个主题的，但一直拖延@_@ 今天看到<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">next</a>比较心仪，就换了这个，但是之前的多说评论却没有同步。</li>
+</ul>
+<p>2015-05-24</p>
+<ul>
+<li>图床</li>
+</ul>
+<p>2015-05-23</p>
 <ul>
 <li>添加支付宝捐助按钮</li>
-<li>添加FlagCounter<br>2015.05.24</li>
-<li>图床</li>
+<li>添加FlagCounter</li>
 </ul>
 <h1 id="参考资料">参考资料</h1><ul>
 <li><a href="http://zipperary.com/2013/05/29/hexo-guide-3/" target="_blank" rel="external">hexo系列教程：（三）hexo博客的配置、使用</a></li>
@@ -710,6 +730,12 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -721,7 +747,7 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/05/07/Github-Hexo搭建个人博客/" rel="next">GitHub+Hexo搭建个人博客-笔记</a>
+              <a href="/2015/05/07/Github-Hexo-Blog/" rel="next">GitHub+Hexo搭建个人博客-笔记</a>
             
           </div>
         </div>
@@ -749,8 +775,8 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
                 
                 
                 <!-- 多说评论框 start -->
-                <div class="ds-thread" data-thread-key="/2015/05/08/个性化你的Hexo/"
-                     data-title="个性化你的Hexo-笔记" data-url="http://codingbubble.github.io/2015/05/08/个性化你的Hexo/">
+                <div class="ds-thread" data-thread-key="/2015/05/08/custom-your-Hexo/"
+                     data-title="个性化你的Hexo-笔记" data-url="http://codingbubble.github.io/2015/05/08/custom-your-Hexo/">
                 </div>
                 <!-- 多说评论框 end -->
 
@@ -792,21 +818,21 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">标签</span>
               
           </div>
@@ -841,7 +867,7 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo目录介绍"><span class="nav-number">1.</span> <span class="nav-text">hexo目录介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件plugins"><span class="nav-number">2.</span> <span class="nav-text">插件plugins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装插件"><span class="nav-number">2.1.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启用插件"><span class="nav-number">2.2.</span> <span class="nav-text">启用插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级插件"><span class="nav-number">2.3.</span> <span class="nav-text">升级插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载插件"><span class="nav-number">2.4.</span> <span class="nav-text">卸载插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用插件安装与配置"><span class="nav-number">2.5.</span> <span class="nav-text">常用插件安装与配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#README文件"><span class="nav-number">3.</span> <span class="nav-text">README文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#404页面"><span class="nav-number">4.</span> <span class="nav-text">404页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整站配置"><span class="nav-number">5.</span> <span class="nav-text">整站配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑\hexo\_config-yml文件"><span class="nav-number">5.1.</span> <span class="nav-text">编辑\hexo\_config.yml文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建文章时默认生成categories项"><span class="nav-number">5.2.</span> <span class="nav-text">新建文章时默认生成categories项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win7中新建文章后自动打开文件"><span class="nav-number">5.3.</span> <span class="nav-text">win7中新建文章后自动打开文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主题theme"><span class="nav-number">6.</span> <span class="nav-text">主题theme</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载主题"><span class="nav-number">6.1.</span> <span class="nav-text">下载主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启用主题"><span class="nav-number">6.2.</span> <span class="nav-text">启用主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题配置"><span class="nav-number">6.3.</span> <span class="nav-text">主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改局部页面"><span class="nav-number">6.3.1.</span> <span class="nav-text">修改局部页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#社会化评论系统——多说"><span class="nav-number">6.3.2.</span> <span class="nav-text">社会化评论系统——多说</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面导航"><span class="nav-number">6.3.3.</span> <span class="nav-text">页面导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#百度分享"><span class="nav-number">6.3.4.</span> <span class="nav-text">百度分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加网站图标"><span class="nav-number">6.3.5.</span> <span class="nav-text">添加网站图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加分类、标签云"><span class="nav-number">6.3.6.</span> <span class="nav-text">添加分类、标签云</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加友情链接"><span class="nav-number">6.3.7.</span> <span class="nav-text">添加友情链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加统计"><span class="nav-number">6.3.8.</span> <span class="nav-text">添加统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义挂件"><span class="nav-number">6.3.9.</span> <span class="nav-text">自定义挂件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导航栏添加“About”"><span class="nav-number">6.3.10.</span> <span class="nav-text">导航栏添加“About”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加fork_me_on_github"><span class="nav-number">6.3.11.</span> <span class="nav-text">添加fork me on github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加RSS"><span class="nav-number">6.3.12.</span> <span class="nav-text">添加RSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加sitemap"><span class="nav-number">6.3.13.</span> <span class="nav-text">添加sitemap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加站内搜索"><span class="nav-number">6.3.14.</span> <span class="nav-text">添加站内搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加返回顶部按钮"><span class="nav-number">6.3.15.</span> <span class="nav-text">添加返回顶部按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加文章目录"><span class="nav-number">6.3.16.</span> <span class="nav-text">添加文章目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加支付宝捐助按钮"><span class="nav-number">6.3.17.</span> <span class="nav-text">添加支付宝捐助按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加FlagCounter"><span class="nav-number">6.3.18.</span> <span class="nav-text">添加FlagCounter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图床"><span class="nav-number">6.3.19.</span> <span class="nav-text">图床</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#速度优化"><span class="nav-number">7.</span> <span class="nav-text">速度优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新记录"><span class="nav-number">8.</span> <span class="nav-text">更新记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">9.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo目录介绍"><span class="nav-number">1.</span> <span class="nav-text">hexo目录介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件plugins"><span class="nav-number">2.</span> <span class="nav-text">插件plugins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装插件"><span class="nav-number">2.1.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启用插件"><span class="nav-number">2.2.</span> <span class="nav-text">启用插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级插件"><span class="nav-number">2.3.</span> <span class="nav-text">升级插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载插件"><span class="nav-number">2.4.</span> <span class="nav-text">卸载插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用插件安装与配置"><span class="nav-number">2.5.</span> <span class="nav-text">常用插件安装与配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#README文件"><span class="nav-number">3.</span> <span class="nav-text">README文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#404页面"><span class="nav-number">4.</span> <span class="nav-text">404页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整站配置"><span class="nav-number">5.</span> <span class="nav-text">整站配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑\hexo\_config-yml文件"><span class="nav-number">5.1.</span> <span class="nav-text">编辑\hexo\_config.yml文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建文章时默认生成categories项"><span class="nav-number">5.2.</span> <span class="nav-text">新建文章时默认生成categories项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win7中新建文章后自动打开文件"><span class="nav-number">5.3.</span> <span class="nav-text">win7中新建文章后自动打开文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主题theme"><span class="nav-number">6.</span> <span class="nav-text">主题theme</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载主题"><span class="nav-number">6.1.</span> <span class="nav-text">下载主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启用主题"><span class="nav-number">6.2.</span> <span class="nav-text">启用主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题配置"><span class="nav-number">6.3.</span> <span class="nav-text">主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改局部页面"><span class="nav-number">6.3.1.</span> <span class="nav-text">修改局部页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#社会化评论系统——多说"><span class="nav-number">6.3.2.</span> <span class="nav-text">社会化评论系统——多说</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面导航"><span class="nav-number">6.3.3.</span> <span class="nav-text">页面导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#百度分享"><span class="nav-number">6.3.4.</span> <span class="nav-text">百度分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加网站图标"><span class="nav-number">6.3.5.</span> <span class="nav-text">添加网站图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加分类、标签云"><span class="nav-number">6.3.6.</span> <span class="nav-text">添加分类、标签云</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加友情链接"><span class="nav-number">6.3.7.</span> <span class="nav-text">添加友情链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加统计"><span class="nav-number">6.3.8.</span> <span class="nav-text">添加统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义挂件"><span class="nav-number">6.3.9.</span> <span class="nav-text">自定义挂件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导航栏添加“About”"><span class="nav-number">6.3.10.</span> <span class="nav-text">导航栏添加“About”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加fork_me_on_github"><span class="nav-number">6.3.11.</span> <span class="nav-text">添加fork me on github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加RSS"><span class="nav-number">6.3.12.</span> <span class="nav-text">添加RSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加sitemap"><span class="nav-number">6.3.13.</span> <span class="nav-text">添加sitemap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加站内搜索"><span class="nav-number">6.3.14.</span> <span class="nav-text">添加站内搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加返回顶部按钮"><span class="nav-number">6.3.15.</span> <span class="nav-text">添加返回顶部按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加文章目录"><span class="nav-number">6.3.16.</span> <span class="nav-text">添加文章目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加支付宝捐助按钮"><span class="nav-number">6.3.17.</span> <span class="nav-text">添加支付宝捐助按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加FlagCounter"><span class="nav-number">6.3.18.</span> <span class="nav-text">添加FlagCounter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图床"><span class="nav-number">6.3.19.</span> <span class="nav-text">图床</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换主题"><span class="nav-number">6.4.</span> <span class="nav-text">更换主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同步多说评论"><span class="nav-number">6.4.1.</span> <span class="nav-text">同步多说评论</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#速度优化"><span class="nav-number">7.</span> <span class="nav-text">速度优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新记录"><span class="nav-number">8.</span> <span class="nav-text">更新记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">9.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://codingbubble.github.io/About/index.html</loc>
+    <lastmod>2015-10-10T08:37:39.021Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://codingbubble.github.io/2015/10/10/markdown-notes/</loc>
+    <lastmod>2015-10-10T07:56:11.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://codingbubble.github.io/2015/05/08/custom-your-Hexo/</loc>
+    <lastmod>2015-10-10T05:29:23.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</loc>
     <lastmod>2015-10-10T02:23:25.671Z</lastmod>
   </url>
@@ -9,11 +24,6 @@
   <url>
     <loc>http://codingbubble.github.io/Resume/index.html</loc>
     <lastmod>2015-10-09T05:36:52.791Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://codingbubble.github.io/About/index.html</loc>
-    <lastmod>2015-10-09T02:15:22.198Z</lastmod>
   </url>
   
   <url>
@@ -42,13 +52,8 @@
   </url>
   
   <url>
-    <loc>http://codingbubble.github.io/2015/05/07/Github-Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>http://codingbubble.github.io/2015/05/07/Github-Hexo-Blog/</loc>
     <lastmod>2015-09-28T05:36:39.186Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://codingbubble.github.io/2015/05/08/%E4%B8%AA%E6%80%A7%E5%8C%96%E4%BD%A0%E7%9A%84Hexo/</loc>
-    <lastmod>2015-09-28T05:35:43.015Z</lastmod>
   </url>
   
   <url>
