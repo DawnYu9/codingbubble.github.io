@@ -40,32 +40,53 @@
 
 
 <meta name="description" content="喜欢有创造性的事物`(∩_∩)′
-Blog历程2015-10-10
+blog历程2015-10-10
 更换主题为next
 同步评论
 修改menu的格式，并在末尾添加RSS  初始为图片加文字的格式，去掉图片只显示文字  修改文件\hexo\themes\next\layout\_partials\header.swig：
 
-12345678910111213&amp;#123;% if theme.menu %&amp;#125;	&amp;lt;ul">
+
+  改为
+
+
+添加分类页面
+添加侧边栏头像
+添加侧边栏社交链接
+将分类显示在文章底部，文章标题下方增加更新">
 <meta property="og:type" content="website">
 <meta property="og:title" content="About Me">
 <meta property="og:url" content="http://codingbubble.github.io/About/index.html">
 <meta property="og:site_name" content="bubble sky">
 <meta property="og:description" content="喜欢有创造性的事物`(∩_∩)′
-Blog历程2015-10-10
+blog历程2015-10-10
 更换主题为next
 同步评论
 修改menu的格式，并在末尾添加RSS  初始为图片加文字的格式，去掉图片只显示文字  修改文件\hexo\themes\next\layout\_partials\header.swig：
 
-12345678910111213&amp;#123;% if theme.menu %&amp;#125;	&amp;lt;ul">
+
+  改为
+
+
+添加分类页面
+添加侧边栏头像
+添加侧边栏社交链接
+将分类显示在文章底部，文章标题下方增加更新">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="About Me">
 <meta name="twitter:description" content="喜欢有创造性的事物`(∩_∩)′
-Blog历程2015-10-10
+blog历程2015-10-10
 更换主题为next
 同步评论
 修改menu的格式，并在末尾添加RSS  初始为图片加文字的格式，去掉图片只显示文字  修改文件\hexo\themes\next\layout\_partials\header.swig：
 
-12345678910111213&amp;#123;% if theme.menu %&amp;#125;	&amp;lt;ul">
+
+  改为
+
+
+添加分类页面
+添加侧边栏头像
+添加侧边栏社交链接
+将分类显示在文章底部，文章标题下方增加更新">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -187,18 +208,19 @@ Blog历程2015-10-10
     
     
       <p>喜欢有创造性的事物`(<em>∩_∩</em>)′</p>
-<h1 id="Blog历程">Blog历程</h1><h2 id="2015-10-10">2015-10-10</h2><ul>
+<h1 id="blog历程">blog历程</h1><h2 id="2015-10-10">2015-10-10</h2><ul>
 <li>更换主题为<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">next</a></li>
 <li><a href="http://codingbubble.github.io/2015/05/08/custom-your-Hexo/#synchduoshuo" target="_blank" rel="external">同步评论</a></li>
 <li>修改menu的格式，并在末尾<a href="http://codingbubble.github.io/2015/05/08/custom-your-Hexo/#添加RSS" target="_blank" rel="external">添加RSS</a><br>  初始为图片加文字的格式，去掉图片只显示文字<br>  修改文件<code>\hexo\themes\next\layout\_partials\header.swig</code>：</li>
 </ul>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template_tag">&#123;% <span class="keyword">if</span> theme.menu %&#125;</span><span class="xml"></span><br><span class="line">	<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"menu"</span> <span class="attribute">class</span>=<span class="value">"menu </span></span></span><span class="variable">&#123;&#123; hasSearch and 'menu-left' &#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span>&gt;</span></span><br><span class="line">	  </span><span class="template_tag">&#123;% <span class="keyword">for</span> name, path <span class="keyword">in</span> theme.menu %&#125;</span><span class="xml"></span><br><span class="line">	    </span><span class="template_tag">&#123;% set itemName = name.toLowerCase() %&#125;</span><span class="xml"></span><br><span class="line">	    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu-item menu-item-</span></span></span><span class="variable">&#123;&#123; itemName &#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"</span></span></span><span class="variable">&#123;&#123; url_for(path) &#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">rel</span>=<span class="value">"section"</span>&gt;</span></span><br><span class="line">	        <span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"menu-item-icon icon-</span></span></span><span class="variable">&#123;&#123; itemName &#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span> <span class="tag">&lt;<span class="title">br</span> /&gt;</span></span><br><span class="line">	        </span><span class="variable">&#123;&#123; __('menu.' + itemName) &#125;&#125;</span><span class="xml"></span><br><span class="line">	      <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">	  </span><span class="template_tag">&#123;% <span class="keyword">endfor</span> %&#125;</span><span class="xml"></span><br><span class="line">	<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"></span><span class="template_tag">&#123;% <span class="keyword">endif</span> %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
-<p>改为</p>
-<figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template_tag">&#123;% <span class="keyword">if</span> theme.menu %&#125;</span><span class="xml"></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"menu"</span> <span class="attribute">class</span>=<span class="value">"menu </span></span></span><span class="variable">&#123;&#123; hasSearch and 'menu-left' &#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span>&gt;</span></span><br><span class="line">  </span><span class="template_tag">&#123;% <span class="keyword">for</span> name, path in theme.menu %&#125;</span><span class="xml"></span><br><span class="line">    </span><span class="template_tag">&#123;% <span class="keyword">set</span> itemName = name.toLowerCase() %&#125;</span><span class="xml"></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu-item menu-item-</span></span></span><span class="variable">&#123;&#123; itemName &#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"</span></span></span><span class="variable">&#123;&#123; url_for(path) &#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">rel</span>=<span class="value">"section"</span>&gt;</span></span><br><span class="line">      </span><span class="variable">&#123;&#123; __(itemName) &#125;&#125;</span><span class="xml"></span><br><span class="line">      <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  </span><span class="template_tag">&#123;% <span class="keyword">endfor</span> %&#125;</span><span class="xml"></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- 添加RSS --&gt;</span></span><br><span class="line">  </span><span class="template_tag">&#123;% <span class="keyword">set</span> itemName = "RSS" %&#125;</span><span class="xml"></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu-item menu-item-</span></span></span><span class="variable">&#123;&#123; itemName &#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/atom.xml"</span> <span class="attribute">rel</span>=<span class="value">"section"</span>&gt;</span></span><br><span class="line">    </span><span class="variable">&#123;&#123; __(itemName) &#125;&#125;</span><span class="xml"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"></span><span class="template_tag">&#123;% <span class="keyword">endif</span> %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code><span class="comment"></span>
+</code></pre><p>  改为</p>
+<pre><code><span class="comment"></span>
+</code></pre><ul>
 <li><a href="http://theme-next.iissnan.com/theme-settings.html#分类页面" target="_blank" rel="external">添加分类页面</a></li>
 <li><a href="http://theme-next.iissnan.com/theme-settings.html#侧边栏头像" target="_blank" rel="external">添加侧边栏头像</a></li>
 <li><a href="http://theme-next.iissnan.com/theme-settings.html#侧边栏社交链接" target="_blank" rel="external">添加侧边栏社交链接</a></li>
+<li>将<code>分类</code>显示在文章底部，文章标题下方增加<code>更新时间</code><br>修改<code>\hexo\themes\next\layout\_macro\post.swig</code></li>
 </ul>
 <h2 id="2015-05-05">2015-05-05</h2><ul>
 <li>个人博客诞生：<a href="http://codingbubble.github.io/2015/05/05/hello-world/" target="_blank" rel="external">Hexo + Github</a></li>

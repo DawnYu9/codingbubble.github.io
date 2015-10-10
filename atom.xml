@@ -3133,7 +3133,7 @@ hexo.on(<span class="string">'new'</span>, <span class="function"><span class="k
     <link href="http://codingbubble.github.io/2015/05/07/Github-Hexo-Blog/"/>
     <id>http://codingbubble.github.io/2015/05/07/Github-Hexo-Blog/</id>
     <published>2015-05-07T15:30:17.000Z</published>
-    <updated>2015-09-28T05:36:39.186Z</updated>
+    <updated>2015-10-10T11:29:38.000Z</updated>
     <content type="html"><![CDATA[<p>刚入驻GitHub的菜鸟一枚，第一篇博文就用来做搭建博客的笔记吧~<br><a id="more"></a></p>
 <p>本文针对<code>windows</code>平台和<code>Hexo 3.x</code></p>
 <h1 id="环境准备，搭建本地博客">环境准备，搭建本地博客</h1><h2 id="安装Node-js">安装Node.js</h2><p><a href="https://nodejs.org/download/" target="_blank" rel="external">Node.js官网下载</a></p>
@@ -3278,6 +3278,9 @@ hexo <span class="variable">d =</span>= hexo deploy
 <li>使用本地路径：在<code>hexo/source</code>目录下新建一个<code>img</code>文件夹，将图片放入该文件夹下，插入图片时链接即为<code>\img\图片名称</code>。</li>
 <li>使用图床，获取外链地址。比如<a href="http://weibotuchuang.sinaapp.com/" target="_blank" rel="external">微博图床</a>，将图片拖入区域中，会生成图片的URL，这就是链接地址。</li>
 </ul>
+<h1 id="注意">注意</h1><ul>
+<li>标题不能以大写字母开头，如<code>#Hello</code>，否则页面会出现404。（2015-10-10）<br>参考：<a href="https://github.com/hexojs/hexo/issues/818" target="_blank" rel="external">BUG反馈：大写开头的标签出现404</a></li>
+</ul>
 <h1 id="参考资料">参考资料</h1><ul>
 <li><a href="http://beiyuu.com/github-pages/" target="_blank" rel="external">使用Github Pages建独立博客</a></li>
 <li><a href="http://cnfeat.com/2014/05/10/2014-05-11-how-to-build-a-blog/" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
@@ -3289,6 +3292,8 @@ hexo <span class="variable">d =</span>= hexo deploy
     <![CDATA[<p>刚入驻GitHub的菜鸟一枚，第一篇博文就用来做搭建博客的笔记吧~<br>]]>
     
     </summary>
+    
+      <category term="Hexo" scheme="http://codingbubble.github.io/tags/Hexo/"/>
     
       <category term="Hexo" scheme="http://codingbubble.github.io/categories/Hexo/"/>
     
