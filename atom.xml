@@ -54,7 +54,7 @@
     <link href="http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/"/>
     <id>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</id>
     <published>2015-08-06T07:06:40.000Z</published>
-    <updated>2015-10-10T02:23:25.671Z</updated>
+    <updated>2015-10-11T13:48:46.458Z</updated>
     <content type="html"><![CDATA[<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。<br><a id="more"></a><br>2015-8-6 15:07:54</p>
 <h1 id="词库">词库</h1><p>找不到词库，暂时找到一个带音标和释义的考研单词excel（估计是好几年前的大纲词汇），就先用这个吧。<br>excel不能显示音标的话，还得下载字体TOPhonetic.ttf。</p>
 <h1 id="数据库">数据库</h1><p>excel导入SQLite<br>试了几个可视化工具，就SQLiyeStudio比较满意，也没有乱码。<br>开始时把excel另存为.csv文件，系统的分隔符是逗号，但是去控制面板改了，excel导出时还是逗号，不知道为什么，可能需要重启电脑吧，懒得重启。竟然忘记replace了！所以excel → 制表符分隔的txt → replace分隔符，就ok了^_^</p>
@@ -1964,7 +1964,28 @@ if (c.getInt(0)==0) {
 </code></pre><p>参考：<a href="http://blog.csdn.net/u011909538/article/details/17068331" target="_blank" rel="external">判断sqlite数据库中表是否存在的方法</a></p>
 <p>2015-10-10</p>
 <h1 id="禁止横屏竖屏切换">禁止横屏竖屏切换</h1><p>在<code>AndroidManifest.xml</code>的需要禁止转向的<code>Activity</code>配置中加入<code>android:screenOrientation=&quot;portrait&quot;</code>属性即可(<code>landscape</code>是横向，<code>portrait</code>是纵向)<br>参考：<a href="http://blog.csdn.net/chenlei1889/article/details/6290883" target="_blank" rel="external">Android禁止横屏竖屏切换</a></p>
-<p>#</p>
+<p>2015-10-11</p>
+<h1 id="文件下载">文件下载</h1><h2 id="OkHttp">OkHttp</h2><p>参考：</p>
+<ul>
+<li><a href="http://blog.csdn.net/lmj623565791/article/details/47911083" target="_blank" rel="external">Android OkHttp完全解析 是时候来了解OkHttp了</a></li>
+<li><a href="https://github.com/hongyangAndroid/okhttp-utils" target="_blank" rel="external">okhttp-utils</a></li>
+</ul>
+<h1 id="从路径获取文件名">从路径获取文件名</h1><pre><code><span class="comment">//      方法一：  </span>
+
+    File tempFile =<span class="keyword">new</span> File( fName.<span class="built_in">trim</span>());  
+    <span class="keyword">String</span> fileName = tempFile.getName();            
+    System.out.<span class="built_in">println</span>(<span class="string">"fileName = "</span> + fileName);  
+
+<span class="comment">//      方法二：    </span>
+    <span class="keyword">String</span> fName = fName.<span class="built_in">trim</span>();    
+    <span class="keyword">String</span> fileName = fName.substring(fName.lastIndexOf(File.separator)+<span class="number">1</span>);            
+    System.out.<span class="built_in">println</span>(<span class="string">"fileName = "</span> + fileName);  
+
+<span class="comment">//      方法三：    </span>
+    <span class="keyword">String</span> fName = fName.<span class="built_in">trim</span>();    
+    <span class="keyword">String</span> temp[] = fName.<span class="built_in">split</span>(<span class="string">"\\\\"</span>); <span class="comment">/**split里面必须是正则表达式，"\\"的作用是对字符串转义*/</span>    
+    <span class="keyword">String</span> fileName = temp[temp.length-<span class="number">1</span>];  
+</code></pre><p>参考：<a href="http://rogerfederer.iteye.com/blog/1039666" target="_blank" rel="external">3种Java从文件路径中获取文件名的方法</a></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。<br>]]>
