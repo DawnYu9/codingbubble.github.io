@@ -2,13 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</loc>
-    <lastmod>2015-10-11T13:48:46.458Z</lastmod>
+    <loc>http://codingbubble.github.io/About/index.html</loc>
+    <lastmod>2015-10-13T16:13:21.510Z</lastmod>
   </url>
   
   <url>
-    <loc>http://codingbubble.github.io/About/index.html</loc>
-    <lastmod>2015-10-10T16:01:37.627Z</lastmod>
+    <loc>http://codingbubble.github.io/Resume/index.html</loc>
+    <lastmod>2015-10-13T16:00:23.788Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</loc>
+    <lastmod>2015-10-11T13:48:46.458Z</lastmod>
   </url>
   
   <url>
@@ -34,11 +39,6 @@
   <url>
     <loc>http://codingbubble.github.io/2015/05/08/custom-your-Hexo/</loc>
     <lastmod>2015-10-10T05:29:23.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://codingbubble.github.io/Resume/index.html</loc>
-    <lastmod>2015-10-09T05:36:52.791Z</lastmod>
   </url>
   
   <url>
