@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Coding world, changing world ^_^]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://codingbubble.github.io/"/>
-  <updated>2015-11-02T01:53:02.000Z</updated>
+  <updated>2015-10-10T07:56:11.000Z</updated>
   <id>http://codingbubble.github.io/</id>
   
   <author>
@@ -13,40 +13,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title><![CDATA[自定义 ViewGroup]]></title>
-    <link href="http://codingbubble.github.io/2015/11/02/ViewGroup-Notes/"/>
-    <id>http://codingbubble.github.io/2015/11/02/ViewGroup-Notes/</id>
-    <published>2015-11-02T01:53:02.000Z</published>
-    <updated>2015-11-02T01:53:02.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="继承_ViewGroup">继承 ViewGroup</h1><p>public class CustomViewGroup extends ViewGroup {</p>
-<p>   public CustomViewGroup(Context context) {<br>       super(context);<br>    }</p>
-<p>   public CustomViewGroup(Context context, AttributeSet attrs) {<br>       super(context, attrs);<br>    }</p>
-<p>   public CustomViewGroup(Context context, AttributeSet attrs, intdefStyle) {<br>       super(context, attrs, defStyle);<br>    }<br>}<br><a id="more"></a></p>
-<h1 id="重载onMeasure()">重载onMeasure()</h1><h2 id="关于onMeasure()">关于onMeasure()</h2><p>如果自定义的CustomView采用默认的onMeasure函数，行为如下：</p>
-<p>（1） CustomView设置为 match_parent 或者 wrap_content 没有任何区别，其显示大小由父控件决定，它会填充满整个父控件的空间。</p>
-<p>（2） CustomView设置为固定的值，则其显示大小为该设定的值。</p>
-<p>如果你的自定义控件的大小计算就是跟系统默认的行为一致的话，那么你就不需要重写onMeasure函数了。</p>
-<h2 id="重载onMeasure()-1">重载onMeasure()</h2><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">    measureChildren(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">    <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="重载onLayout()">重载onLayout()</h1><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@param changed 该参数指出当前ViewGroup的尺寸或者位置是否发生了改变</span></span><br><span class="line"><span class="comment">//@param left top right bottom 当前ViewGroup相对于其父控件的坐标位置</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> onLayout(<span class="built_in">boolean</span> changed, <span class="built_in">int</span> left, <span class="built_in">int</span> top, <span class="built_in">int</span> right, <span class="built_in">int</span> bottom) &#123;</span><br><span class="line">     </span><br><span class="line">    <span class="built_in">int</span> mViewGroupWidth  = getMeasuredWidth();  <span class="comment">//当前ViewGroup的总宽度       </span></span><br><span class="line"> </span><br><span class="line">    <span class="built_in">int</span> mPainterPosX = left;  <span class="comment">//当前绘图光标横坐标位置</span></span><br><span class="line">    <span class="built_in">int</span> mPainterPosY = top;  <span class="comment">//当前绘图光标纵坐标位置  </span></span><br><span class="line">     </span><br><span class="line">    <span class="built_in">int</span> childCount = getChildCount();        </span><br><span class="line">    <span class="keyword">for</span> ( <span class="built_in">int</span> i = <span class="number">0</span>; i &lt; childCount; i++ ) &#123;</span><br><span class="line">         </span><br><span class="line">        View childView = getChildAt(i);</span><br><span class="line"> </span><br><span class="line">        <span class="built_in">int</span> <span class="variable">width</span>  = childView.getMeasuredWidth();</span><br><span class="line">        <span class="built_in">int</span> <span class="variable">height</span> = childView.getMeasuredHeight();             </span><br><span class="line">                     </span><br><span class="line">        <span class="comment">//如果剩余的空间不够，则移到下一行开始位置</span></span><br><span class="line">        <span class="keyword">if</span>( mPainterPosX + <span class="variable">width</span> &gt; mViewGroupWidth ) &#123;              </span><br><span class="line">            mPainterPosX = left; </span><br><span class="line">            mPainterPosY += <span class="variable">height</span>;</span><br><span class="line">        &#125;                    </span><br><span class="line">         </span><br><span class="line">        <span class="comment">//执行ChildView的绘制</span></span><br><span class="line">        childView.layout(mPainterPosX,mPainterPosY,mPainterPosX+<span class="variable">width</span>, mPainterPosY+<span class="variable">height</span>);</span><br><span class="line">         </span><br><span class="line">        <span class="comment">//记录当前已经绘制到的横坐标位置 </span></span><br><span class="line">        mPainterPosX += <span class="variable">width</span>;</span><br><span class="line">    &#125;       </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="measureChildren()">measureChildren()</h2><p>计算子控件的尺寸</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h1 id="继承_ViewGroup">继承 ViewGroup</h1><p>public class CustomViewGroup extends ViewGroup {</p>
-<p>   public CustomViewGroup(Context context) {<br>       super(context);<br>    }</p>
-<p>   public CustomViewGroup(Context context, AttributeSet attrs) {<br>       super(context, attrs);<br>    }</p>
-<p>   public CustomViewGroup(Context context, AttributeSet attrs, intdefStyle) {<br>       super(context, attrs, defStyle);<br>    }<br>}<br>]]>
-    
-    </summary>
-    
-      <category term="Android" scheme="http://codingbubble.github.io/tags/Android/"/>
-    
-      <category term="ViewGroup" scheme="http://codingbubble.github.io/tags/ViewGroup/"/>
-    
-      <category term="Android" scheme="http://codingbubble.github.io/categories/Android/"/>
-    
-  </entry>
   
   <entry>
     <title><![CDATA[Markdown学习笔记]]></title>
