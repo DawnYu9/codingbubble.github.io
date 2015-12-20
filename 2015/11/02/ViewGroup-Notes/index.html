@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="Android,ViewGroup," />
 
 
 
@@ -39,15 +39,21 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="description" content="继承 ViewGrouppublic class CustomViewGroup extends ViewGroup {
+   public CustomViewGroup(Context context) {       super(context);    }
+   public CustomViewGroup(Context context, AttributeSet attrs) {">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://codingbubble.github.io/2015/05/05/hello-world/index.html">
+<meta property="og:title" content="自定义 ViewGroup">
+<meta property="og:url" content="http://codingbubble.github.io/2015/11/02/ViewGroup-Notes/index.html">
 <meta property="og:site_name" content="bubble sky">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="继承 ViewGrouppublic class CustomViewGroup extends ViewGroup {
+   public CustomViewGroup(Context context) {       super(context);    }
+   public CustomViewGroup(Context context, AttributeSet attrs) {">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="自定义 ViewGroup">
+<meta name="twitter:description" content="继承 ViewGrouppublic class CustomViewGroup extends ViewGroup {
+   public CustomViewGroup(Context context) {       super(context);    }
+   public CustomViewGroup(Context context, AttributeSet attrs) {">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -57,7 +63,7 @@
   };
 </script>
 
-    <title> Hello World // bubble sky </title>
+    <title> 自定义 ViewGroup // bubble sky </title>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 <!--[if lte IE 8]>
@@ -171,7 +177,7 @@
           
           
             
-              Hello World
+              自定义 ViewGroup
             
           
         </h1>
@@ -180,8 +186,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-05-05T22:38:18+08:00" content="2015-05-05 22:38, 19th周 Tuesday">
-            2015-05-05 22:38, 19th周 Tuesday
+          <time itemprop="dateCreated" datetime="2015-11-02T09:53:02+08:00" content="2015-11-02 09:53, 45th周 Monday">
+            2015-11-02 09:53, 45th周 Monday
           </time>
         </span>
 
@@ -191,8 +197,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/05/05/hello-world/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/05/hello-world/" itemprop="commentsCount"></span>
+              <a href="/2015/11/02/ViewGroup-Notes/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/02/ViewGroup-Notes/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -206,33 +212,55 @@
       
 
       
-        <span itemprop="articleBody"><p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <span itemprop="articleBody"><h1 id="继承_ViewGroup">继承 ViewGroup</h1><p>public class CustomViewGroup extends ViewGroup {</p>
+<p>   public CustomViewGroup(Context context) {<br>       super(context);<br>    }</p>
+<p>   public CustomViewGroup(Context context, AttributeSet attrs) {<br>       super(context, attrs);<br>    }</p>
+<p>   public CustomViewGroup(Context context, AttributeSet attrs, intdefStyle) {<br>       super(context, attrs, defStyle);<br>    }<br>}<br><a id="more"></a></p>
+<h1 id="重载onMeasure()">重载onMeasure()</h1><h2 id="关于onMeasure()">关于onMeasure()</h2><p>如果自定义的CustomView采用默认的onMeasure函数，行为如下：</p>
+<p>（1） CustomView设置为 match_parent 或者 wrap_content 没有任何区别，其显示大小由父控件决定，它会填充满整个父控件的空间。</p>
+<p>（2） CustomView设置为固定的值，则其显示大小为该设定的值。</p>
+<p>如果你的自定义控件的大小计算就是跟系统默认的行为一致的话，那么你就不需要重写onMeasure函数了。</p>
+<h2 id="重载onMeasure()-1">重载onMeasure()</h2><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">    measureChildren(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">    <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="重载onLayout()">重载onLayout()</h1><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@param changed 该参数指出当前ViewGroup的尺寸或者位置是否发生了改变</span></span><br><span class="line"><span class="comment">//@param left top right bottom 当前ViewGroup相对于其父控件的坐标位置</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> onLayout(<span class="built_in">boolean</span> changed, <span class="built_in">int</span> left, <span class="built_in">int</span> top, <span class="built_in">int</span> right, <span class="built_in">int</span> bottom) &#123;</span><br><span class="line">     </span><br><span class="line">    <span class="built_in">int</span> mViewGroupWidth  = getMeasuredWidth();  <span class="comment">//当前ViewGroup的总宽度       </span></span><br><span class="line"> </span><br><span class="line">    <span class="built_in">int</span> mPainterPosX = left;  <span class="comment">//当前绘图光标横坐标位置</span></span><br><span class="line">    <span class="built_in">int</span> mPainterPosY = top;  <span class="comment">//当前绘图光标纵坐标位置  </span></span><br><span class="line">     </span><br><span class="line">    <span class="built_in">int</span> childCount = getChildCount();        </span><br><span class="line">    <span class="keyword">for</span> ( <span class="built_in">int</span> i = <span class="number">0</span>; i &lt; childCount; i++ ) &#123;</span><br><span class="line">         </span><br><span class="line">        View childView = getChildAt(i);</span><br><span class="line"> </span><br><span class="line">        <span class="built_in">int</span> <span class="variable">width</span>  = childView.getMeasuredWidth();</span><br><span class="line">        <span class="built_in">int</span> <span class="variable">height</span> = childView.getMeasuredHeight();             </span><br><span class="line">                     </span><br><span class="line">        <span class="comment">//如果剩余的空间不够，则移到下一行开始位置</span></span><br><span class="line">        <span class="keyword">if</span>( mPainterPosX + <span class="variable">width</span> &gt; mViewGroupWidth ) &#123;              </span><br><span class="line">            mPainterPosX = left; </span><br><span class="line">            mPainterPosY += <span class="variable">height</span>;</span><br><span class="line">        &#125;                    </span><br><span class="line">         </span><br><span class="line">        <span class="comment">//执行ChildView的绘制</span></span><br><span class="line">        childView.layout(mPainterPosX,mPainterPosY,mPainterPosX+<span class="variable">width</span>, mPainterPosY+<span class="variable">height</span>);</span><br><span class="line">         </span><br><span class="line">        <span class="comment">//记录当前已经绘制到的横坐标位置 </span></span><br><span class="line">        mPainterPosX += <span class="variable">width</span>;</span><br><span class="line">    &#125;       </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="measureChildren()">measureChildren()</h2><p>计算子控件的尺寸</p>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          &nbsp; | &nbsp; 
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/ViewGroup/" rel="tag">#ViewGroup</a>
+          
+        </div>
+      
 
+      
+        <span class="post-category" >
+          &nbsp; | &nbsp; 分类于
+          
+            <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+            
+            
+
+          
+        </span>
       
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/05/07/Github-Hexo-Blog/" rel="prev">GitHub+Hexo搭建个人博客-笔记</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/10/markdown-notes/" rel="next">Markdown学习笔记</a>
             
           </div>
         </div>
@@ -260,8 +288,8 @@
                 
                 
                 <!-- 多说评论框 start -->
-                <div class="ds-thread" data-thread-key="/2015/05/05/hello-world/"
-                     data-title="Hello World" data-url="http://codingbubble.github.io/2015/05/05/hello-world/">
+                <div class="ds-thread" data-thread-key="/2015/11/02/ViewGroup-Notes/"
+                     data-title="自定义 ViewGroup" data-url="http://codingbubble.github.io/2015/11/02/ViewGroup-Notes/">
                 </div>
                 <!-- 多说评论框 end -->
 
@@ -365,7 +393,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick_Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create_a_new_post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run_server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate_static_files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy_to_remote_sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#继承_ViewGroup"><span class="nav-number">1.</span> <span class="nav-text">继承 ViewGroup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重载onMeasure()"><span class="nav-number">2.</span> <span class="nav-text">重载onMeasure()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于onMeasure()"><span class="nav-number">2.1.</span> <span class="nav-text">关于onMeasure()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重载onMeasure()-1"><span class="nav-number">2.2.</span> <span class="nav-text">重载onMeasure()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重载onLayout()"><span class="nav-number">3.</span> <span class="nav-text">重载onLayout()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#measureChildren()"><span class="nav-number">3.1.</span> <span class="nav-text">measureChildren()</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
