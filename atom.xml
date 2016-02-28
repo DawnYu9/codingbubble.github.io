@@ -54,7 +54,7 @@
     <link href="http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/"/>
     <id>http://codingbubble.github.io/2015/08/06/SimpleWord-dev-log/</id>
     <published>2015-08-06T07:06:40.000Z</published>
-    <updated>2015-10-11T13:48:46.458Z</updated>
+    <updated>2016-02-28T12:32:11.243Z</updated>
     <content type="html"><![CDATA[<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。<br><a id="more"></a><br>2015-8-6 15:07:54</p>
 <h1 id="词库">词库</h1><p>找不到词库，暂时找到一个带音标和释义的考研单词excel（估计是好几年前的大纲词汇），就先用这个吧。<br>excel不能显示音标的话，还得下载字体TOPhonetic.ttf。</p>
 <h1 id="数据库">数据库</h1><p>excel导入SQLite<br>试了几个可视化工具，就SQLiyeStudio比较满意，也没有乱码。<br>开始时把excel另存为.csv文件，系统的分隔符是逗号，但是去控制面板改了，excel导出时还是逗号，不知道为什么，可能需要重启电脑吧，懒得重启。竟然忘记replace了！所以excel → 制表符分隔的txt → replace分隔符，就ok了^_^</p>
@@ -1986,6 +1986,17 @@ if (c.getInt(0)==0) {
     <span class="keyword">String</span> temp[] = fName.<span class="built_in">split</span>(<span class="string">"\\\\"</span>); <span class="comment">/**split里面必须是正则表达式，"\\"的作用是对字符串转义*/</span>    
     <span class="keyword">String</span> fileName = temp[temp.length-<span class="number">1</span>];  
 </code></pre><p>参考：<a href="http://rogerfederer.iteye.com/blog/1039666" target="_blank" rel="external">3种Java从文件路径中获取文件名的方法</a></p>
+<p>2016-02-28</p>
+<h1 id="CardView适配">CardView适配</h1><ul>
+<li>不同 SDK 版本（低于 Lollipop 21）上的边距（Margin）效果</li>
+</ul>
+<p>在低版本中设置了 CardElevation 之后 CardView 会自动留出空间供阴影显示，而 Lollipop 之后则需要手动设置 Margin 边距来预留空间。<br>因此，我们需要自定义一个 dimen 作为 CardView 的 Margin 值：</p>
+<p>创建 <code>/res/value</code> 和 <code>/res/value-v21</code> 资源文件夹于项目对应 Module 目录下，前者放置旧版本/通用的资源文件（了解的可以跳过），后者放置 21 及更高 SDK 版本的资源文件。</p>
+<p>在 value 内的 <code>dimen.xml</code> 创建一个 Dimension （<dimen> 属性），随便命个名（如 xxx_card_margin）并填入数值 <code>0dp</code>。</dimen></p>
+<p>接着在 value-v21 文件夹内的 <code>dimen.xml</code> 创建<strong>名字相同</strong>的 Dimension，并填入你期望的预留边距（一般和 CardElevation 阴影大小相同）</p>
+<p>最后，在你布局中的 CardView 中设置 <code>android:layout_margin=&quot;@dimen/xxx_card_margin&quot;</code></p>
+<p>这样就解决了低版本中边距过大或者视觉效果不统一的问题了。</p>
+<p>参考：<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1025/3621.html" target="_blank" rel="external">关于使用 CardView 开发过程中要注意的细节</a></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>之前开发“简算”的时候忘记记录了，有时间补上。。觉得养成记录的习惯比较好。。<br>]]>
